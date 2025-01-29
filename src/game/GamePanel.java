@@ -15,8 +15,10 @@ import java.awt.event.KeyEvent;
  * @author Tyler Houp
  */
 public class GamePanel extends JPanel implements Runnable, KeySubscriber {
+    private int WIDTH = 708;
+    private int HEIGHT = 852;
     Thread gameThread;
-
+    PacManController pacManController = new PacManController();
 
     //FPS
     private final int FPS = 60;
@@ -26,7 +28,7 @@ public class GamePanel extends JPanel implements Runnable, KeySubscriber {
      * Makes the panel the game will be drawn on and sets keylistener
      */
     public GamePanel() {
-        this.setPreferredSize(new Dimension(600, 600));
+        this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
 
@@ -87,7 +89,7 @@ public class GamePanel extends JPanel implements Runnable, KeySubscriber {
         Graphics2D g2d = (Graphics2D) g;
 
         g2d.setColor(Color.WHITE);
-        g2d.fillRect(0, 0, 600, 600);
+        g2d.fillRect(0, 0, WIDTH, HEIGHT);
 
         Renderer.renderAll(g2d);
 
