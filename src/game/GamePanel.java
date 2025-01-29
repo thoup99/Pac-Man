@@ -1,8 +1,8 @@
 package game;
 
-import keyboard.KeySubscriber;
-import keyboard.KeyHandler;
-import render.Renderer;
+import j2d.keyboard.KeySubscriber;
+import j2d.keyboard.KeyHandler;
+import j2d.render.Renderer;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;

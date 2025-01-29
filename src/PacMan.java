@@ -1,5 +1,5 @@
 import game.GamePanel;
-import keyboard.KeyHandler;
+import j2d.keyboard.KeyHandler;
 
 import javax.swing.*;
 
