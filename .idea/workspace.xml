@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c430b4-c26f-491d-b2fc-f82397dbd881" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/res/images/background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/sh1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/PacManController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
@@ -15,8 +13,57 @@
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pac-Man.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Pac-Man.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PacMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PacMan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/JoyStick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/JoyStick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/PacMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/PacMan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/PacManController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/PacManController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/board/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/attributes/Rotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/Rotation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/attributes/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/Transform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/attributes/Vector2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/Vector2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/attributes/position/OffsetPosition2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/position/OffsetPosition2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/attributes/position/Position2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/position/Position2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/audio/AudioPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/audio/AudioPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/Circle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/FillCircle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/FillCircle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/FillSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/FillSquare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/Line.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/Shape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/Square.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/text/CenteredText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/text/CenteredText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/text/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/text/Text.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/physics/RigidBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/physics/RigidBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/physics/collider/Collider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/physics/collider/Collider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/physics/collider/PointCollider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/physics/collider/PointCollider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/physics/collider/RectangleCollider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/physics/collider/RectangleCollider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/sprite/AnimatedSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/sprite/AnimatedSprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/sprite/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/sprite/Sprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/sprite/SpriteSheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/sprite/SpriteSheet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/Engine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/audio/AudioClip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/audio/AudioClip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/audio/Mp3Clip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/audio/Mp3Clip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/audio/OggClip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/audio/OggClip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/audio/WavClip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/audio/WavClip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/debug/Debug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/debug/Debug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/debug/FPSDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/debug/FPSDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/debug/MousePrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/debug/MousePrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/debug/PhysicsTickDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/debug/PhysicsTickDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/keyboard/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/keyboard/KeyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/keyboard/KeySubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/keyboard/KeySubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/mouse/button/MouseButtonHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/mouse/button/MouseButtonHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/mouse/button/MouseButtonSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/mouse/button/MouseButtonSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/mouse/motion/MouseMotionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/mouse/motion/MouseMotionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/mouse/motion/MouseMotionSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/mouse/motion/MouseMotionSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/mouse/wheel/MouseWheelHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/mouse/wheel/MouseWheelHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/mouse/wheel/MouseWheelSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/mouse/wheel/MouseWheelSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/render/Renderable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/render/Renderable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/render/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/render/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/updates/gametick/GameTick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/updates/gametick/GameTick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/updates/physics/PhysicsServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/updates/physics/PhysicsServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/window/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/window/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/window/WindowPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/window/WindowPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,26 +91,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.PacMan.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/thoup/OneDrive/Desktop/Pac-Man",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PacMan.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/thoup/OneDrive/Desktop/Pac-Man&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -85,6 +132,9 @@
       <workItem from="1740519336630" duration="19000" />
       <workItem from="1741106783303" duration="808000" />
       <workItem from="1741124518915" duration="2904000" />
+      <workItem from="1741624540922" duration="497000" />
+      <workItem from="1741625189275" duration="3915000" />
+      <workItem from="1741629221374" duration="602000" />
     </task>
     <servers />
   </component>

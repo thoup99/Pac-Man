@@ -15,11 +15,13 @@ import java.util.Map;
  */
 public class Renderer {
     public static final int DEBUG_LAYER = -777;
-    private static  Map<Integer, ArrayList<Renderable>> layers = new HashMap<>();
+    private static final Map<Integer, ArrayList<Renderable>> layers = new HashMap<>();
     private static int layerCount = 0;
 
     public static void main (String[] args) {
-        layers.put(0, new ArrayList<>());
+        synchronized (layers) {
+            layers.put(0, new ArrayList<>());
+        }
     }
 
     /**
@@ -31,15 +33,17 @@ public class Renderer {
     }
 
     public static void add(Renderable r, int layer) {
-        if (!layers.containsKey(layer)) {
-            boolean createdSuccessfully = createLayer(layer);
-            if (!createdSuccessfully) {
-                return;
+        synchronized (layers) {
+            if (!layers.containsKey(layer)) {
+                boolean createdSuccessfully = createLayer(layer);
+                if (!createdSuccessfully) {
+                    return;
+                }
             }
-        }
 
-        if (!layers.get(layer).contains(r)) {
-            layers.get(layer).add(r);
+            if (!layers.get(layer).contains(r)) {
+                layers.get(layer).add(r);
+            }
         }
     }
 
@@ -48,25 +52,31 @@ public class Renderer {
     }
 
     public static boolean createLayer(int number) {
-        if (!doesLayerExist(number) && number == layerCount) {
-            layers.put(number, new ArrayList<>());
-            layerCount++;
-            System.out.println("Layer " + number + " created");
-            return true;
+        synchronized (layers) {
+            if (!doesLayerExist(number) && number == layerCount) {
+                layers.put(number, new ArrayList<>());
+                layerCount++;
+                System.out.println("Layer " + number + " created");
+                return true;
+            }
+            return false;
         }
-        return false;
     }
 
     public static void clearLayer(int number) {
-        layers.get(number).clear();
+        synchronized (layers) {
+            layers.get(number).clear();
+        }
     }
 
     public static void deleteLayer(int number) {
-        if (number == layerCount - 1 && layerCount != 0) {
-            layers.remove(number);
-        }
-        else {
-            System.out.println("Layer " + number + " not deleted. Only the topmost layer can be deleted {" + (layerCount - 1) + "}");
+        synchronized (layers) {
+            if (number == layerCount - 1 && layerCount != 0) {
+                layers.remove(number);
+            }
+            else {
+                System.out.println("Layer " + number + " not deleted. Only the topmost layer can be deleted {" + (layerCount - 1) + "}");
+            }
         }
     }
 
@@ -75,23 +85,29 @@ public class Renderer {
      * @param r Object that implements Renderable
      */
     public static boolean remove(Renderable r, int layer) {
-        return layers.get(layer).remove(r);
+        synchronized (layers) {
+            return layers.get(layer).remove(r);
+        }
     }
 
     public static boolean remove(Renderable r) {
-        for (ArrayList<Renderable> layer : layers.values()) {
-            for (Renderable lR : layer) {
-                if (r.equals(lR)) {
-                    return layer.remove(lR);
+        synchronized (layers) {
+            for (ArrayList<Renderable> layer : layers.values()) {
+                for (Renderable lR : layer) {
+                    if (r.equals(lR)) {
+                        return layer.remove(lR);
+                    }
                 }
             }
+            return false;
         }
-        return false;
     }
 
     public static void createDebugLayer() {
-        if (!layers.containsKey(DEBUG_LAYER)) {
-            layers.put(DEBUG_LAYER, new ArrayList<>());
+        synchronized (layers) {
+            if (!layers.containsKey(DEBUG_LAYER)) {
+                layers.put(DEBUG_LAYER, new ArrayList<>());
+            }
         }
     }
 
@@ -103,17 +119,21 @@ public class Renderer {
     }
 
     public static int getTotalObjects() {
-        int count = getTotalNonDebugObjects();
-        count += layers.get(DEBUG_LAYER).size();
-        return count;
+        synchronized (layers) {
+            int count = getTotalNonDebugObjects();
+            count += layers.get(DEBUG_LAYER).size();
+            return count;
+        }
     }
 
     public static int getTotalNonDebugObjects() {
-        int count = 0;
-        for (int i = 0; i < layerCount; i++) {
-            count += layers.get(i).size();
+        synchronized (layers) {
+            int count = 0;
+            for (int i = 0; i < layerCount; i++) {
+                count += layers.get(i).size();
+            }
+            return count;
         }
-        return count;
     }
 
     /**
@@ -125,15 +145,16 @@ public class Renderer {
             return;
         }
 
-        for (int i = 0; i < layerCount; i++) {
-            final ArrayList<Renderable> layer = (ArrayList<Renderable>) layers.get(i).clone();
-            for (Renderable r : layer) {
+        synchronized (layers) {
+            for (int i = 0; i < layerCount; i++) {
+                for (Renderable r : layers.get(i)) {
+                    r.render(g2);
+                }
+            }
+
+            for (Renderable r : layers.get(DEBUG_LAYER)) {
                 r.render(g2);
             }
-        }
-
-        for (Renderable r : layers.get(DEBUG_LAYER)) {
-            r.render(g2);
         }
     }
 }

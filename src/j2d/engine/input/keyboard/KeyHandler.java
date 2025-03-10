@@ -51,10 +51,8 @@ public class KeyHandler implements KeyListener {
      * being pressed and false if it is not.
      */
     public static boolean isKeyPressed(int key) {
-        if (keyMap != null)
-            return keyMap.get(key);
-
-        return false;
+        Boolean pressed = keyMap.get(key);
+        return pressed != null ? pressed : false;
     }
 
     /**

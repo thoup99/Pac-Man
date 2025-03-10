@@ -35,7 +35,20 @@ public class Vector2D {
                 x * v.y - y);
     }
 
-    public Vector2D getNormal(Position2D position1, Position2D position2) {
+    public boolean isEqual(Vector2D other) {
+        return x == other.x && y == other.y;
+    }
+
+    public boolean isOpposite(Vector2D other) {
+        return x == -other.x && y == -other.y;
+    }
+
+    public void flip() {
+        x = -x;
+        y = -y;
+    }
+
+    public static Vector2D getNormal(Position2D position1, Position2D position2) {
         return new Vector2D(position1.getX() - position2.getX(), position1.getY() - position2.getY());
     }
 

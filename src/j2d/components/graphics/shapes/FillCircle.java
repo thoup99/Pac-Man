@@ -24,6 +24,6 @@ public class FillCircle extends Circle{
         applyG2Settings(g2Copy);
 
         int diameter = radius * 2;
-        g2Copy.fillOval(position.getIntX(), position.getIntY(), diameter, diameter);
+        g2Copy.fillOval(topLeftPosition.getIntX(), topLeftPosition.getIntY(), diameter, diameter);
     }
 }

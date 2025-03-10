@@ -111,6 +111,7 @@ public class Engine implements Runnable {
                 }
 
                 frameStartTime = frameEndTime;
+                repaintWindow = false;
             }
 
         }
