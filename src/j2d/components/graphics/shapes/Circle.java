@@ -9,7 +9,8 @@ import java.awt.*;
 
 public class Circle extends Shape {
     int radius;
-    OffsetPosition2D position = new OffsetPosition2D(new Position2D(0 ,0) , 100, 100);
+    final Position2D centerPosition;
+    final OffsetPosition2D position;
 
     public Circle(GameObject parentGameObject) {
         this(parentGameObject, Renderer.getTopLayer(), new Position2D(0, 0), 10);
@@ -22,7 +23,16 @@ public class Circle extends Shape {
     public Circle(GameObject parentGameObject, int layer, Position2D position, int radius) {
         super(parentGameObject, layer);
         this.radius = radius;
+        this.centerPosition = position;
         this.position = new OffsetPosition2D(position, -radius, -radius );
+    }
+
+    public Position2D getPosition() {
+        return position;
+    }
+
+    public Position2D getCenterPosition() {
+        return centerPosition;
     }
 
     @Override

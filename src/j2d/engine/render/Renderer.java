@@ -102,6 +102,20 @@ public class Renderer {
         return layerCount - 1;
     }
 
+    public static int getTotalObjects() {
+        int count = getTotalNonDebugObjects();
+        count += layers.get(DEBUG_LAYER).size();
+        return count;
+    }
+
+    public static int getTotalNonDebugObjects() {
+        int count = 0;
+        for (int i = 0; i < layerCount; i++) {
+            count += layers.get(i).size();
+        }
+        return count;
+    }
+
     /**
      * Calls "j2d.engine.render" on all Objects added to Renderer
      * @param g2 Graphics2D Object passed to all added Objects

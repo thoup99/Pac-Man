@@ -46,6 +46,12 @@ public abstract class Shape extends Component implements Renderable {
     }
 
     @Override
+    public void delete() {
+        super.delete();
+        removeFromRenderer();
+    }
+
+    @Override
     public void addToRenderer() {
         Renderer.add(this, layer);
     }

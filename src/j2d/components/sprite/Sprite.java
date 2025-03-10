@@ -86,6 +86,12 @@ public class Sprite extends Component implements Renderable {
         addToRenderer();
     }
 
+    @Override
+    public void delete() {
+        super.delete();
+        removeFromRenderer();
+    }
+
     /**
      * Draws Sprite to the screen
      * @param g2 Graphics2D object used to draw images

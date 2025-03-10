@@ -1,12 +1,15 @@
-package game;
-
+package game.board;
 
 import j2d.attributes.position.Position2D;
-import j2d.components.sprite.Sprite;
 import j2d.engine.GameObject;
 
-public class PacManController extends GameObject {
-    Sprite background = new Sprite(this, new Position2D(0, 0), "/images/background.png");
+public class Node extends GameObject {
+    Position2D position;
+    Node up;
+    Node down;
+    Node left;
+    Node right;
+
 
     @Override
     public void update(double delta) {

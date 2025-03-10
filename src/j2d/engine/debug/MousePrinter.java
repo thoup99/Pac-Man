@@ -25,7 +25,7 @@ public class MousePrinter extends GameObject {
     }
 
     @Override
-    public void physics_update(double delta) {
+    public void physicsUpdate(double delta) {
 
     }
 }

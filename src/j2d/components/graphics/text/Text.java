@@ -13,8 +13,10 @@ import java.awt.*;
 public class Text extends Component implements Renderable {
     protected static final Color defaultColor = Color.BLACK;
     protected Color textColor;
-    protected static final Font defaultFont = new JLabel().getFont();
+    public static final Font defaultFont = new JLabel().getFont();
     protected Font font;
+    protected int style;
+    protected int size;
 
     String text;
     Position2D position;
@@ -28,7 +30,9 @@ public class Text extends Component implements Renderable {
         super(parentGameObject);
         this.text = text;
         this.position = position;
-        this.font = defaultFont;
+        this.style = Font.PLAIN;
+        this.size = 16;
+        this.font = defaultFont.deriveFont(style, size);
 
         this.layer = layer;
         addToRenderer();
@@ -57,7 +61,19 @@ public class Text extends Component implements Renderable {
     }
 
     public void setFontSize(int size) {
-        font = font.deriveFont(size);
+        this.size = size;
+        font = font.deriveFont(style, size);
+    }
+
+    public void setFontStyle(int style) {
+        this.style = style;
+        font = font.deriveFont(style, size);
+    }
+
+    @Override
+    public void delete() {
+        super.delete();
+        removeFromRenderer();
     }
 
     @Override
