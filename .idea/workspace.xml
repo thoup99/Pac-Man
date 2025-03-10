@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c430b4-c26f-491d-b2fc-f82397dbd881" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/game/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -13,6 +14,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pac-Man.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Pac-Man.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/images/background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/images/sh1.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/JoyStick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/JoyStick.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/PacMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/PacMan.java" afterDir="false" />
@@ -50,6 +53,7 @@
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/debug/FPSDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/debug/FPSDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/debug/MousePrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/debug/MousePrinter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/debug/PhysicsTickDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/debug/PhysicsTickDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/debug/PositionDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/debug/PositionDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/keyboard/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/keyboard/KeyHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/keyboard/KeySubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/keyboard/KeySubscriber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/mouse/button/MouseButtonHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/mouse/button/MouseButtonHandler.java" afterDir="false" />
@@ -134,7 +138,9 @@
       <workItem from="1741124518915" duration="2904000" />
       <workItem from="1741624540922" duration="497000" />
       <workItem from="1741625189275" duration="3915000" />
-      <workItem from="1741629221374" duration="602000" />
+      <workItem from="1741629221374" duration="1533000" />
+      <workItem from="1741632067427" duration="482000" />
+      <workItem from="1741634164143" duration="2103000" />
     </task>
     <servers />
   </component>

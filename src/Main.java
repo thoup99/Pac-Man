@@ -1,3 +1,4 @@
+import game.Constants;
 import game.JoyStick;
 import game.PacMan;
 import game.PacManController;
@@ -25,9 +26,9 @@ public class Main {
         Engine.initialize();
         Engine.setTargetFPS(60);
 
-        Window window = new Window(708, 852);
+        Window window = new Window(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
         window.setRecommendedDefaults();
-        window.setTitle("Example Window");
+        window.setTitle("Pac-Man");
 
         Debug.setDrawFPS(true);
 
