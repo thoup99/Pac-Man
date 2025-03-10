@@ -7,4 +7,5 @@ public class Constants {
     public static int SCREEN_WIDTH = SCREEN_COLUMNS * TILE_SIZE;
     public static int SCREEN_HEIGHT = SCREEN_ROWS * TILE_SIZE;
 
+    enum Direction {STOP, UP, DOWN, LEFT, RIGHT}
 }
