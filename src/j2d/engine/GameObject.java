@@ -23,6 +23,10 @@ public abstract class GameObject {
     public List<Component> components = new ArrayList<Component>();
 
     public GameObject() {
+
+    }
+
+    protected void ready() {
         GameTick.registerGameObject(this);
         PhysicsServer.registerGameObject(this);
     }

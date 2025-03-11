@@ -62,6 +62,6 @@ public class OffsetPosition2D extends Position2D {
 
     @Override
     public String toString() {
-        return "(" + getX() + ", " + getY() + ")";
+        return String.format("(%.2f, %.2f)", getX(), getY());
     }
 }

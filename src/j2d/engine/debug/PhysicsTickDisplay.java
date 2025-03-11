@@ -14,6 +14,8 @@ public class PhysicsTickDisplay extends GameObject {
     PhysicsTickDisplay() {
         pdtText = new Text(this, new Position2D(5, 30), "Physics Tick: ", Renderer.DEBUG_LAYER);
         pdtText.setColor(Color.red);
+
+        ready();
     }
 
     static void hideText() {

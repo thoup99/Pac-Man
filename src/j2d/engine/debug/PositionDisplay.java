@@ -27,6 +27,8 @@ public class PositionDisplay extends GameObject {
 
         pointCircle.setLayer(Renderer.DEBUG_LAYER);
         pointText.setLayer(Renderer.DEBUG_LAYER);
+
+        ready();
     }
 
     @Override

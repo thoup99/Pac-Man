@@ -24,7 +24,7 @@ public class PacMan extends GameObject implements KeySubscriber {
 
     public PacMan() {
         position = new Position2D(300, 300);
-        pacCircle = new FillCircle(this,3, position, 18 );
+        pacCircle = new FillCircle(this,2, position, 18 );
         loadDirectionMap();
         pacCircle.setColor(Color.ORANGE);
 

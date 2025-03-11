@@ -14,6 +14,8 @@ public class FPSDisplay extends GameObject {
     FPSDisplay() {
         fpsText = new Text(this, new Position2D(5, 15), "FPS: ", Renderer.DEBUG_LAYER);
         fpsText.setColor(Color.red);
+
+        ready();
     }
 
     static void hideText() {

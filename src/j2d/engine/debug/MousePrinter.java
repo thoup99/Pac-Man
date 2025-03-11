@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 public class MousePrinter extends GameObject {
 
     MousePrinter() {
-
+        ready();
     }
 
     @Override
