@@ -23,7 +23,7 @@ public class PacMan extends GameObject implements KeySubscriber {
     final Circle pacCircle;
     Direction currentDirection;
     Map<Direction, Vector2D> directionMap;
-    int movementSpeed = 100;
+    int movementSpeed = 60;
 
     Node currentNode;
     Node targetNode;
