@@ -21,16 +21,16 @@ import java.util.List;
 public class PacMan extends GameObject implements KeySubscriber {
     final Position2D position = new Position2D();
     final Circle pacCircle;
-    Direction direction;
+    Direction currentDirection;
     Map<Direction, Vector2D> directionMap;
     int movementSpeed = 100;
 
-    List<Node> nodesList;
     Node currentNode;
+    Node targetNode;
 
-    public PacMan(Board board) {
-        nodesList = board.getNodes();
-        currentNode = nodesList.get(0);
+    public PacMan(Node startNode) {
+        currentNode = startNode;
+        targetNode = startNode;
         setPosition();
 
         pacCircle = new FillCircle(this,2, position, 18 );
@@ -43,34 +43,33 @@ public class PacMan extends GameObject implements KeySubscriber {
         ready();
     }
 
-    public void setPosition() {
-        position.setPosition(currentNode.getPosition());
-    }
-
-    private boolean isValidDirection(Direction direction) {
-        if (direction != Direction.STOP) {
-            return currentNode.getNeighbors().get(direction) != null;
-        }
-        return false;
-    }
-
-    private Node getNewTargetNode(Direction direction) {
-        if (isValidDirection(direction)) {
-            return currentNode.getNeighbors().get(direction);
-        }
-        return currentNode;
-    }
-
     @Override
     public void update(double delta) {
-        direction = getDirection();
-        Vector2D movementVector = directionMap.get(direction);
+        Direction newDirection = getDirection();
 
-        currentNode = getNewTargetNode(direction);
-        setPosition();
+        if (didOvershootTargetNode()) {
+            currentNode = targetNode;
+            targetNode = getNewTargetNode(newDirection);
+            if (targetNode != currentNode) {
+                currentDirection = newDirection;
+            } else {
+                targetNode = getNewTargetNode(currentDirection);
+            }
 
-        //position.addX((movementSpeed * delta) * movementVector.getX());
-        //position.addY((movementSpeed * delta) * movementVector.getY());
+            if (targetNode == currentNode) {
+                currentDirection = Direction.STOP;
+            }
+            setPosition();
+
+        } else {
+            if (isOppositeDirection(newDirection)) {
+                reverseDirection();
+            }
+        }
+
+        Vector2D movementVector = directionMap.get(currentDirection);
+        position.addX((movementSpeed * delta) * movementVector.getX());
+        position.addY((movementSpeed * delta) * movementVector.getY());
 
     }
 
@@ -97,6 +96,47 @@ public class PacMan extends GameObject implements KeySubscriber {
             return Direction.RIGHT;
         }
         return Direction.STOP;
+    }
+
+    public void setPosition() {
+        position.setPosition(currentNode.getPosition());
+    }
+
+    private boolean isValidDirection(Direction direction) {
+        if (direction != Direction.STOP) {
+            return currentNode.getNeighbors().get(direction) != null;
+        }
+        return false;
+    }
+
+    private Node getNewTargetNode(Direction direction) {
+        if (isValidDirection(direction)) {
+            return currentNode.getNeighbors().get(direction);
+        }
+        return currentNode;
+    }
+
+    private boolean didOvershootTargetNode() {
+        if (targetNode != null) {
+            double nodeToTarget = targetNode.getPosition().distance(currentNode.getPosition()).getMagnitudeSquared();
+            double nodeToPacMan = position.distance(currentNode.getPosition()).getMagnitudeSquared();
+            return nodeToPacMan >= nodeToTarget;
+        }
+        return false;
+    }
+
+    private void reverseDirection() {
+        currentDirection = Direction.getOpposite(currentDirection);
+        Node temp = currentNode;
+        currentNode = targetNode;
+        targetNode = temp;
+    }
+
+    private boolean isOppositeDirection(Direction direction) {
+        if (direction != Direction.STOP) {
+            return currentDirection.getValue() == -direction.getValue();
+        }
+        return false;
     }
 
     @Override

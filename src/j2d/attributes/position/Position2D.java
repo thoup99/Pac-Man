@@ -1,6 +1,8 @@
 package j2d.attributes.position;
 
 
+import j2d.attributes.Vector2D;
+
 import java.awt.*;
 
 /**
@@ -79,6 +81,10 @@ public class Position2D {
 
     public Position2D copy() {
         return new Position2D(x, y);
+    }
+
+    public Vector2D distance(Position2D other) {
+        return new Vector2D(x - other.x, y - other.y);
     }
 
     public String toString() {
