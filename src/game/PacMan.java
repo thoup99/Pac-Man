@@ -1,5 +1,7 @@
 package game;
 
+import game.board.Board;
+import game.board.Node;
 import j2d.attributes.Vector2D;
 import j2d.attributes.position.Position2D;
 import j2d.components.graphics.shapes.Circle;
@@ -14,22 +16,49 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 public class PacMan extends GameObject implements KeySubscriber {
-    final Position2D position;
+    final Position2D position = new Position2D();
     final Circle pacCircle;
     Direction direction;
     Map<Direction, Vector2D> directionMap;
     int movementSpeed = 100;
 
-    public PacMan() {
-        position = new Position2D(300, 300);
+    List<Node> nodesList;
+    Node currentNode;
+
+    public PacMan(Board board) {
+        nodesList = board.getNodes();
+        currentNode = nodesList.get(0);
+        setPosition();
+
         pacCircle = new FillCircle(this,2, position, 18 );
         loadDirectionMap();
         pacCircle.setColor(Color.ORANGE);
 
         int[] keys = {KeyEvent.VK_W, KeyEvent.VK_A, KeyEvent.VK_S, KeyEvent.VK_D};
         KeyHandler.subscribe(this, keys);
+
+        ready();
+    }
+
+    public void setPosition() {
+        position.setPosition(currentNode.getPosition());
+    }
+
+    private boolean isValidDirection(Direction direction) {
+        if (direction != Direction.STOP) {
+            return currentNode.getNeighbors().get(direction) != null;
+        }
+        return false;
+    }
+
+    private Node getNewTargetNode(Direction direction) {
+        if (isValidDirection(direction)) {
+            return currentNode.getNeighbors().get(direction);
+        }
+        return currentNode;
     }
 
     @Override
@@ -37,8 +66,11 @@ public class PacMan extends GameObject implements KeySubscriber {
         direction = getDirection();
         Vector2D movementVector = directionMap.get(direction);
 
-        position.addX((movementSpeed * delta) * movementVector.getX());
-        position.addY((movementSpeed * delta) * movementVector.getY());
+        currentNode = getNewTargetNode(direction);
+        setPosition();
+
+        //position.addX((movementSpeed * delta) * movementVector.getX());
+        //position.addY((movementSpeed * delta) * movementVector.getY());
 
     }
 
