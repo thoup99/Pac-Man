@@ -5,6 +5,7 @@ import j2d.attributes.Vector2D;
 import j2d.attributes.position.Position2D;
 import j2d.components.graphics.shapes.Circle;
 import j2d.components.graphics.shapes.FillCircle;
+import j2d.components.physics.collider.CircleCollider;
 import j2d.engine.GameObject;
 import j2d.engine.input.keyboard.KeyHandler;
 import j2d.engine.input.keyboard.KeySubscriber;
@@ -26,6 +27,8 @@ public class PacMan extends GameObject implements KeySubscriber {
     Node currentNode;
     Node targetNode;
 
+    CircleCollider collider;
+
     public PacMan(Node startNode) {
         currentNode = startNode;
         targetNode = startNode;
@@ -34,6 +37,8 @@ public class PacMan extends GameObject implements KeySubscriber {
         pacCircle = new FillCircle(this,2, position, 8 );
         loadDirectionMap();
         pacCircle.setColor(Color.ORANGE);
+
+        collider = new CircleCollider(this, position, 6);
 
         int[] keys = {KeyEvent.VK_W, KeyEvent.VK_A, KeyEvent.VK_S, KeyEvent.VK_D};
         KeyHandler.subscribe(this, keys);
