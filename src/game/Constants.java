@@ -1,5 +1,7 @@
 package game;
 
+import j2d.attributes.position.Position2D;
+
 public class Constants {
     public static int TILE_SIZE = 16;
     public static int HALF_TILE_SIZE = TILE_SIZE / 2;
@@ -13,6 +15,9 @@ public class Constants {
 
     public static int BOARD_TOTAL_ROWS = 31;
     public static int BOARD_TOTAL_COLUMNS = 28;
+
+    public static Position2D BOARD_START_POSITION = new Position2D(BOARD_START_COLUMN * TILE_SIZE + HALF_TILE_SIZE,
+            BOARD_START_ROW * TILE_SIZE + HALF_TILE_SIZE);;
 
     public enum Direction {
         STOP(0), UP(1), DOWN(-1), LEFT(-2), RIGHT(2), PORTAL(3);

@@ -1,5 +1,6 @@
 package game.board;
 
+import game.board.pellets.PelletController;
 import j2d.attributes.position.Position2D;
 
 import java.io.BufferedReader;
@@ -14,28 +15,24 @@ import static game.Constants.*;
 public class Board {
     List<Node> nodes;
     Node startNode;
-    Position2D startPosition;
 
-    private final char[][] loadedData;
+    private final char[][] mapData;
     Map<String, Node> nodeMap;
     Map<Integer, List<Node>> portalMap;
 
+    PelletController pelletController;
+
     public Board() {
         nodes = new ArrayList<Node>();
-        startPosition = new Position2D(BOARD_START_COLUMN * TILE_SIZE + HALF_TILE_SIZE,
-                BOARD_START_ROW * TILE_SIZE + HALF_TILE_SIZE);
 
-        loadedData = new char[BOARD_TOTAL_ROWS][BOARD_TOTAL_COLUMNS];
+        mapData = new char[BOARD_TOTAL_ROWS][BOARD_TOTAL_COLUMNS];
         nodeMap = new HashMap<String, Node>();
         portalMap = new HashMap<>();
 
+        pelletController = new PelletController();
+
         //loadSampleNodes();
         loadMap("/maps/map1.txt");
-
-        //Avoids Errors on Startup
-        if (startNode == null) {
-            startNode = new Node(new Position2D(64, 64));
-        }
     }
 
     public void loadMap(String mapPath) {
@@ -44,7 +41,7 @@ public class Board {
                 String line = bReader.readLine();
                 String[] chars = line.split(" ");
                 for (int col = 0; col < BOARD_TOTAL_COLUMNS; col++) {
-                    loadedData[row][col] = chars[col].charAt(0);
+                    mapData[row][col] = chars[col].charAt(0);
                 }
             }
         } catch (Exception e) {
@@ -53,6 +50,7 @@ public class Board {
         }
 
         loadNodes();
+        pelletController.loadPellets(mapData);
     }
 
     private void loadNodes() {
@@ -67,7 +65,7 @@ public class Board {
     private void printMap() {
         for (int row = 0; row < BOARD_TOTAL_ROWS; row++) {
             for (int col = 0; col < BOARD_TOTAL_COLUMNS; col++) {
-                System.out.print(loadedData[row][col]);
+                System.out.print(mapData[row][col]);
             }
             System.out.println();
         }
@@ -76,7 +74,7 @@ public class Board {
     private void createNodes() {
         for (int row = 0; row < BOARD_TOTAL_ROWS; row++) {
             for (int col = 0; col < BOARD_TOTAL_COLUMNS; col++) {
-                char value = loadedData[row][col];
+                char value = mapData[row][col];
                 if (isNodeSymbol(value)) {
                     Position2D nodePosition = getNodePosition(row, col);
                     Node newNode = new Node(nodePosition);
@@ -110,7 +108,7 @@ public class Board {
         for (int row = 0; row < BOARD_TOTAL_ROWS; row++) {
             Node lastNode = null;
             for (int col = 0; col < BOARD_TOTAL_COLUMNS; col++) {
-                char value = loadedData[row][col];
+                char value = mapData[row][col];
                 if (value == 'X') {
                     lastNode = null;
                 } else if (isNodeSymbol(value)) {
@@ -132,11 +130,11 @@ public class Board {
         for (int col = 0; col < BOARD_TOTAL_COLUMNS; col++) {
             Node lastNode = null;
             for (int row = 0; row < BOARD_TOTAL_ROWS; row++) {
-                char value = loadedData[row][col];
+                char value = mapData[row][col];
                 if (value == 'X') {
                     lastNode = null;
                 } else if (isNodeSymbol(value)) {
-                    Position2D nodePosition = new Position2D(startPosition.getIntX() + col * TILE_SIZE, startPosition.getIntY() + row * TILE_SIZE);
+                    Position2D nodePosition = new Position2D(BOARD_START_POSITION.getIntX() + col * TILE_SIZE, BOARD_START_POSITION.getIntY() + row * TILE_SIZE);
                     if (lastNode == null) {
                         lastNode = nodeMap.get(nodePosition.toString());
                     } else {
@@ -161,7 +159,7 @@ public class Board {
     }
 
     private Position2D getNodePosition(int row, int col) {
-        return new Position2D(startPosition.getIntX() + col * TILE_SIZE, startPosition.getIntY() + row * TILE_SIZE);
+        return new Position2D(BOARD_START_POSITION.getIntX() + col * TILE_SIZE, BOARD_START_POSITION.getIntY() + row * TILE_SIZE);
     }
 
     private boolean isNodeSymbol(char value) {

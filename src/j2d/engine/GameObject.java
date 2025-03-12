@@ -35,7 +35,7 @@ public abstract class GameObject {
      *  Removes all references to the GameObject making it
      *  eligible for garbage collection
      */
-    protected void delete() {
+    public void delete() {
         GameTick.unregisterGameObject(this);
         PhysicsServer.unregisterGameObject(this);
 
