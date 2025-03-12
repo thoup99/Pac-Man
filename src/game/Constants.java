@@ -15,7 +15,7 @@ public class Constants {
     public static int BOARD_TOTAL_COLUMNS = 28;
 
     public enum Direction {
-        STOP(0), UP(1), DOWN(-1), LEFT(-2), RIGHT(2);
+        STOP(0), UP(1), DOWN(-1), LEFT(-2), RIGHT(2), PORTAL(3);
 
 
         private final int value;

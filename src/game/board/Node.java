@@ -44,7 +44,7 @@ public class Node extends GameObject {
 
         lines.clear();
         for (Node neighborNode : neighbors.values()) {
-            if (neighborNode != null) {
+            if (neighborNode != null && neighbors.get(Direction.PORTAL) != neighborNode) {
                 Line newLine = new Line(this, 0, position, neighborNode.getPosition());
                 newLine.setColor(Color.WHITE);
                 newLine.setStrokeWidth(5);

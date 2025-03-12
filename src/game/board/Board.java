@@ -18,6 +18,7 @@ public class Board {
 
     private final char[][] loadedData;
     Map<String, Node> nodeMap;
+    Map<Integer, List<Node>> portalMap;
 
     public Board() {
         nodes = new ArrayList<Node>();
@@ -26,6 +27,7 @@ public class Board {
 
         loadedData = new char[BOARD_TOTAL_ROWS][BOARD_TOTAL_COLUMNS];
         nodeMap = new HashMap<String, Node>();
+        portalMap = new HashMap<>();
 
         //loadSampleNodes();
         loadMap("/maps/map1.txt");
@@ -58,6 +60,7 @@ public class Board {
         createNodes();
         connectNodesHorizontally();
         connectNodesVertically();
+        pairPortals();
         reloadVisualConnections();
     }
 
@@ -74,7 +77,7 @@ public class Board {
         for (int row = 0; row < BOARD_TOTAL_ROWS; row++) {
             for (int col = 0; col < BOARD_TOTAL_COLUMNS; col++) {
                 char value = loadedData[row][col];
-                if (value == '+' || value == 'n' || value == 'P' || value == 'S') {
+                if (isNodeSymbol(value)) {
                     Position2D nodePosition = getNodePosition(row, col);
                     Node newNode = new Node(nodePosition);
                     nodes.add(newNode);
@@ -83,8 +86,23 @@ public class Board {
                     if (value == 'S') {
                         startNode = newNode;
                     }
+                    if (Character.isDigit(value)) {
+                        addToPortalMap(newNode, Character.getNumericValue(value));
+                    }
                 }
             }
+        }
+    }
+
+    private void addToPortalMap(Node portalNode, int portalID) {
+        if (!portalMap.containsKey(portalID)) {
+            portalMap.put(portalID, new ArrayList<>());
+        }
+        List<Node> portalPairs = portalMap.get(portalID);
+        if (portalPairs.size() > 2) {
+            throw new RuntimeException("Too many pairs in portal map. Check Map File.");
+        } else {
+            portalPairs.add(portalNode);
         }
     }
 
@@ -132,12 +150,22 @@ public class Board {
         }
     }
 
+    private void pairPortals() {
+        for (List<Node> portalPairs : portalMap.values()) {
+            Node firstNode = portalPairs.get(0);
+            Node secondNode = portalPairs.get(1);
+
+            firstNode.neighbors.put(Direction.PORTAL, secondNode);
+            secondNode.neighbors.put(Direction.PORTAL, firstNode);
+        }
+    }
+
     private Position2D getNodePosition(int row, int col) {
         return new Position2D(startPosition.getIntX() + col * TILE_SIZE, startPosition.getIntY() + row * TILE_SIZE);
     }
 
     private boolean isNodeSymbol(char value) {
-        return value == '+' || value == 'n' || value == 'P' || value == 'S';
+        return value == '+' || value == 'n' || value == 'P' || value == 'S' || Character.isDigit(value);
     }
 
     private void reloadVisualConnections() {

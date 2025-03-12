@@ -47,6 +47,9 @@ public class PacMan extends GameObject implements KeySubscriber {
 
         if (didOvershootTargetNode()) {
             currentNode = targetNode;
+            if (currentNode.getNeighbors().get(Direction.PORTAL) != null) {
+                currentNode = currentNode.getNeighbors().get(Direction.PORTAL);
+            }
             targetNode = getNewTargetNode(newDirection);
             if (targetNode != currentNode) {
                 currentDirection = newDirection;
@@ -64,6 +67,7 @@ public class PacMan extends GameObject implements KeySubscriber {
                 reverseDirection();
             }
         }
+
 
         Vector2D movementVector = directionMap.get(currentDirection);
         position.addX((movementSpeed * delta) * movementVector.getX());
