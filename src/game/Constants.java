@@ -2,10 +2,17 @@ package game;
 
 public class Constants {
     public static int TILE_SIZE = 16;
+    public static int HALF_TILE_SIZE = TILE_SIZE / 2;
     public static int SCREEN_ROWS = 36;
     public static int SCREEN_COLUMNS = 28;
     public static int SCREEN_WIDTH = SCREEN_COLUMNS * TILE_SIZE;
     public static int SCREEN_HEIGHT = SCREEN_ROWS * TILE_SIZE;
+
+    public static int BOARD_START_ROW = 3;
+    public static int BOARD_START_COLUMN = 0;
+
+    public static int BOARD_TOTAL_ROWS = 31;
+    public static int BOARD_TOTAL_COLUMNS = 28;
 
     public enum Direction {
         STOP(0), UP(1), DOWN(-1), LEFT(-2), RIGHT(2);

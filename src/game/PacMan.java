@@ -1,6 +1,5 @@
 package game;
 
-import game.board.Board;
 import game.board.Node;
 import j2d.attributes.Vector2D;
 import j2d.attributes.position.Position2D;
@@ -16,7 +15,6 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.List;
 
 public class PacMan extends GameObject implements KeySubscriber {
     final Position2D position = new Position2D();
@@ -33,7 +31,7 @@ public class PacMan extends GameObject implements KeySubscriber {
         targetNode = startNode;
         setPosition();
 
-        pacCircle = new FillCircle(this,2, position, 18 );
+        pacCircle = new FillCircle(this,2, position, 8 );
         loadDirectionMap();
         pacCircle.setColor(Color.ORANGE);
 

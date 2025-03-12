@@ -14,7 +14,7 @@ public class PacManController extends GameObject {
 
     public PacManController() {
         board = new Board();
-        pacMan = new PacMan(board.getNodes().get(0));
+        pacMan = new PacMan(board.getStartNode());
     }
 
     @Override

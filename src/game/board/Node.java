@@ -46,7 +46,7 @@ public class Node extends GameObject {
         for (Node neighborNode : neighbors.values()) {
             if (neighborNode != null) {
                 Line newLine = new Line(this, 0, position, neighborNode.getPosition());
-                newLine.setColor(Color.BLUE);
+                newLine.setColor(Color.WHITE);
                 newLine.setStrokeWidth(5);
                 lines.add(newLine);
             }
