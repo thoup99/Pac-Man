@@ -46,10 +46,10 @@ public class PelletController {
 
     public void emptyPellets() {
         for (Pellet pellet : pellets) {
-            pellet.delete();
+            pellet.queueDelete();
         }
         for (PowerPellet powerPellet : powerPellets) {
-            powerPellet.delete();
+            powerPellet.queueDelete();
         }
 
         pellets.clear();

@@ -35,14 +35,14 @@ public class NodeController {
 
     private void emptyNodes() {
         for (Node node : nodes) {
-            node.delete();
+            node.queueDelete();
         }
         nodes.clear();
     }
 
     private void emptyStartNode() {
         if (startNode != null) {
-            startNode.delete();
+            startNode.queueDelete();
         }
     }
 

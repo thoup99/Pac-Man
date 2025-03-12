@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c430b4-c26f-491d-b2fc-f82397dbd881" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/game/board/nodes/NodeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -20,7 +19,8 @@
       <change beforePath="$PROJECT_DIR$/src/game/PacMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/PacMan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/PacManController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/PacManController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/board/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/nodes/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/board/nodes/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/nodes/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/board/nodes/NodeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/nodes/NodeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/board/pellets/Pellet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/Pellet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/board/pellets/PelletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/PelletController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/board/pellets/PowerPellet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/PowerPellet.java" afterDir="false" />
@@ -147,7 +147,7 @@
       <workItem from="1741638513173" duration="3822000" />
       <workItem from="1741654354723" duration="6973000" />
       <workItem from="1741665092745" duration="22857000" />
-      <workItem from="1741745839657" duration="738000" />
+      <workItem from="1741745839657" duration="846000" />
     </task>
     <servers />
   </component>

@@ -7,6 +7,7 @@ import j2d.engine.input.mouse.button.MouseButtonHandler;
 import j2d.engine.input.mouse.motion.MouseMotionHandler;
 import j2d.engine.input.mouse.wheel.MouseWheelHandler;
 import j2d.engine.updates.gametick.GameTick;
+import j2d.engine.updates.physics.CollisionServer;
 import j2d.engine.updates.physics.PhysicsServer;
 import j2d.engine.window.Window;
 
@@ -77,6 +78,8 @@ public class Engine implements Runnable {
                 PhysicsServer.currentStepRate = physicsAccumulatedTime;
 
                 physicsAccumulatedTime -= PhysicsServer.timeStep;
+
+                CollisionServer.checkCollisions();
                 doPhysicsTick = true;
             }
 
@@ -96,6 +99,7 @@ public class Engine implements Runnable {
 
             //Physics Tick
             if (doPhysicsTick) {
+                //Physics tick should resolve rigid body overlaps
                 PhysicsServer.tick();
                 doPhysicsTick = false;
             }
@@ -113,6 +117,9 @@ public class Engine implements Runnable {
                 frameStartTime = frameEndTime;
                 repaintWindow = false;
             }
+
+            //After loop remove GameObjects that were queued for deletion
+            GameObjectDeletion.deleteAll();
 
         }
 

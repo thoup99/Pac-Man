@@ -4,6 +4,7 @@ import j2d.components.Component;
 import j2d.components.graphics.shapes.Shape;
 import j2d.components.graphics.text.Text;
 import j2d.components.physics.RigidBody;
+import j2d.components.physics.collider.Collider;
 import j2d.components.sprite.Sprite;
 import j2d.engine.input.keyboard.KeyHandler;
 import j2d.engine.input.keyboard.KeySubscriber;
@@ -14,13 +15,15 @@ import j2d.engine.input.mouse.motion.MouseMotionSubscriber;
 import j2d.engine.input.mouse.wheel.MouseWheelHandler;
 import j2d.engine.input.mouse.wheel.MouseWheelSubscriber;
 import j2d.engine.updates.gametick.GameTick;
+import j2d.engine.updates.physics.CollisionServer;
 import j2d.engine.updates.physics.PhysicsServer;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public abstract class GameObject {
-    public List<Component> components = new ArrayList<Component>();
+    public List<Component> components = new ArrayList<>();
 
     public GameObject() {
 
@@ -29,13 +32,24 @@ public abstract class GameObject {
     protected void ready() {
         GameTick.registerGameObject(this);
         PhysicsServer.registerGameObject(this);
+
+        for (Component c : components) {
+            if (c instanceof Collider) {
+                Collider collider = (Collider) c;
+                CollisionServer.registerCollider(collider);
+            }
+        }
+    }
+
+    public void queueDelete() {
+        GameObjectDeletion.queueGameObject(this);
     }
 
     /**
      *  Removes all references to the GameObject making it
      *  eligible for garbage collection
      */
-    public void delete() {
+    void delete() {
         GameTick.unregisterGameObject(this);
         PhysicsServer.unregisterGameObject(this);
 
@@ -56,22 +70,9 @@ public abstract class GameObject {
             MouseWheelHandler.unsubscribe(mws);
         }
 
-        for (Component c : components) {
-            if (c instanceof Sprite) {
-                Sprite s = (Sprite) c;
-                s.removeFromRenderer();
-            }
-            else if (c instanceof RigidBody) {
-                RigidBody rigidBody = (RigidBody) c;
-                PhysicsServer.unregisterRigidBody(rigidBody);
-            } else if (c instanceof Shape) {
-                Shape shape = (Shape) c;
-                shape.removeFromRenderer();
-            } else if (c instanceof Text) {
-                Text text = (Text) c;
-                text.removeFromRenderer();
-            }
-
+        //Copy the List of components since .delete removes it from original List
+        List<Component> componentsToRemove = new ArrayList<>(components);
+        for (Component c : componentsToRemove) {
             c.delete();
         }
 
@@ -79,4 +80,5 @@ public abstract class GameObject {
 
     public abstract void update(double delta);
     public abstract void physicsUpdate(double delta);
+    public void onCollision(GameObject other) {};
 }

@@ -13,4 +13,8 @@ public abstract class Component {
     public void delete() {
         parentObject.components.remove(this);
     }
+
+    public GameObject getParent() {
+        return parentObject;
+    }
 }
