@@ -1,4 +1,4 @@
-package game.board;
+package game.board.nodes;
 
 import j2d.attributes.position.Position2D;
 import j2d.components.graphics.shapes.FillCircle;

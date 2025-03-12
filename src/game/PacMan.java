@@ -1,6 +1,6 @@
 package game;
 
-import game.board.Node;
+import game.board.nodes.Node;
 import j2d.attributes.Vector2D;
 import j2d.attributes.position.Position2D;
 import j2d.components.graphics.shapes.Circle;
