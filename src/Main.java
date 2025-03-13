@@ -1,5 +1,4 @@
 import game.Constants;
-import game.PacMan;
 import game.PacManController;
 import j2d.engine.Engine;
 import j2d.engine.debug.Debug;

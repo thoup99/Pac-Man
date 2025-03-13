@@ -2,6 +2,8 @@ package game;
 
 
 import game.board.Board;
+import game.entities.board.PacMan;
+import game.entities.board.ghost.Ghost;
 import j2d.attributes.position.Position2D;
 import j2d.components.sprite.Sprite;
 import j2d.engine.GameObject;
@@ -15,6 +17,7 @@ public class PacManController extends GameObject {
     public PacManController() {
         board = new Board();
         pacMan = new PacMan(board.getNodeController().getStartNode());
+        Ghost ghost = new Ghost(board.getNodeController().getStartNode());
     }
 
     @Override

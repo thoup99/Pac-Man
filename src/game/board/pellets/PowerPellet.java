@@ -1,6 +1,6 @@
 package game.board.pellets;
 
-import game.PacMan;
+import game.entities.board.PacMan;
 import j2d.attributes.position.Position2D;
 import j2d.engine.GameObject;
 
