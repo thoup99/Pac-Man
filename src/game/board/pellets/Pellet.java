@@ -14,10 +14,14 @@ public class Pellet extends GameObject {
     CircleCollider circleCollider;
 
     public Pellet(Position2D position) {
+        this(position, 4);
+    }
+
+    Pellet(Position2D position, int radius) {
         this.position = position;
-        fillCircle = new FillCircle(this, 1, position, 4);
+        fillCircle = new FillCircle(this, 1, position, radius);
         fillCircle.setColor(Color.GRAY);
-        circleCollider = new CircleCollider(this, position, 4);
+        circleCollider = new CircleCollider(this, position, radius);
 
         ready();
     }
