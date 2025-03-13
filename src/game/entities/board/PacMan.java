@@ -3,6 +3,7 @@ package game.entities.board;
 import game.Constants;
 import game.board.nodes.Node;
 import j2d.attributes.Vector2D;
+import j2d.attributes.position.Position2D;
 import j2d.components.graphics.shapes.Circle;
 import j2d.components.graphics.shapes.FillCircle;
 import j2d.components.physics.collider.CircleCollider;
@@ -24,6 +25,8 @@ public class PacMan extends BoardEntity implements KeySubscriber {
         pacCircle.setColor(Color.ORANGE);
 
         collider = new CircleCollider(this, position, 6);
+
+        setMovementSpeed(100);
 
         int[] keys = {KeyEvent.VK_W, KeyEvent.VK_A, KeyEvent.VK_S, KeyEvent.VK_D};
         KeyHandler.subscribe(this, keys);
@@ -78,6 +81,10 @@ public class PacMan extends BoardEntity implements KeySubscriber {
             return Direction.RIGHT;
         }
         return Direction.STOP;
+    }
+
+    public Position2D getPosition() {
+        return position;
     }
 
     @Override

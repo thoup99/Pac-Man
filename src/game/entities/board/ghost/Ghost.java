@@ -26,6 +26,7 @@ public class Ghost extends BoardEntity {
         ghostCircle.setColor(Color.RED);
 
         collider = new CircleCollider(this, position, 6);
+        setMovementSpeed(90);
 
         ready();
     }
@@ -34,8 +35,10 @@ public class Ghost extends BoardEntity {
     public void update(double delta) {
         if (didOvershootTargetNode()) {
             Direction newDirection = pickRandomDirection(getValidDirections());
-
             currentNode = targetNode;
+            if (currentNode.getNeighbors().get(Direction.PORTAL) != null) {
+                currentNode = currentNode.getNeighbors().get(Direction.PORTAL);
+            }
             targetNode = getNewTargetNode(newDirection);
             if (targetNode != currentNode) {
                 currentDirection = newDirection;
@@ -50,7 +53,7 @@ public class Ghost extends BoardEntity {
         position.addY((movementSpeed * delta) * movementVector.getY());
     }
 
-    private List<Direction> getValidDirections() {
+    protected List<Direction> getValidDirections() {
         List<Direction> directions = new ArrayList<>();
         for (Direction direction : Direction.values()) {
             if (Direction.getOpposite(direction) != currentDirection && isValidDirection(direction)) {
@@ -63,7 +66,7 @@ public class Ghost extends BoardEntity {
         return directions;
     }
 
-    private Direction pickRandomDirection(List<Direction> validDirections) {
+    protected Direction pickRandomDirection(List<Direction> validDirections) {
         int index = random.nextInt(validDirections.size());
         return validDirections.get(index);
     }

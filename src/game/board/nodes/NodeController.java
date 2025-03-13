@@ -3,10 +3,7 @@ package game.board.nodes;
 import game.Constants;
 import j2d.attributes.position.Position2D;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static game.Constants.*;
 import static game.Constants.TILE_SIZE;
@@ -159,5 +156,10 @@ public class NodeController {
 
     public Node getStartNode() {
         return startNode;
+    }
+
+    public Node getRandomNode() {
+        Random random = new Random(nodes.size());
+        return nodes.get(random.nextInt(nodes.size()));
     }
 }
