@@ -1,30 +1,24 @@
 package game.board;
 
-import game.board.nodes.Node;
-import game.board.nodes.NodeController;
-import game.board.pellets.PelletController;
-import j2d.attributes.position.Position2D;
+import game.board.nodes.NodeManager;
+import game.board.pellets.PelletManager;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import static game.Constants.*;
 
 public class Board {
     private final char[][] mapData;
 
-    NodeController nodeController;
-    PelletController pelletController;
+    NodeManager nodeManager;
+    PelletManager pelletManager;
 
     public Board() {
         mapData = new char[BOARD_TOTAL_ROWS][BOARD_TOTAL_COLUMNS];
 
-        nodeController = new NodeController();
-        pelletController = new PelletController();
+        nodeManager = new NodeManager();
+        pelletManager = new PelletManager();
 
         //loadSampleNodes();
         loadMap("/maps/map1.txt");
@@ -44,18 +38,18 @@ public class Board {
             System.out.println("Error reading map. Reason: " + e.getMessage());
         }
 
-        nodeController.loadNodes(mapData);
-        pelletController.loadPellets(mapData);
+        nodeManager.loadNodes(mapData);
+        pelletManager.loadPellets(mapData);
     }
 
 
 
-    public NodeController getNodeController() {
-        return nodeController;
+    public NodeManager getNodeManager() {
+        return nodeManager;
     }
 
-    public PelletController getPelletController() {
-        return pelletController;
+    public PelletManager getPelletManager() {
+        return pelletManager;
     }
 
 }

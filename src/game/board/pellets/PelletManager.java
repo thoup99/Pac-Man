@@ -8,11 +8,11 @@ import java.util.List;
 import static game.Constants.*;
 import static game.Constants.TILE_SIZE;
 
-public class PelletController {
-    private List<Pellet> pellets;
-    private List<PowerPellet> powerPellets;
+public class PelletManager {
+    private final List<Pellet> pellets;
+    private final List<PowerPellet> powerPellets;
 
-    public PelletController() {
+    public PelletManager() {
         pellets = new ArrayList<>();
         powerPellets = new ArrayList<>();
     }

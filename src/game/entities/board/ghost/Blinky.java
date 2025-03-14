@@ -3,6 +3,7 @@ package game.entities.board.ghost;
 import game.Constants.Direction;
 import game.board.nodes.Node;
 import game.entities.board.PacMan;
+import game.entities.board.ghost.GhostManager.GhostMode;
 import j2d.attributes.Vector2D;
 import j2d.attributes.position.Position2D;
 import j2d.components.Timer;
@@ -13,16 +14,12 @@ public class Blinky extends Ghost {
     Position2D pacmanPosition;
     Position2D scatterPosition;
 
-    Timer scatterTimer;
-    boolean scatter = false;
 
     public Blinky(Node startNode, PacMan pacman) {
         super(startNode);
         pacmanPosition = pacman.getPosition();
         scatterPosition = new Position2D(BOARD_START_POSITION.getX() + (TILE_SIZE * BOARD_TOTAL_COLUMNS), BOARD_START_POSITION.getY());
         setGoalPosition(pacmanPosition);
-        scatterTimer = new Timer(this, 7000, this::toggleScatter);
-        scatterTimer.start();
 
         ready();
     }
@@ -32,6 +29,9 @@ public class Blinky extends Ghost {
         if (didOvershootTargetNode()) {
             currentNode = targetNode;
             Direction newDirection = getClosestDirection(getValidDirections());
+            if (currentMode == GhostMode.FRIGHT) {
+                newDirection = pickRandomDirection(getValidDirections());
+            }
             if (currentNode.getNeighbors().get(Direction.PORTAL) != null) {
                 currentNode = currentNode.getNeighbors().get(Direction.PORTAL);
             }
@@ -49,13 +49,27 @@ public class Blinky extends Ghost {
         position.addY((movementSpeed * delta) * movementVector.getY());
     }
 
-    void toggleScatter() {
-        scatter = !scatter;
-        if (scatter) {
-            setGoalPosition(scatterPosition);
-        }
-        else {
-            setGoalPosition(pacmanPosition);
-        }
+    @Override
+    protected void startScatter() {
+        currentMode = GhostMode.SCATTER;
+        setGoalPosition(scatterPosition);
+    }
+
+    @Override
+    protected void startChase() {
+        currentMode = GhostMode.CHASE;
+        setGoalPosition(pacmanPosition);
+    }
+
+    @Override
+    protected void startFright() {
+        reverseDirection();
+        currentMode = GhostMode.FRIGHT;
+    }
+
+    @Override
+    protected void startSpawn() {
+        currentMode = GhostMode.SPAWN;
+
     }
 }

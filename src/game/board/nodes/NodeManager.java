@@ -8,14 +8,14 @@ import java.util.*;
 import static game.Constants.*;
 import static game.Constants.TILE_SIZE;
 
-public class NodeController {
+public class NodeManager {
     List<Node> nodes;
     Node startNode;
 
     Map<String, Node> nodeMap;
     Map<Integer, List<Node>> portalMap;
 
-    public NodeController() {
+    public NodeManager() {
         nodes = new ArrayList<Node>();
         nodeMap = new HashMap<String, Node>();
         portalMap = new HashMap<>();

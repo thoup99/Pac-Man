@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c430b4-c26f-491d-b2fc-f82397dbd881" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/GhostManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -19,9 +20,9 @@
       <change beforePath="$PROJECT_DIR$/src/game/PacManController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/PacManController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/board/nodes/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/nodes/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/board/nodes/NodeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/nodes/NodeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/board/nodes/NodeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/nodes/NodeManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/board/pellets/Pellet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/Pellet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/board/pellets/PelletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/PelletController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/board/pellets/PelletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/PelletManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/board/pellets/PowerPellet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/PowerPellet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/BoardEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/BoardEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/PacMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/PacMan.java" afterDir="false" />
@@ -34,6 +35,7 @@
       <change beforePath="$PROJECT_DIR$/src/j2d/attributes/position/Position2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/position/Position2D.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/audio/AudioPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/audio/AudioPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/components/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/Timer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/Circle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/FillCircle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/FillCircle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/FillSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/FillSquare.java" afterDir="false" />
@@ -50,8 +52,6 @@
       <change beforePath="$PROJECT_DIR$/src/j2d/components/sprite/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/sprite/Sprite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/components/sprite/SpriteSheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/sprite/SpriteSheet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/j2d/engine/GameObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/j2d/engine/GameObjectDeletion.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/audio/AudioClip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/audio/AudioClip.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/audio/Mp3Clip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/audio/Mp3Clip.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/audio/OggClip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/audio/OggClip.java" afterDir="false" />
@@ -61,6 +61,8 @@
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/debug/MousePrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/debug/MousePrinter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/debug/PhysicsTickDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/debug/PhysicsTickDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/debug/PositionDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/debug/PositionDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/gameobject/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/gameobject/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/gameobject/GameObjectDeletion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/gameobject/GameObjectDeletion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/keyboard/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/keyboard/KeyHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/keyboard/KeySubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/keyboard/KeySubscriber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/mouse/button/MouseButtonHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/mouse/button/MouseButtonHandler.java" afterDir="false" />
@@ -71,6 +73,7 @@
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/mouse/wheel/MouseWheelSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/mouse/wheel/MouseWheelSubscriber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/render/Renderable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/render/Renderable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/render/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/render/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/updates/MasterTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/updates/MasterTimer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/updates/gametick/GameTick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/updates/gametick/GameTick.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/updates/physics/CollisionServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/updates/physics/CollisionServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/updates/physics/PhysicsServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/updates/physics/PhysicsServer.java" afterDir="false" />
@@ -155,7 +158,9 @@
       <workItem from="1741745839657" duration="846000" />
       <workItem from="1741811983753" duration="3132000" />
       <workItem from="1741886913449" duration="12670000" />
-      <workItem from="1741978707659" duration="1568000" />
+      <workItem from="1741978707659" duration="3744000" />
+      <workItem from="1741982642712" duration="291000" />
+      <workItem from="1741983290294" duration="1658000" />
     </task>
     <servers />
   </component>

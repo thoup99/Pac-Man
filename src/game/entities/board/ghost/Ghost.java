@@ -2,6 +2,7 @@ package game.entities.board.ghost;
 
 import game.board.nodes.Node;
 import game.entities.board.BoardEntity;
+import game.entities.board.ghost.GhostManager.GhostMode;
 import j2d.attributes.Vector2D;
 import j2d.attributes.position.Position2D;
 import j2d.components.graphics.shapes.Circle;
@@ -15,12 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Ghost extends BoardEntity {
-    Random random;
+public abstract class Ghost extends BoardEntity {
+    static Random random;
     final Circle ghostCircle;
     CircleCollider collider;
     Position2D goalPosition = new Position2D();
-    enum Mode {CHASE, SCATTER, FLEE, SPAWN}
+    GhostMode currentMode = GhostMode.SCATTER;
 
     public Ghost(Node startNode) {
         super(startNode);
@@ -54,6 +55,11 @@ public class Ghost extends BoardEntity {
         position.addY((movementSpeed * delta) * movementVector.getY());
     }
 
+    protected abstract void startScatter();
+    protected abstract void startChase();
+    protected abstract void startFright();
+    protected abstract void startSpawn();
+
     protected List<Direction> getValidDirections() {
         List<Direction> directions = new ArrayList<>();
         for (Direction direction : Direction.values()) {
@@ -69,7 +75,7 @@ public class Ghost extends BoardEntity {
     }
 
     protected void setGoalPosition(Position2D newGoal) {
-        goalPosition.setPosition(newGoal);
+        goalPosition = newGoal;
     }
 
     protected Direction pickRandomDirection(List<Direction> validDirections) {

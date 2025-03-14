@@ -6,15 +6,14 @@ import j2d.engine.updates.MasterTimer;
 public class Timer extends Component{
     boolean isTicking = false;
     boolean oneShot = false;
-    int durationNanoseconds;
+    long durationNanoseconds;
     double timeRemainingNanoseconds;
     Runnable callback;
 
-    public Timer(GameObject parentGameObject, int durationMilliseconds, Runnable callback) {
+    public Timer(GameObject parentGameObject, long durationMilliseconds, Runnable callback) {
         super(parentGameObject);
         this.durationNanoseconds = milliToNano(durationMilliseconds);
         timeRemainingNanoseconds = this.durationNanoseconds;
-        System.out.println(this.durationNanoseconds);
         this.callback = callback;
         MasterTimer.registerTimer(this);
     }
@@ -57,7 +56,7 @@ public class Timer extends Component{
         return nanoToMilli(timeRemainingNanoseconds);
     }
 
-    private int milliToNano(int milliseconds) {
+    private long milliToNano(long milliseconds) {
         return milliseconds * 1_000_000;
     }
 

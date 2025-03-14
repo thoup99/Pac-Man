@@ -1,6 +1,7 @@
 package game.board.pellets;
 
 import game.entities.board.PacMan;
+import game.entities.board.ghost.GhostManager;
 import j2d.attributes.position.Position2D;
 import j2d.engine.gameobject.GameObject;
 
@@ -17,6 +18,7 @@ public class PowerPellet extends Pellet {
     @Override
     public void onCollision(GameObject other) {
         if (other instanceof PacMan) {
+            GhostManager.forceFrightMode();
             queueDelete();
         }
     }
