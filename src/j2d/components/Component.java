@@ -1,6 +1,6 @@
 package j2d.components;
 
-import j2d.engine.GameObject;
+import j2d.engine.gameobject.GameObject;
 
 public abstract class Component {
     protected GameObject parentObject;

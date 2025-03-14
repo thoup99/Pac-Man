@@ -3,7 +3,7 @@ package j2d.engine.debug;
 import j2d.attributes.position.Position2D;
 import j2d.components.graphics.text.Text;
 import j2d.engine.Engine;
-import j2d.engine.GameObject;
+import j2d.engine.gameobject.GameObject;
 import j2d.engine.render.Renderer;
 
 import java.awt.*;

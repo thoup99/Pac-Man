@@ -3,7 +3,7 @@ package game.board.nodes;
 import j2d.attributes.position.Position2D;
 import j2d.components.graphics.shapes.FillCircle;
 import j2d.components.graphics.shapes.Line;
-import j2d.engine.GameObject;
+import j2d.engine.gameobject.GameObject;
 
 import game.Constants.Direction;
 

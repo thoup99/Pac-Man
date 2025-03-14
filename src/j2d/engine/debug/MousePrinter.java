@@ -1,6 +1,6 @@
 package j2d.engine.debug;
 
-import j2d.engine.GameObject;
+import j2d.engine.gameobject.GameObject;
 import j2d.engine.input.mouse.button.MouseButtonHandler;
 import j2d.engine.window.Window;
 

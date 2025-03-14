@@ -3,6 +3,7 @@ package game.entities.board.ghost;
 import game.board.nodes.Node;
 import game.entities.board.BoardEntity;
 import j2d.attributes.Vector2D;
+import j2d.attributes.position.Position2D;
 import j2d.components.graphics.shapes.Circle;
 import j2d.components.graphics.shapes.FillCircle;
 import j2d.components.physics.collider.CircleCollider;
@@ -18,6 +19,8 @@ public class Ghost extends BoardEntity {
     Random random;
     final Circle ghostCircle;
     CircleCollider collider;
+    Position2D goalPosition = new Position2D();
+    enum Mode {CHASE, SCATTER, FLEE, SPAWN}
 
     public Ghost(Node startNode) {
         super(startNode);
@@ -27,8 +30,6 @@ public class Ghost extends BoardEntity {
 
         collider = new CircleCollider(this, position, 6);
         setMovementSpeed(90);
-
-        ready();
     }
 
     @Override
@@ -67,8 +68,34 @@ public class Ghost extends BoardEntity {
         return directions;
     }
 
+    protected void setGoalPosition(Position2D newGoal) {
+        goalPosition.setPosition(newGoal);
+    }
+
     protected Direction pickRandomDirection(List<Direction> validDirections) {
         int index = random.nextInt(validDirections.size());
         return validDirections.get(index);
+    }
+
+    protected Direction getClosestDirection(List<Direction> directions) {
+        double shortestDistance = Double.MAX_VALUE;
+        Direction closestDirection = null;
+
+        for (Direction direction : directions) {
+            Position2D endPosition = currentNode.getNeighbors().get(direction).getPosition();
+            double distanceToEnd = endPosition.distance(goalPosition).getMagnitudeSquared();
+            if (distanceToEnd < shortestDistance) {
+                shortestDistance = distanceToEnd;
+                closestDirection = direction;
+            } else if (distanceToEnd == shortestDistance) {
+                boolean keepLastClosest = random.nextBoolean();
+                if (!keepLastClosest) {
+                    closestDirection = direction;
+                }
+            }
+        }
+
+        return closestDirection;
+
     }
 }

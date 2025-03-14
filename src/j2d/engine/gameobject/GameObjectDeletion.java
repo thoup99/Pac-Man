@@ -1,4 +1,4 @@
-package j2d.engine;
+package j2d.engine.gameobject;
 
 import java.util.ArrayList;
 import java.util.List;

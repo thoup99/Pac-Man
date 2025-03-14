@@ -6,7 +6,7 @@ import j2d.components.graphics.shapes.Circle;
 import j2d.components.graphics.shapes.FillCircle;
 import j2d.components.graphics.text.CenteredText;
 import j2d.components.graphics.text.Text;
-import j2d.engine.GameObject;
+import j2d.engine.gameobject.GameObject;
 import j2d.engine.render.Renderer;
 
 import java.awt.*;

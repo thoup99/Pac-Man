@@ -2,7 +2,7 @@ package j2d.components.sprite;
 
 
 import j2d.components.Component;
-import j2d.engine.GameObject;
+import j2d.engine.gameobject.GameObject;
 import j2d.engine.render.Renderable;
 import j2d.engine.render.Renderer;
 import j2d.attributes.position.Position2D;

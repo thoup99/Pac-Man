@@ -1,7 +1,7 @@
 package j2d.engine.updates.physics;
 
 import j2d.components.physics.RigidBody;
-import j2d.engine.GameObject;
+import j2d.engine.gameobject.GameObject;
 
 import java.util.ArrayList;
 import java.util.List;

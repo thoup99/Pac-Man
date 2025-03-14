@@ -17,7 +17,7 @@ public class Constants {
     public static int BOARD_TOTAL_COLUMNS = 28;
 
     public static Position2D BOARD_START_POSITION = new Position2D(BOARD_START_COLUMN * TILE_SIZE + HALF_TILE_SIZE,
-            BOARD_START_ROW * TILE_SIZE + HALF_TILE_SIZE);;
+            BOARD_START_ROW * TILE_SIZE + HALF_TILE_SIZE);
 
     public enum Direction {
         STOP(0), UP(-1), DOWN(1), LEFT(-2), RIGHT(2), PORTAL(3);

@@ -2,17 +2,16 @@ package j2d.engine;
 
 
 import j2d.engine.debug.Debug;
+import j2d.engine.gameobject.GameObjectDeletion;
 import j2d.engine.input.keyboard.KeyHandler;
 import j2d.engine.input.mouse.button.MouseButtonHandler;
 import j2d.engine.input.mouse.motion.MouseMotionHandler;
 import j2d.engine.input.mouse.wheel.MouseWheelHandler;
+import j2d.engine.updates.MasterTimer;
 import j2d.engine.updates.gametick.GameTick;
 import j2d.engine.updates.physics.CollisionServer;
 import j2d.engine.updates.physics.PhysicsServer;
 import j2d.engine.window.Window;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Engine implements Runnable {
     private static Engine engine;
@@ -64,13 +63,19 @@ public class Engine implements Runnable {
         double physicsAccumulatedTime = 0;
         boolean doPhysicsTick = false;
 
+        long nanoTimeBetweenLoops = 0;
+
         double delta = 0;
 
         while (engineThread.isAlive()) {
             long currentTime = System.nanoTime();
             delta += (currentTime - previousTime) / drawInterval;
+            nanoTimeBetweenLoops = currentTime - previousTime;
             physicsAccumulatedTime += (currentTime - previousTime) / 1_000_000_000.0;
             previousTime = currentTime;
+
+            //Tick Timers
+            MasterTimer.tickAll(nanoTimeBetweenLoops);
 
             //Physics
             if (physicsAccumulatedTime > PhysicsServer.timeStep) {

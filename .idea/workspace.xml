@@ -50,8 +50,8 @@
       <change beforePath="$PROJECT_DIR$/src/j2d/components/sprite/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/sprite/Sprite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/components/sprite/SpriteSheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/sprite/SpriteSheet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/j2d/engine/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/j2d/engine/GameObjectDeletion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/GameObjectDeletion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/GameObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/GameObjectDeletion.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/audio/AudioClip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/audio/AudioClip.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/audio/Mp3Clip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/audio/Mp3Clip.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/audio/OggClip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/audio/OggClip.java" afterDir="false" />
@@ -154,7 +154,8 @@
       <workItem from="1741665092745" duration="22857000" />
       <workItem from="1741745839657" duration="846000" />
       <workItem from="1741811983753" duration="3132000" />
-      <workItem from="1741886913449" duration="12605000" />
+      <workItem from="1741886913449" duration="12670000" />
+      <workItem from="1741978707659" duration="1568000" />
     </task>
     <servers />
   </component>

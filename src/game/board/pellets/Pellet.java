@@ -4,7 +4,7 @@ import game.entities.board.PacMan;
 import j2d.attributes.position.Position2D;
 import j2d.components.graphics.shapes.FillCircle;
 import j2d.components.physics.collider.CircleCollider;
-import j2d.engine.GameObject;
+import j2d.engine.gameobject.GameObject;
 
 import java.awt.*;
 

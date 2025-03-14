@@ -4,7 +4,7 @@ import game.Constants;
 import game.board.nodes.Node;
 import j2d.attributes.Vector2D;
 import j2d.attributes.position.Position2D;
-import j2d.engine.GameObject;
+import j2d.engine.gameobject.GameObject;
 
 import java.util.HashMap;
 import java.util.Map;

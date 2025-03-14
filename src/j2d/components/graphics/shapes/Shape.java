@@ -1,7 +1,7 @@
 package j2d.components.graphics.shapes;
 
 import j2d.components.Component;
-import j2d.engine.GameObject;
+import j2d.engine.gameobject.GameObject;
 import j2d.engine.render.Renderable;
 import j2d.engine.render.Renderer;
 

@@ -1,11 +1,7 @@
-package j2d.engine;
+package j2d.engine.gameobject;
 
 import j2d.components.Component;
-import j2d.components.graphics.shapes.Shape;
-import j2d.components.graphics.text.Text;
-import j2d.components.physics.RigidBody;
 import j2d.components.physics.collider.Collider;
-import j2d.components.sprite.Sprite;
 import j2d.engine.input.keyboard.KeyHandler;
 import j2d.engine.input.keyboard.KeySubscriber;
 import j2d.engine.input.mouse.button.MouseButtonHandler;
@@ -19,7 +15,6 @@ import j2d.engine.updates.physics.CollisionServer;
 import j2d.engine.updates.physics.PhysicsServer;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public abstract class GameObject {

@@ -1,6 +1,6 @@
 package j2d.engine.updates.gametick;
 
-import j2d.engine.GameObject;
+import j2d.engine.gameobject.GameObject;
 
 import java.util.ArrayList;
 import java.util.List;
