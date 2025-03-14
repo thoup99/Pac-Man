@@ -34,6 +34,9 @@ public class Blinky extends Ghost {
         }
 
         Vector2D movementVector = directionMap.get(currentDirection);
+        if (movementVector == null) {
+            System.out.println("Movement Vector is null! " + currentDirection );
+        }
         position.addX((movementSpeed * delta) * movementVector.getX());
         position.addY((movementSpeed * delta) * movementVector.getY());
     }

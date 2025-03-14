@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c430b4-c26f-491d-b2fc-f82397dbd881" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/Blinky.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -26,6 +25,7 @@
       <change beforePath="$PROJECT_DIR$/src/game/board/pellets/PowerPellet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/PowerPellet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/BoardEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/BoardEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/PacMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/PacMan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/board/ghost/Blinky.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/Blinky.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/ghost/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/Ghost.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/attributes/Rotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/Rotation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/attributes/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/Transform.java" afterDir="false" />
@@ -154,7 +154,7 @@
       <workItem from="1741665092745" duration="22857000" />
       <workItem from="1741745839657" duration="846000" />
       <workItem from="1741811983753" duration="3132000" />
-      <workItem from="1741886913449" duration="11357000" />
+      <workItem from="1741886913449" duration="12605000" />
     </task>
     <servers />
   </component>

@@ -60,6 +60,7 @@ public class Ghost extends BoardEntity {
                 directions.add(direction);
             }
         }
+        directions.remove(Direction.PORTAL);
         if (directions.isEmpty()) {
             directions.add(Direction.getOpposite(currentDirection));
         }
