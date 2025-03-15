@@ -95,7 +95,7 @@ public class PacMan extends BoardEntity implements KeySubscriber {
     }
 
     public Direction getFacingDirection() {
-        return currentDirection;
+        return facingDirection;
     }
 
     @Override

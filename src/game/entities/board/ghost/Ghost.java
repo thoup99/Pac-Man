@@ -13,7 +13,6 @@ import j2d.components.physics.collider.CircleCollider;
 import game.Constants.Direction;
 import j2d.engine.gameobject.GameObject;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -24,6 +23,7 @@ public abstract class Ghost extends BoardEntity {
     static final int FRIGHT_SPEED = 40;
     static final int SPAWN_SPEED = 150;
 
+    PacMan pacman;
     Position2D pacmanPosition;
     Position2D scatterPosition;
     Position2D goalPosition = new Position2D();
@@ -36,6 +36,7 @@ public abstract class Ghost extends BoardEntity {
 
     public Ghost(Node startNode, PacMan pacman) {
         super(startNode);
+        this.pacman = pacman;
         homePosition = startNode.getPosition();
         pacmanPosition = pacman.getPosition();
 
@@ -171,5 +172,20 @@ public abstract class Ghost extends BoardEntity {
 
         return closestDirection;
 
+    }
+
+    protected Vector2D getPacManDirectionVector() {
+        Direction pacManDirection = pacman.getFacingDirection();
+        Vector2D directionVector = new Vector2D();
+        if (pacManDirection == Direction.UP) {
+            directionVector = new Vector2D(-1, -1);
+        } else if (pacManDirection == Direction.DOWN) {
+            directionVector = new Vector2D(0, 1);
+        } else if (pacManDirection == Direction.LEFT) {
+            directionVector = new Vector2D(-1, 0);
+        } else if (pacManDirection == Direction.RIGHT) {
+            directionVector = new Vector2D(1, 0);
+        }
+        return directionVector;
     }
 }
