@@ -15,6 +15,7 @@ public class GhostManager extends GameObject {
     Blinky blinky;
     Pinky pinky;
     Inky inky;
+    Clyde clyde;
 
     Timer scatterTimer;
     Timer chaseTimer;
@@ -24,10 +25,12 @@ public class GhostManager extends GameObject {
         blinky = new Blinky(board.getNodeManager().getBlinkyStartNode(), pacMan);
         pinky = new Pinky(board.getNodeManager().getPinkyStartNode(), pacMan);
         inky = new Inky(board.getNodeManager().getInkyStartNode(), pacMan, blinky);
+        clyde = new Clyde(board.getNodeManager().getClydeStartNode(), pacMan);
 
         ghosts.add(blinky);
         ghosts.add(pinky);
         ghosts.add(inky);
+        ghosts.add(clyde);
 
         scatterTimer = new Timer(this, 7000, this::startChaseMode);
         scatterTimer.setOneShot(true);
@@ -38,7 +41,7 @@ public class GhostManager extends GameObject {
         frightTimer = new Timer(this, 7000, this::startChaseMode);
         frightTimer.setOneShot(true);
 
-        startScatterMode();
+        startChaseMode();
 
         ready();
     }

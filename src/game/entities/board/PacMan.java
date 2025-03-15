@@ -23,7 +23,7 @@ public class PacMan extends BoardEntity implements KeySubscriber {
     public PacMan(Node startNode) {
         super(startNode);
         pacCircle = new FillCircle(this,2, position, 12 );
-        pacCircle.setColor(Color.ORANGE);
+        pacCircle.setColor(Color.YELLOW);
 
         collider = new CircleCollider(this, position, 6);
 

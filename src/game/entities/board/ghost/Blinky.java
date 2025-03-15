@@ -12,7 +12,8 @@ public class Blinky extends Ghost {
 
     public Blinky(Node startNode, PacMan pacman) {
         super(startNode, pacman);
-        scatterPosition = new Position2D(BOARD_START_POSITION.getX() + (TILE_SIZE * BOARD_TOTAL_COLUMNS), BOARD_START_POSITION.getY());
+        scatterPosition = new Position2D(BOARD_START_POSITION.getX() + (TILE_SIZE * BOARD_TOTAL_COLUMNS),
+                BOARD_START_POSITION.getY());
         setGoalPosition(pacmanPosition);
 
         ghostCircle.setColor(Color.RED);
