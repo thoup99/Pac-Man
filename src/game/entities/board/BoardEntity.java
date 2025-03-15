@@ -1,6 +1,6 @@
 package game.entities.board;
 
-import game.Constants;
+import game.Constants.Direction;
 import game.board.nodes.Node;
 import j2d.attributes.Vector2D;
 import j2d.attributes.position.Position2D;
@@ -11,8 +11,8 @@ import java.util.Map;
 
 public abstract class BoardEntity extends GameObject {
     protected final Position2D position = new Position2D();
-    protected Constants.Direction currentDirection = Constants.Direction.STOP;
-    protected Map<Constants.Direction, Vector2D> directionMap;
+    protected Direction currentDirection = Direction.STOP;
+    protected Map<Direction, Vector2D> directionMap;
     protected int movementSpeed = 60;
 
     protected Node currentNode;
@@ -34,12 +34,12 @@ public abstract class BoardEntity extends GameObject {
     }
 
     private void loadDirectionMap() {
-        directionMap = new HashMap<Constants.Direction, Vector2D>();
-        directionMap.put(Constants.Direction.STOP, new Vector2D(0, 0));
-        directionMap.put(Constants.Direction.UP, new Vector2D(0, -1));
-        directionMap.put(Constants.Direction.DOWN, new Vector2D(0, 1));
-        directionMap.put(Constants.Direction.LEFT, new Vector2D(-1, 0));
-        directionMap.put(Constants.Direction.RIGHT, new Vector2D(1, 0));
+        directionMap = new HashMap<Direction, Vector2D>();
+        directionMap.put(Direction.STOP, new Vector2D(0, 0));
+        directionMap.put(Direction.UP, new Vector2D(0, -1));
+        directionMap.put(Direction.DOWN, new Vector2D(0, 1));
+        directionMap.put(Direction.LEFT, new Vector2D(-1, 0));
+        directionMap.put(Direction.RIGHT, new Vector2D(1, 0));
     }
 
     protected boolean didOvershootTargetNode() {
@@ -51,14 +51,14 @@ public abstract class BoardEntity extends GameObject {
         return false;
     }
 
-    protected boolean isValidDirection(Constants.Direction direction) {
-        if (direction != Constants.Direction.STOP) {
+    protected boolean isValidDirection(Direction direction) {
+        if (direction != Direction.STOP) {
             return currentNode.getNeighbors().get(direction) != null;
         }
         return false;
     }
 
-    protected Node getNewTargetNode(Constants.Direction direction) {
+    protected Node getNewTargetNode(Direction direction) {
         if (isValidDirection(direction)) {
             return currentNode.getNeighbors().get(direction);
         }
@@ -66,17 +66,23 @@ public abstract class BoardEntity extends GameObject {
     }
 
     protected void reverseDirection() {
-        currentDirection = Constants.Direction.getOpposite(currentDirection);
+        currentDirection = Direction.getOpposite(currentDirection);
         Node temp = currentNode;
         currentNode = targetNode;
         targetNode = temp;
     }
 
-    protected boolean isOppositeDirection(Constants.Direction direction) {
-        if (direction != Constants.Direction.STOP) {
+    protected boolean isOppositeDirection(Direction direction) {
+        if (direction != Direction.STOP) {
             return currentDirection.getValue() == -direction.getValue();
         }
         return false;
+    }
+
+    protected void moveInCurrentDirection(double delta) {
+        Vector2D movementVector = directionMap.get(currentDirection);
+        position.addX((movementSpeed * delta) * movementVector.getX());
+        position.addY((movementSpeed * delta) * movementVector.getY());
     }
 
     @Override

@@ -61,10 +61,7 @@ public class PacMan extends BoardEntity implements KeySubscriber {
             }
         }
 
-        Vector2D movementVector = directionMap.get(currentDirection);
-        position.addX((movementSpeed * delta) * movementVector.getX());
-        position.addY((movementSpeed * delta) * movementVector.getY());
-
+        moveInCurrentDirection(delta);
     }
 
     private Direction getDirection() {

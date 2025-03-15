@@ -2,6 +2,7 @@ package game.entities.board.ghost;
 
 import game.board.nodes.Node;
 import game.entities.board.BoardEntity;
+import game.entities.board.PacMan;
 import game.entities.board.ghost.GhostManager.GhostMode;
 import j2d.attributes.Vector2D;
 import j2d.attributes.position.Position2D;
@@ -10,6 +11,7 @@ import j2d.components.graphics.shapes.FillCircle;
 import j2d.components.physics.collider.CircleCollider;
 
 import game.Constants.Direction;
+import j2d.engine.gameobject.GameObject;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -17,20 +19,31 @@ import java.util.List;
 import java.util.Random;
 
 public abstract class Ghost extends BoardEntity {
-    static Random random;
-    final Circle ghostCircle;
-    CircleCollider collider;
+    static Random random = new Random();
+    static final int NORMAL_SPEED = 90;
+    static final int FRIGHT_SPEED = 40;
+    static final int SPAWN_SPEED = 150;
+
+    Position2D pacmanPosition;
+    Position2D scatterPosition;
     Position2D goalPosition = new Position2D();
+    Position2D homePosition;
+
     GhostMode currentMode = GhostMode.SCATTER;
 
-    public Ghost(Node startNode) {
+    CircleCollider collider;
+    Circle ghostCircle;
+
+    public Ghost(Node startNode, PacMan pacman) {
         super(startNode);
-        random = new Random();
+        homePosition = startNode.getPosition();
+        pacmanPosition = pacman.getPosition();
+
         ghostCircle = new FillCircle(this,2, position, 12 );
         ghostCircle.setColor(Color.RED);
 
         collider = new CircleCollider(this, position, 6);
-        setMovementSpeed(90);
+        setMovementSpeed(NORMAL_SPEED);
     }
 
     @Override
@@ -38,27 +51,79 @@ public abstract class Ghost extends BoardEntity {
         if (didOvershootTargetNode()) {
             Direction newDirection = pickRandomDirection(getValidDirections());
             currentNode = targetNode;
-            if (currentNode.getNeighbors().get(Direction.PORTAL) != null) {
-                currentNode = currentNode.getNeighbors().get(Direction.PORTAL);
-            }
-            targetNode = getNewTargetNode(newDirection);
-            if (targetNode != currentNode) {
-                currentDirection = newDirection;
-            } else {
-                targetNode = getNewTargetNode(currentDirection);
-            }
-            setPosition();
+
         }
 
-        Vector2D movementVector = directionMap.get(currentDirection);
-        position.addX((movementSpeed * delta) * movementVector.getX());
-        position.addY((movementSpeed * delta) * movementVector.getY());
+        moveInCurrentDirection(delta);
     }
 
-    protected abstract void startScatter();
-    protected abstract void startChase();
-    protected abstract void startFright();
-    protected abstract void startSpawn();
+    @Override
+    public void onCollision(GameObject other) {
+        if (other instanceof PacMan) {
+            if (currentMode == GhostMode.FRIGHT) {
+                startSpawn();
+            } else {
+                //Kill PacMan
+            }
+        }
+    }
+
+    protected void startScatter() {
+        currentMode = GhostMode.SCATTER;
+        setGoalPosition(scatterPosition);
+    }
+
+    protected void startChase() {
+        currentMode = GhostMode.CHASE;
+        setMovementSpeed(NORMAL_SPEED);
+        setGoalPosition(pacmanPosition);
+    }
+
+    protected void startFright() {
+        reverseDirection();
+        setMovementSpeed(FRIGHT_SPEED);
+        currentMode = GhostMode.FRIGHT;
+    }
+
+    protected void startSpawn() {
+        currentMode = GhostMode.SPAWN;
+        reverseDirection();
+        setMovementSpeed(SPAWN_SPEED);
+        setGoalPosition(homePosition);
+    }
+
+    protected void setGoalPosition(Position2D newGoal) {
+        goalPosition = newGoal;
+    }
+
+    protected void checkSpawnReturn() {
+        if (currentMode == GhostMode.SPAWN && currentNode.getPosition().equals(homePosition)) {
+            startChase();
+        }
+    }
+
+    protected void handleNodeTransition() {
+        Direction newDirection = getNewDirection();
+
+        if (currentNode.getNeighbors().get(Direction.PORTAL) != null) {
+            currentNode = currentNode.getNeighbors().get(Direction.PORTAL);
+        }
+        targetNode = getNewTargetNode(newDirection);
+        if (targetNode != currentNode) {
+            currentDirection = newDirection;
+        } else {
+            targetNode = getNewTargetNode(currentDirection);
+        }
+        setPosition();
+    }
+
+    protected Direction getNewDirection() {
+        Direction newDirection = getClosestDirection(getValidDirections());
+        if (currentMode == GhostMode.FRIGHT) {
+            newDirection = pickRandomDirection(getValidDirections());
+        }
+        return newDirection;
+    }
 
     protected List<Direction> getValidDirections() {
         List<Direction> directions = new ArrayList<>();
@@ -72,10 +137,6 @@ public abstract class Ghost extends BoardEntity {
             directions.add(Direction.getOpposite(currentDirection));
         }
         return directions;
-    }
-
-    protected void setGoalPosition(Position2D newGoal) {
-        goalPosition = newGoal;
     }
 
     protected Direction pickRandomDirection(List<Direction> validDirections) {
