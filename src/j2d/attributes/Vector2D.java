@@ -11,6 +11,12 @@ public class Vector2D {
         this.y = y;
     }
 
+    public Vector2D() {
+        this.x = 0;
+        this.y = 0;
+    }
+
+
     public double getMagnitudeSquared() {
         return Math.pow(x, 2) + Math.pow(y, 2);
     }

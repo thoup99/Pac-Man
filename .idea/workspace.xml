@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c430b4-c26f-491d-b2fc-f82397dbd881" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/Pinky.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -162,7 +163,8 @@
       <workItem from="1741982642712" duration="291000" />
       <workItem from="1741983290294" duration="4540000" />
       <workItem from="1741996749816" duration="2261000" />
-      <workItem from="1741999057794" duration="1911000" />
+      <workItem from="1741999057794" duration="7142000" />
+      <workItem from="1742053396381" duration="6242000" />
     </task>
     <servers />
   </component>

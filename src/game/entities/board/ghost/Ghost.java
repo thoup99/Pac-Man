@@ -40,7 +40,6 @@ public abstract class Ghost extends BoardEntity {
         pacmanPosition = pacman.getPosition();
 
         ghostCircle = new FillCircle(this,2, position, 12 );
-        ghostCircle.setColor(Color.RED);
 
         collider = new CircleCollider(this, position, 6);
         setMovementSpeed(NORMAL_SPEED);
@@ -49,9 +48,14 @@ public abstract class Ghost extends BoardEntity {
     @Override
     public void update(double delta) {
         if (didOvershootTargetNode()) {
-            Direction newDirection = pickRandomDirection(getValidDirections());
             currentNode = targetNode;
+            checkSpawnReturn();
 
+            if (currentMode == GhostManager.GhostMode.CHASE){
+                calculateNewGoalPosition();
+            }
+
+            handleNodeTransition();
         }
 
         moveInCurrentDirection(delta);
@@ -70,13 +74,15 @@ public abstract class Ghost extends BoardEntity {
 
     protected void startScatter() {
         currentMode = GhostMode.SCATTER;
+        reverseDirection();
         setGoalPosition(scatterPosition);
     }
 
     protected void startChase() {
         currentMode = GhostMode.CHASE;
+        reverseDirection();
         setMovementSpeed(NORMAL_SPEED);
-        setGoalPosition(pacmanPosition);
+        calculateNewGoalPosition();
     }
 
     protected void startFright() {
@@ -91,6 +97,8 @@ public abstract class Ghost extends BoardEntity {
         setMovementSpeed(SPAWN_SPEED);
         setGoalPosition(homePosition);
     }
+
+    protected abstract void calculateNewGoalPosition();
 
     protected void setGoalPosition(Position2D newGoal) {
         goalPosition = newGoal;
@@ -155,8 +163,7 @@ public abstract class Ghost extends BoardEntity {
                 shortestDistance = distanceToEnd;
                 closestDirection = direction;
             } else if (distanceToEnd == shortestDistance) {
-                boolean keepLastClosest = random.nextBoolean();
-                if (!keepLastClosest) {
+                if (direction.getValue() > closestDirection.getValue()) {
                     closestDirection = direction;
                 }
             }

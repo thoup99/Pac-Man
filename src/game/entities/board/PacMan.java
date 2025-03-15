@@ -18,6 +18,7 @@ import java.awt.event.KeyEvent;
 public class PacMan extends BoardEntity implements KeySubscriber {
     final Circle pacCircle;
     CircleCollider collider;
+    Direction facingDirection = Direction.LEFT;
 
     public PacMan(Node startNode) {
         super(startNode);
@@ -26,6 +27,7 @@ public class PacMan extends BoardEntity implements KeySubscriber {
 
         collider = new CircleCollider(this, position, 6);
 
+        currentDirection = Direction.LEFT;
         setMovementSpeed(100);
 
         int[] keys = {KeyEvent.VK_W, KeyEvent.VK_A, KeyEvent.VK_S, KeyEvent.VK_D};
@@ -61,6 +63,10 @@ public class PacMan extends BoardEntity implements KeySubscriber {
             }
         }
 
+        if (currentDirection != Direction.STOP) {
+            facingDirection = currentDirection;
+        }
+
         moveInCurrentDirection(delta);
     }
 
@@ -82,6 +88,14 @@ public class PacMan extends BoardEntity implements KeySubscriber {
 
     public Position2D getPosition() {
         return position;
+    }
+
+    public Direction getCurrentDirection() {
+        return currentDirection;
+    }
+
+    public Direction getFacingDirection() {
+        return currentDirection;
     }
 
     @Override

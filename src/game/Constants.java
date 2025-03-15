@@ -20,7 +20,7 @@ public class Constants {
             BOARD_START_ROW * TILE_SIZE + HALF_TILE_SIZE);
 
     public enum Direction {
-        STOP(0), UP(-1), DOWN(1), LEFT(-2), RIGHT(2), PORTAL(3);
+        STOP(0), UP(2), DOWN(-2), LEFT(1), RIGHT(-1), PORTAL(3);
 
 
         private final int value;
