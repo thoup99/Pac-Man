@@ -4,7 +4,6 @@ import game.board.nodes.Node;
 import game.entities.board.PacMan;
 import j2d.attributes.Vector2D;
 import j2d.attributes.position.Position2D;
-import j2d.engine.window.Window;
 
 import java.awt.*;
 
@@ -25,10 +24,9 @@ public class Pinky extends Ghost {
 
     @Override
     protected void calculateNewGoalPosition() {
-        Vector2D directionVector = getPacManDirectionVector().multiply(4);
+        Vector2D directionVector = getPacManDirectionVector().multiply(4 * TILE_SIZE);
         Position2D newGoalPosition = new Position2D(pacmanPosition);
-        newGoalPosition.addX(TILE_SIZE * directionVector.getIntX());
-        newGoalPosition.addY(TILE_SIZE * directionVector.getIntY());
+        newGoalPosition.addVector2D(directionVector);
 
         setGoalPosition(newGoalPosition);
     }

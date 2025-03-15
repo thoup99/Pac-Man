@@ -188,4 +188,8 @@ public abstract class Ghost extends BoardEntity {
         }
         return directionVector;
     }
+
+    public Position2D getPosition() {
+        return position;
+    }
 }

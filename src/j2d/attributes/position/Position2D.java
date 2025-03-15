@@ -67,6 +67,11 @@ public class Position2D {
         this.y += y;
     }
 
+    public void addVector2D(Vector2D vector2D) {
+        addX(vector2D.getX());
+        addY(vector2D.getY());
+    }
+
     public double getX() {
         return x;
     }
