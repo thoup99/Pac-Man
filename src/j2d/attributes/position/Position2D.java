@@ -41,6 +41,10 @@ public class Position2D {
         }
     }
 
+    public Position2D(Position2D position2D) {
+        setPosition(position2D.getX(), position2D.getY());
+    }
+
     /**
      * Sets the x and y j2d.components of the Position2D
      * @param x X position

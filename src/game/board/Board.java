@@ -1,5 +1,6 @@
 package game.board;
 
+import game.PacManController;
 import game.board.nodes.NodeManager;
 import game.board.pellets.PelletManager;
 
@@ -14,11 +15,11 @@ public class Board {
     NodeManager nodeManager;
     PelletManager pelletManager;
 
-    public Board() {
+    public Board(PacManController pacManController) {
         mapData = new char[BOARD_TOTAL_ROWS][BOARD_TOTAL_COLUMNS];
 
         nodeManager = new NodeManager();
-        pelletManager = new PelletManager();
+        pelletManager = new PelletManager(pacManController);
 
         //loadSampleNodes();
         loadMap("/maps/map1.txt");

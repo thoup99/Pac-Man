@@ -1,5 +1,6 @@
 package game.board.pellets;
 
+import game.PacManController;
 import j2d.attributes.position.Position2D;
 
 import java.util.ArrayList;
@@ -11,10 +12,12 @@ import static game.Constants.TILE_SIZE;
 public class PelletManager {
     private final List<Pellet> pellets;
     private final List<PowerPellet> powerPellets;
+    private final PacManController pacManController;
 
-    public PelletManager() {
+    public PelletManager(PacManController pacManController) {
         pellets = new ArrayList<>();
         powerPellets = new ArrayList<>();
+        this.pacManController = pacManController;
     }
 
     public void loadPellets(char[][] mapData) {
@@ -25,7 +28,7 @@ public class PelletManager {
                     Pellet newPellet = new Pellet(getPelletPosition(row, col));
                     pellets.add(newPellet);
                 } else if (isPowerPelletSymbol(value)) {
-                    PowerPellet newPowerPellet = new PowerPellet(getPelletPosition(row, col));
+                    PowerPellet newPowerPellet = new PowerPellet(getPelletPosition(row, col), pacManController);
                     powerPellets.add(newPowerPellet);
                 }
             }

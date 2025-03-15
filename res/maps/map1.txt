@@ -9,7 +9,7 @@ X . X X X X . X X . X X X X X X X X . X X . X X X X . X
 X + . . . . + X X + . . + X X + . . + X X + . . . . + X
 X X X X X X . X X X X X | X X | X X X X X . X X X X X X
 X X X X X X . X X X X X | X X | X X X X X . X X X X X X
-X X X X X X . X X n - - n - - n - - n X X . X X X X X X
+X X X X X X . X X n - - n G - n - - n X X . X X X X X X
 X X X X X X . X X | X X X = = X X X | X X . X X X X X X
 X X X X X X . X X | X X X X X X X X | X X . X X X X X X
 1 - - - - - + - - n X X X X X X X X n - - + - - - - - 1

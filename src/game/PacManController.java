@@ -16,9 +16,13 @@ public class PacManController extends GameObject {
     GhostManager ghostManager;
 
     public PacManController() {
-        board = new Board();
+        board = new Board(this);
         pacMan = new PacMan(board.getNodeManager().getStartNode());
-        GhostManager ghostManager = new GhostManager(board, pacMan);
+        ghostManager = new GhostManager(board, pacMan);
+    }
+
+    public void powerPelletEaten() {
+        ghostManager.forceFrightMode();
     }
 
     @Override

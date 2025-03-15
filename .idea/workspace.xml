@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c430b4-c26f-491d-b2fc-f82397dbd881" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/GhostManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -20,14 +19,15 @@
       <change beforePath="$PROJECT_DIR$/src/game/PacManController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/PacManController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/board/nodes/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/nodes/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/board/nodes/NodeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/nodes/NodeManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/board/nodes/NodeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/nodes/NodeManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/board/pellets/Pellet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/Pellet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/board/pellets/PelletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/PelletManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/board/pellets/PelletManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/PelletManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/board/pellets/PowerPellet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/PowerPellet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/BoardEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/BoardEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/PacMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/PacMan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/ghost/Blinky.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/Blinky.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/ghost/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/Ghost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/board/ghost/GhostManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/GhostManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/attributes/Rotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/Rotation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/attributes/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/Transform.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/attributes/Vector2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/Vector2D.java" afterDir="false" />
@@ -160,7 +160,8 @@
       <workItem from="1741886913449" duration="12670000" />
       <workItem from="1741978707659" duration="3744000" />
       <workItem from="1741982642712" duration="291000" />
-      <workItem from="1741983290294" duration="1658000" />
+      <workItem from="1741983290294" duration="4540000" />
+      <workItem from="1741996749816" duration="2013000" />
     </task>
     <servers />
   </component>

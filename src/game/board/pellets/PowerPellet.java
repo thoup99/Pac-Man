@@ -1,5 +1,6 @@
 package game.board.pellets;
 
+import game.PacManController;
 import game.entities.board.PacMan;
 import game.entities.board.ghost.GhostManager;
 import j2d.attributes.position.Position2D;
@@ -8,8 +9,11 @@ import j2d.engine.gameobject.GameObject;
 import java.awt.*;
 
 public class PowerPellet extends Pellet {
-    public PowerPellet(Position2D position) {
+    private final PacManController pacManController;
+
+    public PowerPellet(Position2D position, PacManController pacManController) {
         super(position, 8);
+        this.pacManController = pacManController;
         fillCircle.setColor(Color.YELLOW);
 
         ready();
@@ -18,7 +22,7 @@ public class PowerPellet extends Pellet {
     @Override
     public void onCollision(GameObject other) {
         if (other instanceof PacMan) {
-            GhostManager.forceFrightMode();
+            pacManController.powerPelletEaten();
             queueDelete();
         }
     }

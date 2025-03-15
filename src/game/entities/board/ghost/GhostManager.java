@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GhostManager extends GameObject {
-    private static GhostManager ghostManager;
     enum GhostMode {CHASE, SCATTER, FRIGHT, SPAWN}
 
     final List<Ghost> ghosts = new ArrayList<Ghost>();
@@ -20,8 +19,7 @@ public class GhostManager extends GameObject {
     Timer frightTimer;
 
     public GhostManager(Board board, PacMan pacMan) {
-        ghostManager = this;
-        blinky = new Blinky(board.getNodeManager().getRandomNode(), pacMan);
+        blinky = new Blinky(board.getNodeManager().getBlinkyStartNode(), pacMan);
 
         ghosts.add(blinky);
 
@@ -57,11 +55,7 @@ public class GhostManager extends GameObject {
         chaseTimer.start();
     }
 
-    public static void forceFrightMode() {
-        ghostManager.startFrightMode();
-    }
-
-    private void startFrightMode() {
+    public void forceFrightMode() {
         for (Ghost ghost : ghosts) {
             if (ghost.currentMode == GhostMode.SCATTER || ghost.currentMode == GhostMode.CHASE) {
                 ghost.startFright();

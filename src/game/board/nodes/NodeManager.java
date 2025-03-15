@@ -11,6 +11,10 @@ import static game.Constants.TILE_SIZE;
 public class NodeManager {
     List<Node> nodes;
     Node startNode;
+    Node blinkyNode;
+    Node inkyNode;
+    Node pinkyNode;
+    Node clydeNode;
 
     Map<String, Node> nodeMap;
     Map<Integer, List<Node>> portalMap;
@@ -27,6 +31,7 @@ public class NodeManager {
         connectNodesHorizontally(mapData);
         connectNodesVertically(mapData);
         pairPortals();
+        buildGhostSpawn();
         reloadVisualConnections();
     }
 
@@ -50,6 +55,12 @@ public class NodeManager {
                 if (isNodeSymbol(value)) {
                     Position2D nodePosition = getNodePosition(row, col);
                     Node newNode = new Node(nodePosition);
+
+                    if (value == 'G') {
+                        nodePosition.addX(HALF_TILE_SIZE);
+                        blinkyNode = newNode;
+                    }
+
                     nodes.add(newNode);
                     nodeMap.put(nodePosition.toString(), newNode);
 
@@ -86,6 +97,11 @@ public class NodeManager {
                     lastNode = null;
                 } else if (isNodeSymbol(value)) {
                     Position2D nodePosition = getNodePosition(row, col);
+
+                    if (value == 'G') {
+                        nodePosition.addX(HALF_TILE_SIZE);
+                    }
+
                     if (lastNode == null) {
                         lastNode = nodeMap.get(nodePosition.toString());
                     } else {
@@ -107,7 +123,12 @@ public class NodeManager {
                 if (value == 'X') {
                     lastNode = null;
                 } else if (isNodeSymbol(value)) {
-                    Position2D nodePosition = new Position2D(BOARD_START_POSITION.getIntX() + col * TILE_SIZE, BOARD_START_POSITION.getIntY() + row * TILE_SIZE);
+                    Position2D nodePosition = getNodePosition(row, col);
+
+                    if (value == 'G') {
+                        nodePosition.addX(HALF_TILE_SIZE);
+                    }
+
                     if (lastNode == null) {
                         lastNode = nodeMap.get(nodePosition.toString());
                     } else {
@@ -131,12 +152,48 @@ public class NodeManager {
         }
     }
 
+    private void buildGhostSpawn() {
+        buildPinkySpawn();
+        buildInkySpawn();
+        buildClydeSpawn();
+    }
+
+    private void buildPinkySpawn() {
+        Position2D pinkySpawnPosition = new Position2D(blinkyNode.getPosition());
+        pinkySpawnPosition.addY(TILE_SIZE * 3);
+        pinkyNode = new Node(pinkySpawnPosition);
+        nodes.add(pinkyNode);
+
+        blinkyNode.neighbors.put(Direction.DOWN, pinkyNode);
+        pinkyNode.neighbors.put(Direction.UP, blinkyNode);
+    }
+
+    private void buildInkySpawn() {
+        Position2D inkySpawnPosition = new Position2D(pinkyNode.getPosition());
+        inkySpawnPosition.addX(-TILE_SIZE * 2);
+        inkyNode = new Node(inkySpawnPosition);
+        nodes.add(inkyNode);
+
+        pinkyNode.neighbors.put(Direction.LEFT, inkyNode);
+        inkyNode.neighbors.put(Direction.RIGHT, pinkyNode);
+    }
+
+    private void buildClydeSpawn() {
+        Position2D clydeSpawnPosition = new Position2D(pinkyNode.getPosition());
+        clydeSpawnPosition.addX(TILE_SIZE * 2);
+        clydeNode = new Node(clydeSpawnPosition);
+        nodes.add(clydeNode);
+
+        pinkyNode.neighbors.put(Direction.RIGHT, clydeNode);
+        clydeNode.neighbors.put(Direction.LEFT, pinkyNode);
+    }
+
     private Position2D getNodePosition(int row, int col) {
         return new Position2D(BOARD_START_POSITION.getIntX() + col * TILE_SIZE, BOARD_START_POSITION.getIntY() + row * TILE_SIZE);
     }
 
     private boolean isNodeSymbol(char value) {
-        return value == '+' || value == 'n' || value == 'P' || value == 'S' || Character.isDigit(value);
+        return value == '+' || value == 'n' || value == 'P' || value == 'S' || Character.isDigit(value) || value == 'G';
     }
 
     private void printMap(char[][] mapData) {
@@ -156,6 +213,22 @@ public class NodeManager {
 
     public Node getStartNode() {
         return startNode;
+    }
+
+    public Node getBlinkyStartNode() {
+        return blinkyNode;
+    }
+
+    public Node getInkyStartNode() {
+        return inkyNode;
+    }
+
+    public Node getPinkyStartNode() {
+        return pinkyNode;
+    }
+
+    public Node getClydeStartNode() {
+        return clydeNode;
     }
 
     public Node getRandomNode() {
