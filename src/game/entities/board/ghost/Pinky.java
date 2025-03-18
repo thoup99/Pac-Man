@@ -1,7 +1,9 @@
 package game.entities.board.ghost;
 
 import game.board.nodes.Node;
+import game.board.nodes.NodeManager;
 import game.entities.board.PacMan;
+import game.entities.board.ghost.GhostManager.GhostMode;
 import j2d.attributes.Vector2D;
 import j2d.attributes.position.Position2D;
 
@@ -12,8 +14,8 @@ import static game.Constants.TILE_SIZE;
 
 public class Pinky extends Ghost {
 
-    public Pinky(Node startNode, PacMan pacman) {
-        super(startNode, pacman);
+    public Pinky(Node startNode, NodeManager nodeManager, PacMan pacman) {
+        super(startNode, nodeManager, pacman);
         scatterPosition = new Position2D(BOARD_START_POSITION);
         calculateNewGoalPosition();
 
@@ -29,5 +31,10 @@ public class Pinky extends Ghost {
         newGoalPosition.addVector2D(directionVector);
 
         setGoalPosition(newGoalPosition);
+    }
+
+    @Override
+    protected void startRound() {
+        startLeavingSpawn();
     }
 }

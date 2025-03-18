@@ -1,6 +1,7 @@
 package game.entities.board.ghost;
 
 import game.board.nodes.Node;
+import game.board.nodes.NodeManager;
 import game.entities.board.BoardEntity;
 import game.entities.board.PacMan;
 import game.entities.board.ghost.GhostManager.GhostMode;
@@ -20,8 +21,11 @@ import java.util.Random;
 public abstract class Ghost extends BoardEntity {
     static Random random = new Random();
     static final int NORMAL_SPEED = 90;
+    static final int LEAVE_SPAWN_SPEED = 50;
     static final int FRIGHT_SPEED = 40;
     static final int SPAWN_SPEED = 150;
+
+    NodeManager nodeManager;
 
     PacMan pacman;
     Position2D pacmanPosition;
@@ -29,13 +33,14 @@ public abstract class Ghost extends BoardEntity {
     Position2D goalPosition = new Position2D();
     Position2D homePosition;
 
-    GhostMode currentMode = GhostMode.SCATTER;
+    GhostMode currentMode = GhostMode.AWAITING_START;
 
     CircleCollider collider;
     Circle ghostCircle;
 
-    public Ghost(Node startNode, PacMan pacman) {
+    public Ghost(Node startNode, NodeManager nodeManager, PacMan pacman) {
         super(startNode);
+        this.nodeManager = nodeManager;
         this.pacman = pacman;
         homePosition = startNode.getPosition();
         pacmanPosition = pacman.getPosition();
@@ -51,6 +56,7 @@ public abstract class Ghost extends BoardEntity {
         if (didOvershootTargetNode()) {
             currentNode = targetNode;
             checkSpawnReturn();
+            checkHasLeftSpawn();
 
             if (currentMode == GhostManager.GhostMode.CHASE){
                 calculateNewGoalPosition();
@@ -93,12 +99,20 @@ public abstract class Ghost extends BoardEntity {
     }
 
     protected void startSpawn() {
-        currentMode = GhostMode.SPAWN;
+        currentMode = GhostMode.RETURN_SPAWN;
         reverseDirection();
         setMovementSpeed(SPAWN_SPEED);
         setGoalPosition(homePosition);
     }
 
+    protected void startLeavingSpawn() {
+        currentMode = GhostMode.LEAVING_START;
+        reverseDirection();
+        setMovementSpeed(LEAVE_SPAWN_SPEED);
+        setGoalPosition(nodeManager.getBlinkyStartNode().getPosition());
+    }
+
+    protected abstract void startRound();
     protected abstract void calculateNewGoalPosition();
 
     protected void setGoalPosition(Position2D newGoal) {
@@ -106,7 +120,13 @@ public abstract class Ghost extends BoardEntity {
     }
 
     protected void checkSpawnReturn() {
-        if (currentMode == GhostMode.SPAWN && currentNode.getPosition().equals(homePosition)) {
+        if (currentMode == GhostMode.RETURN_SPAWN && currentNode.getPosition().equals(homePosition)) {
+            startLeavingSpawn();
+        }
+    }
+
+    protected void checkHasLeftSpawn() {
+        if (currentMode == GhostMode.LEAVING_START && currentNode.getPosition().equals(nodeManager.getBlinkyStartNode().getPosition())) {
             startChase();
         }
     }
@@ -142,6 +162,9 @@ public abstract class Ghost extends BoardEntity {
             }
         }
         directions.remove(Direction.PORTAL);
+        if (currentNode == nodeManager.getBlinkyStartNode() && currentMode != GhostMode.RETURN_SPAWN) {
+            directions.remove(Direction.DOWN);
+        }
         if (directions.isEmpty()) {
             directions.add(Direction.getOpposite(currentDirection));
         }

@@ -1,6 +1,7 @@
 package game.entities.board.ghost;
 
 import game.board.Board;
+import game.board.nodes.NodeManager;
 import game.entities.board.PacMan;
 import j2d.components.Timer;
 import j2d.engine.gameobject.GameObject;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GhostManager extends GameObject {
-    enum GhostMode {CHASE, SCATTER, FRIGHT, SPAWN}
+    enum GhostMode {CHASE, SCATTER, FRIGHT, RETURN_SPAWN, AWAITING_START, LEAVING_START}
 
     final List<Ghost> ghosts = new ArrayList<Ghost>();
     Blinky blinky;
@@ -22,10 +23,11 @@ public class GhostManager extends GameObject {
     Timer frightTimer;
 
     public GhostManager(Board board, PacMan pacMan) {
-        blinky = new Blinky(board.getNodeManager().getBlinkyStartNode(), pacMan);
-        pinky = new Pinky(board.getNodeManager().getPinkyStartNode(), pacMan);
-        inky = new Inky(board.getNodeManager().getInkyStartNode(), pacMan, blinky);
-        clyde = new Clyde(board.getNodeManager().getClydeStartNode(), pacMan);
+        NodeManager nodeManager = board.getNodeManager();
+        blinky = new Blinky(nodeManager.getBlinkyStartNode(), nodeManager, pacMan);
+        pinky = new Pinky(nodeManager.getPinkyStartNode(), nodeManager, pacMan);
+        inky = new Inky(nodeManager.getInkyStartNode(), nodeManager, pacMan, blinky);
+        clyde = new Clyde(nodeManager.getClydeStartNode(), nodeManager, pacMan);
 
         ghosts.add(blinky);
         ghosts.add(pinky);
@@ -41,9 +43,16 @@ public class GhostManager extends GameObject {
         frightTimer = new Timer(this, 7000, this::startChaseMode);
         frightTimer.setOneShot(true);
 
-        startChaseMode();
+        startRound();
 
         ready();
+    }
+
+    private void startRound() {
+        for (Ghost ghost : ghosts) {
+            ghost.currentMode = GhostMode.AWAITING_START;
+            ghost.startRound();
+        }
     }
 
     private void startScatterMode() {

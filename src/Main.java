@@ -5,6 +5,8 @@ import j2d.engine.debug.Debug;
 import j2d.engine.render.Renderer;
 import j2d.engine.window.Window;
 
+import java.awt.*;
+
 /**
  * Tetris.java
  * Class used to run PacMan.
@@ -26,6 +28,7 @@ public class Main {
         Window window = new Window(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
         window.setRecommendedDefaults();
         window.setTitle("Pac-Man");
+        window.setBackgroundColor(Color.BLACK);
 
         Debug.setDrawFPS(true);
 

@@ -1,9 +1,11 @@
 package game.entities.board.ghost;
 
 import game.board.nodes.Node;
+import game.board.nodes.NodeManager;
 import game.entities.board.PacMan;
 import j2d.attributes.Vector2D;
 import j2d.attributes.position.Position2D;
+import j2d.components.Timer;
 
 import java.awt.*;
 
@@ -12,16 +14,31 @@ import static game.Constants.BOARD_TOTAL_ROWS;
 
 public class Clyde extends Ghost{
     double eightTilesSquared = Math.pow(8 * TILE_SIZE, 2);
+    Timer awaitLeaveTimer;
 
-    public Clyde(Node startNode, PacMan pacman) {
-        super(startNode, pacman);
+    public Clyde(Node startNode, NodeManager nodeManager, PacMan pacman) {
+        super(startNode, nodeManager, pacman);
         scatterPosition = new Position2D(BOARD_START_POSITION.getX(),
                 BOARD_START_POSITION.getY() + (TILE_SIZE * BOARD_TOTAL_ROWS));
         calculateNewGoalPosition();
 
+        awaitLeaveTimer = new Timer(this, 10000, this::timeToLeave);
+        awaitLeaveTimer.setOneShot(true);
+
         ghostCircle.setColor(Color.ORANGE);
 
         ready();
+    }
+
+    @Override
+    protected void startRound() {
+        currentMode = GhostManager.GhostMode.AWAITING_START;
+        setGoalPosition(homePosition);
+        awaitLeaveTimer.start();
+    }
+
+    private void timeToLeave() {
+        startLeavingSpawn();
     }
 
     @Override

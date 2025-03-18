@@ -194,8 +194,10 @@ public class NodeManager {
     }
 
     private void buildAdjacentNodes(Node startNode) {
-        Node topNode = new Node(new Position2D(startNode.getPosition().getX(), startNode.getPosition().getIntY() - TILE_SIZE));
-        Node bottomNode = new Node(new Position2D(startNode.getPosition().getX(), startNode.getPosition().getIntY() + TILE_SIZE));
+        Node topNode = new Node(new Position2D(startNode.getPosition().getX(),
+                startNode.getPosition().getIntY() - TILE_SIZE));
+        Node bottomNode = new Node(new Position2D(startNode.getPosition().getX(),
+                startNode.getPosition().getIntY() + TILE_SIZE));
 
         nodes.add(topNode);
         nodes.add(bottomNode);
