@@ -28,10 +28,8 @@ public class Clyde extends Ghost{
     protected void calculateNewGoalPosition() {
         double toPacmanSquared = position.distance(pacmanPosition).getMagnitudeSquared();
         if (toPacmanSquared < eightTilesSquared) {
-            System.out.println("Close");
             setGoalPosition(scatterPosition);
         } else {
-            System.out.println("Far");
             setGoalPosition(pacmanPosition);
         }
     }

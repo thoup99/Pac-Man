@@ -60,14 +60,15 @@ public class NodeManager {
                         nodePosition.addX(HALF_TILE_SIZE);
                         blinkyNode = newNode;
                     }
+                    if (value == 'S') {
+                        emptyStartNode();
+                        nodePosition.addX(HALF_TILE_SIZE);
+                        startNode = newNode;
+                    }
 
                     nodes.add(newNode);
                     nodeMap.put(nodePosition.toString(), newNode);
 
-                    if (value == 'S') {
-                        emptyStartNode();
-                        startNode = newNode;
-                    }
                     if (Character.isDigit(value)) {
                         addToPortalMap(newNode, Character.getNumericValue(value));
                     }
@@ -98,7 +99,7 @@ public class NodeManager {
                 } else if (isNodeSymbol(value)) {
                     Position2D nodePosition = getNodePosition(row, col);
 
-                    if (value == 'G') {
+                    if (value == 'G' || value == 'S') {
                         nodePosition.addX(HALF_TILE_SIZE);
                     }
 
@@ -176,6 +177,8 @@ public class NodeManager {
 
         pinkyNode.neighbors.put(Direction.LEFT, inkyNode);
         inkyNode.neighbors.put(Direction.RIGHT, pinkyNode);
+
+        buildAdjacentNodes(inkyNode);
     }
 
     private void buildClydeSpawn() {
@@ -186,6 +189,22 @@ public class NodeManager {
 
         pinkyNode.neighbors.put(Direction.RIGHT, clydeNode);
         clydeNode.neighbors.put(Direction.LEFT, pinkyNode);
+
+        buildAdjacentNodes(clydeNode);
+    }
+
+    private void buildAdjacentNodes(Node startNode) {
+        Node topNode = new Node(new Position2D(startNode.getPosition().getX(), startNode.getPosition().getIntY() - TILE_SIZE));
+        Node bottomNode = new Node(new Position2D(startNode.getPosition().getX(), startNode.getPosition().getIntY() + TILE_SIZE));
+
+        nodes.add(topNode);
+        nodes.add(bottomNode);
+
+        topNode.neighbors.put(Direction.DOWN, startNode);
+        startNode.neighbors.put(Direction.UP, topNode);
+
+        startNode.neighbors.put(Direction.DOWN, bottomNode);
+        bottomNode.neighbors.put(Direction.UP, startNode);
     }
 
     private Position2D getNodePosition(int row, int col) {
