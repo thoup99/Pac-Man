@@ -31,10 +31,12 @@ public class PacManController extends GameObject {
 
     public void pauseAll() {
         ghostManager.pauseAllGhost();
+        pacMan.pause();
     }
 
     public void unpauseAll() {
         ghostManager.unpauseAllGhost();
+        pacMan.unpause();
     }
 
     public void onGhostEaten() {

@@ -16,8 +16,8 @@ public class Clyde extends Ghost{
     double eightTilesSquared = Math.pow(8 * TILE_SIZE, 2);
     Timer awaitLeaveTimer;
 
-    public Clyde(Node startNode, NodeManager nodeManager, PacMan pacman) {
-        super(startNode, nodeManager, pacman);
+    public Clyde(NodeManager nodeManager, PacMan pacman) {
+        super(nodeManager.getClydeStartNode(), nodeManager, pacman);
         scatterPosition = new Position2D(BOARD_START_POSITION.getX(),
                 BOARD_START_POSITION.getY() + (TILE_SIZE * BOARD_TOTAL_ROWS));
         calculateNewGoalPosition();

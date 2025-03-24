@@ -25,10 +25,10 @@ public class GhostManager extends GameObject {
 
     public GhostManager(Board board, PacMan pacMan) {
         NodeManager nodeManager = board.getNodeManager();
-        blinky = new Blinky(nodeManager.getBlinkyStartNode(), nodeManager, pacMan);
-        pinky = new Pinky(nodeManager.getPinkyStartNode(), nodeManager, pacMan);
-        inky = new Inky(nodeManager.getInkyStartNode(), nodeManager, pacMan, blinky);
-        clyde = new Clyde(nodeManager.getClydeStartNode(), nodeManager, pacMan);
+        blinky = new Blinky(nodeManager, pacMan);
+        pinky = new Pinky(nodeManager, pacMan);
+        inky = new Inky(nodeManager, pacMan, blinky);
+        clyde = new Clyde(nodeManager, pacMan);
 
         ghosts.add(blinky);
         ghosts.add(pinky);

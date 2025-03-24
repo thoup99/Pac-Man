@@ -24,6 +24,7 @@ public class PacMan extends BoardEntity implements KeySubscriber {
     CircleCollider collider;
     Direction facingDirection = Direction.LEFT;
     PacManController pacManController;
+    boolean isPaused = false;
 
     public PacMan(Node startNode, PacManController pacManController) {
         super(startNode);
@@ -44,6 +45,10 @@ public class PacMan extends BoardEntity implements KeySubscriber {
 
     @Override
     public void update(double delta) {
+        if (isPaused) {
+            return;
+        }
+
         Direction newDirection = getDirection();
 
         if (didOvershootTargetNode()) {
@@ -100,6 +105,16 @@ public class PacMan extends BoardEntity implements KeySubscriber {
                 pacManController.onGhostEaten();
             }
         }
+    }
+
+    public void pause() {
+        isPaused = true;
+        //Pause Animation
+    }
+
+    public void unpause() {
+        isPaused = false;
+        //Unpause Animation
     }
 
     public Position2D getPosition() {
