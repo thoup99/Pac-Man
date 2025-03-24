@@ -52,6 +52,8 @@ public class Timer extends Component{
         isTicking = false;
     }
 
+    public void resume() { isTicking = true; }
+
     public double timeRemaining() {
         return nanoToMilli(timeRemainingNanoseconds);
     }

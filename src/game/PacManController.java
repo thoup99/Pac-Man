@@ -5,6 +5,7 @@ import game.board.Board;
 import game.entities.board.PacMan;
 import game.entities.board.ghost.GhostManager;
 import j2d.attributes.position.Position2D;
+import j2d.components.Timer;
 import j2d.components.sprite.Sprite;
 import j2d.engine.gameobject.GameObject;
 
@@ -15,14 +16,30 @@ public class PacManController extends GameObject {
     PacMan pacMan;
     GhostManager ghostManager;
 
+    Timer ghostEatenTimer;
+
     public PacManController() {
         board = new Board(this);
-        pacMan = new PacMan(board.getNodeManager().getStartNode());
+        pacMan = new PacMan(board.getNodeManager().getStartNode(), this);
         ghostManager = new GhostManager(board, pacMan);
+        ghostEatenTimer = new Timer(this, 1000, this::unpauseAll);
     }
 
     public void powerPelletEaten() {
         ghostManager.forceFrightMode();
+    }
+
+    public void pauseAll() {
+        ghostManager.pauseAllGhost();
+    }
+
+    public void unpauseAll() {
+        ghostManager.unpauseAllGhost();
+    }
+
+    public void onGhostEaten() {
+        pauseAll();
+        ghostEatenTimer.start();
     }
 
     @Override

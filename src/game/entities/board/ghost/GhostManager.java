@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GhostManager extends GameObject {
-    enum GhostMode {CHASE, SCATTER, FRIGHT, RETURN_SPAWN, AWAITING_START, LEAVING_START}
+    public enum GhostMode {CHASE, SCATTER, FRIGHT, RETURN_SPAWN, AWAITING_START, LEAVING_START}
+    private GhostMode globalMode = GhostMode.SCATTER;
 
     final List<Ghost> ghosts = new ArrayList<Ghost>();
     Blinky blinky;
@@ -61,6 +62,7 @@ public class GhostManager extends GameObject {
                 ghost.startScatter();
             }
         }
+        globalMode = GhostMode.SCATTER;
         scatterTimer.start();
     }
 
@@ -70,6 +72,7 @@ public class GhostManager extends GameObject {
                 ghost.startChase();
             }
         }
+        globalMode = GhostMode.CHASE;
         chaseTimer.start();
     }
 
@@ -79,7 +82,32 @@ public class GhostManager extends GameObject {
                 ghost.startFright();
             }
         }
+        globalMode = GhostMode.FRIGHT;
         frightTimer.start();
+    }
+
+    public void pauseAllGhost() {
+        scatterTimer.pause();
+        chaseTimer.pause();
+        frightTimer.pause();
+
+        for (Ghost ghost : ghosts) {
+            ghost.pause();
+        }
+    }
+
+    public void unpauseAllGhost() {
+        if (globalMode == GhostMode.SCATTER) {
+            scatterTimer.resume();
+        } else if (globalMode == GhostMode.CHASE) {
+            chaseTimer.resume();
+        } else if (globalMode == GhostMode.FRIGHT) {
+            frightTimer.resume();
+        }
+
+        for (Ghost ghost : ghosts) {
+            ghost.resume();
+        }
     }
 
     @Override

@@ -38,12 +38,15 @@ public abstract class Ghost extends BoardEntity {
     CircleCollider collider;
     Circle ghostCircle;
 
+    boolean isPaused = false;
+
     public Ghost(Node startNode, NodeManager nodeManager, PacMan pacman) {
         super(startNode);
         this.nodeManager = nodeManager;
         this.pacman = pacman;
         homePosition = startNode.getPosition();
         pacmanPosition = pacman.getPosition();
+        isPaused = false;
 
         ghostCircle = new FillCircle(this,2, position, 12 );
 
@@ -53,6 +56,10 @@ public abstract class Ghost extends BoardEntity {
 
     @Override
     public void update(double delta) {
+        if (isPaused) {
+            return;
+        }
+
         if (didOvershootTargetNode()) {
             currentNode = targetNode;
             checkSpawnReturn();
@@ -214,5 +221,19 @@ public abstract class Ghost extends BoardEntity {
 
     public Position2D getPosition() {
         return position;
+    }
+
+    public GhostMode getCurrentMode() {
+        return currentMode;
+    }
+
+    protected void pause() {
+        isPaused = true;
+        //Pause Animations
+    }
+
+    protected void resume() {
+        isPaused = false;
+        //Resume Animations
     }
 }

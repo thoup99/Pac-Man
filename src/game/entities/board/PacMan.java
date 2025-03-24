@@ -1,12 +1,16 @@
 package game.entities.board;
 
 import game.Constants;
+import game.PacManController;
 import game.board.nodes.Node;
+import game.entities.board.ghost.Ghost;
+import game.entities.board.ghost.GhostManager;
 import j2d.attributes.Vector2D;
 import j2d.attributes.position.Position2D;
 import j2d.components.graphics.shapes.Circle;
 import j2d.components.graphics.shapes.FillCircle;
 import j2d.components.physics.collider.CircleCollider;
+import j2d.engine.gameobject.GameObject;
 import j2d.engine.input.keyboard.KeyHandler;
 import j2d.engine.input.keyboard.KeySubscriber;
 
@@ -19,9 +23,11 @@ public class PacMan extends BoardEntity implements KeySubscriber {
     final Circle pacCircle;
     CircleCollider collider;
     Direction facingDirection = Direction.LEFT;
+    PacManController pacManController;
 
-    public PacMan(Node startNode) {
+    public PacMan(Node startNode, PacManController pacManController) {
         super(startNode);
+        this.pacManController = pacManController;
         pacCircle = new FillCircle(this,2, position, 12 );
         pacCircle.setColor(Color.YELLOW);
 
@@ -84,6 +90,16 @@ public class PacMan extends BoardEntity implements KeySubscriber {
             return Direction.RIGHT;
         }
         return Direction.STOP;
+    }
+
+    @Override
+    public void onCollision(GameObject other) {
+        if (other instanceof Ghost) {
+            Ghost ghost = (Ghost) other;
+            if (ghost.getCurrentMode() == GhostManager.GhostMode.FRIGHT) {
+                pacManController.onGhostEaten();
+            }
+        }
     }
 
     public Position2D getPosition() {
