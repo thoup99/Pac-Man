@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c430b4-c26f-491d-b2fc-f82397dbd881" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/res/maps/map2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -170,7 +171,7 @@
       <workItem from="1742070086564" duration="382000" />
       <workItem from="1742070480552" duration="2069000" />
       <workItem from="1742591618276" duration="3794000" />
-      <workItem from="1742777094951" duration="391000" />
+      <workItem from="1742777094951" duration="3811000" />
     </task>
     <servers />
   </component>
