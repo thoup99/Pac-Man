@@ -54,6 +54,7 @@ public class GhostManager extends GameObject {
             ghost.currentMode = GhostMode.AWAITING_START;
             ghost.startRound();
         }
+        scatterTimer.start();
     }
 
     private void startScatterMode() {
@@ -113,6 +114,14 @@ public class GhostManager extends GameObject {
     @Override
     public void update(double delta) {
 
+    }
+
+    private void printDebugGhostMode() {
+        System.out.println("-----------");
+        System.out.println("Ghost mode: " + globalMode);
+        for (Ghost ghost : ghosts) {
+            System.out.println(ghost.getClass().getName() + ": " + ghost.currentMode);
+        }
     }
 
     @Override

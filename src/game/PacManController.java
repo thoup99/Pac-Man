@@ -11,7 +11,7 @@ import j2d.engine.gameobject.GameObject;
 
 public class PacManController extends GameObject {
     //Sprite background = new Sprite(this, new Position2D(0, 0), "/images/background.png");
-    //Sprite map = new Sprite(this, new Position2D(0, 48), "/images/Arcade - Pac-Man - Maze Parts.png");
+    Sprite map = new Sprite(this, new Position2D(0, 48), "/images/Arcade - Pac-Man - Maze Parts.png");
     Board board;
     PacMan pacMan;
     GhostManager ghostManager;
