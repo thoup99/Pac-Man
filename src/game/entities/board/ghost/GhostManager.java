@@ -111,6 +111,13 @@ public class GhostManager extends GameObject {
         }
     }
 
+    public void resetAllGhost() {
+        for (Ghost ghost: ghosts) {
+            ghost.resetPosition();
+        }
+        startRound();
+    }
+
     @Override
     public void update(double delta) {
 

@@ -17,12 +17,21 @@ public class PacManController extends GameObject {
     GhostManager ghostManager;
 
     Timer ghostEatenTimer;
+    Timer levelCompletedTimer;
+    Timer pacManDeathTimer;
 
     public PacManController() {
         board = new Board(this);
         pacMan = new PacMan(board.getNodeManager().getStartNode(), this);
         ghostManager = new GhostManager(board, pacMan);
+
         ghostEatenTimer = new Timer(this, 1000, this::unpauseAll);
+        levelCompletedTimer = new Timer(this, 500, this::onLevelFlashCompleted);
+        pacManDeathTimer = new Timer(this, 500, this::onDeathAnimationCompleted);
+
+        ghostEatenTimer.setOneShot(true);
+        levelCompletedTimer.setOneShot(true);
+        pacManDeathTimer.setOneShot(true);
     }
 
     public void powerPelletEaten() {
@@ -42,6 +51,34 @@ public class PacManController extends GameObject {
     public void onGhostEaten() {
         pauseAll();
         ghostEatenTimer.start();
+    }
+
+    public void onPacManDeath() {
+        //Pause Ghost and PacMan
+        pauseAll();
+
+        //Play animation - Timer is stand in for animation
+        pacManDeathTimer.start();
+    }
+
+    private void onDeathAnimationCompleted() {
+        //Reset Ghost and PacMan positions
+        ghostManager.resetAllGhost();
+        pacMan.resetPosition();
+        unpauseAll();
+    }
+
+    public void onLevelCompleted() {
+        //Pause Ghost and PacMan
+        pauseAll();
+
+        //Play animation  - Timer is stand in for animation
+        levelCompletedTimer.start();
+    }
+
+    private void onLevelFlashCompleted() {
+        //Load next level
+        //Reset Ghost and PacMan positions
     }
 
     @Override

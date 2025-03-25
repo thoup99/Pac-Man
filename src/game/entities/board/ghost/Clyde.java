@@ -34,6 +34,7 @@ public class Clyde extends Ghost{
     protected void startRound() {
         currentMode = GhostManager.GhostMode.AWAITING_START;
         setGoalPosition(homePosition);
+        awaitLeaveTimer.restart();
         awaitLeaveTimer.start();
     }
 

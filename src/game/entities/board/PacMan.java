@@ -103,6 +103,8 @@ public class PacMan extends BoardEntity implements KeySubscriber {
             Ghost ghost = (Ghost) other;
             if (ghost.getCurrentMode() == GhostManager.GhostMode.FRIGHT) {
                 pacManController.onGhostEaten();
+            } else if (ghost.getCurrentMode() == GhostManager.GhostMode.CHASE) {
+                pacManController.onPacManDeath();
             }
         }
     }
@@ -119,6 +121,13 @@ public class PacMan extends BoardEntity implements KeySubscriber {
 
     public Position2D getPosition() {
         return position;
+    }
+
+    public void resetPosition() {
+        currentNode = startNode;
+        targetNode = startNode;
+        setPosition();
+        currentDirection = Direction.LEFT;
     }
 
     public Direction getCurrentDirection() {

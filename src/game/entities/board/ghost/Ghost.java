@@ -236,4 +236,10 @@ public abstract class Ghost extends BoardEntity {
         isPaused = false;
         //Resume Animations
     }
+
+    protected void resetPosition() {
+        currentNode = startNode;
+        targetNode = startNode;
+        setPosition();
+    }
 }

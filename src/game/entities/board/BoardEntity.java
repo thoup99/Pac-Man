@@ -15,10 +15,12 @@ public abstract class BoardEntity extends GameObject {
     protected Map<Direction, Vector2D> directionMap;
     protected int movementSpeed = 60;
 
+    protected Node startNode;
     protected Node currentNode;
     protected Node targetNode;
 
     public BoardEntity(Node startNode) {
+        this.startNode = startNode;
         currentNode = startNode;
         targetNode = startNode;
         setPosition();
