@@ -3,6 +3,7 @@ package game.entities.board.ghost;
 import game.board.Board;
 import game.board.nodes.NodeManager;
 import game.entities.board.PacMan;
+import game.entities.board.ghost.Ghost.GhostMode;
 import j2d.components.Timer;
 import j2d.engine.gameobject.GameObject;
 
@@ -10,9 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GhostManager extends GameObject {
-    public enum GhostMode {CHASE, SCATTER, FRIGHT, RETURN_SPAWN, AWAITING_START, LEAVING_START}
     private GhostMode globalMode = GhostMode.SCATTER;
-
     final List<Ghost> ghosts = new ArrayList<Ghost>();
     Blinky blinky;
     Pinky pinky;

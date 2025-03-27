@@ -1,11 +1,8 @@
 package game.entities.board;
 
-import game.Constants;
 import game.PacManController;
 import game.board.nodes.Node;
 import game.entities.board.ghost.Ghost;
-import game.entities.board.ghost.GhostManager;
-import j2d.attributes.Vector2D;
 import j2d.attributes.position.Position2D;
 import j2d.components.graphics.shapes.Circle;
 import j2d.components.graphics.shapes.FillCircle;
@@ -101,9 +98,9 @@ public class PacMan extends BoardEntity implements KeySubscriber {
     public void onCollision(GameObject other) {
         if (other instanceof Ghost) {
             Ghost ghost = (Ghost) other;
-            if (ghost.getCurrentMode() == GhostManager.GhostMode.FRIGHT) {
+            if (ghost.getCurrentMode() == Ghost.GhostMode.FRIGHT) {
                 pacManController.onGhostEaten();
-            } else if (ghost.getCurrentMode() == GhostManager.GhostMode.CHASE) {
+            } else if (ghost.isGhostHostile()) {
                 pacManController.onPacManDeath();
             }
         }

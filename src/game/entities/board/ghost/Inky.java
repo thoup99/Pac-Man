@@ -32,7 +32,7 @@ public class Inky extends Ghost {
 
     @Override
     protected void startRound() {
-        currentMode = GhostManager.GhostMode.AWAITING_START;
+        currentMode = GhostMode.AWAITING_START;
         setGoalPosition(homePosition);
         awaitLeaveTimer.restart();
         awaitLeaveTimer.start();

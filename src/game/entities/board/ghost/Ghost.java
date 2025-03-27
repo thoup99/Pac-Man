@@ -4,7 +4,6 @@ import game.board.nodes.Node;
 import game.board.nodes.NodeManager;
 import game.entities.board.BoardEntity;
 import game.entities.board.PacMan;
-import game.entities.board.ghost.GhostManager.GhostMode;
 import j2d.attributes.Vector2D;
 import j2d.attributes.position.Position2D;
 import j2d.components.graphics.shapes.Circle;
@@ -19,6 +18,7 @@ import java.util.List;
 import java.util.Random;
 
 public abstract class Ghost extends BoardEntity {
+    public enum GhostMode {CHASE, SCATTER, FRIGHT, RETURN_SPAWN, AWAITING_START, LEAVING_START}
     static Random random = new Random();
     static final int NORMAL_SPEED = 90;
     static final int LEAVE_SPAWN_SPEED = 50;
@@ -65,7 +65,7 @@ public abstract class Ghost extends BoardEntity {
             checkSpawnReturn();
             checkHasLeftSpawn();
 
-            if (currentMode == GhostManager.GhostMode.CHASE){
+            if (currentMode == GhostMode.CHASE){
                 calculateNewGoalPosition();
             }
 
@@ -80,8 +80,6 @@ public abstract class Ghost extends BoardEntity {
         if (other instanceof PacMan) {
             if (currentMode == GhostMode.FRIGHT) {
                 startSpawn();
-            } else {
-                //Kill PacMan
             }
         }
     }
@@ -225,6 +223,10 @@ public abstract class Ghost extends BoardEntity {
 
     public GhostMode getCurrentMode() {
         return currentMode;
+    }
+
+    public boolean isGhostHostile() {
+        return (currentMode == GhostMode.SCATTER || currentMode == GhostMode.CHASE);
     }
 
     protected void pause() {
