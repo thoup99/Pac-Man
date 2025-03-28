@@ -48,6 +48,12 @@ public class NodeManager {
         }
     }
 
+    public void unloadAll() {
+        emptyNodes();
+        nodeMap.clear();
+        portalMap.clear();
+    }
+
     private void createNodes(char[][] mapData) {
         for (int row = 0; row < BOARD_TOTAL_ROWS; row++) {
             for (int col = 0; col < BOARD_TOTAL_COLUMNS; col++) {

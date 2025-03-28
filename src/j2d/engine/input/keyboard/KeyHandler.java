@@ -16,8 +16,8 @@ import java.util.Map;
  */
 public class KeyHandler implements KeyListener {
 
-    private static Map<Integer, Boolean> keyMap = new HashMap<Integer, Boolean>();
-    private static Map<Integer, ArrayList<KeySubscriber>> subscribers = new HashMap<Integer, ArrayList<KeySubscriber>>();
+    private static final Map<Integer, Boolean> keyMap = new HashMap<Integer, Boolean>();
+    private static final Map<Integer, ArrayList<KeySubscriber>> subscribers = new HashMap<Integer, ArrayList<KeySubscriber>>();
     public static KeyHandler keyHandler = new KeyHandler();
 
     /**
@@ -36,13 +36,17 @@ public class KeyHandler implements KeyListener {
     }
 
     private static void addKey(int awtKeyEventKey) {
-        keyMap.put(awtKeyEventKey, false);
-        subscribers.put(awtKeyEventKey, new ArrayList<KeySubscriber>());
+        synchronized (subscribers) {
+            keyMap.putIfAbsent(awtKeyEventKey, false);
+            subscribers.putIfAbsent(awtKeyEventKey, new ArrayList<KeySubscriber>());
+        }
     }
 
     private static void removeKey(int awtKeyEventKey) {
-        keyMap.remove(awtKeyEventKey);
-        subscribers.remove(awtKeyEventKey);
+        synchronized (subscribers) {
+            keyMap.remove(awtKeyEventKey);
+            subscribers.remove(awtKeyEventKey);
+        }
     }
 
     /**
@@ -51,8 +55,10 @@ public class KeyHandler implements KeyListener {
      * being pressed and false if it is not.
      */
     public static boolean isKeyPressed(int key) {
-        Boolean pressed = keyMap.get(key);
-        return pressed != null ? pressed : false;
+        synchronized (subscribers) {
+            Boolean pressed = keyMap.get(key);
+            return pressed != null ? pressed : false;
+        }
     }
 
     /**
@@ -60,13 +66,15 @@ public class KeyHandler implements KeyListener {
      * @param subscribedKeys List of Keys that subscriber will respond to.
      */
     public static void subscribe(KeySubscriber subscriber, int[] subscribedKeys) {
-        for (int key : subscribedKeys) {
-            if (!keyMap.containsKey(key)) {
-                addKey(key);
-            }
+        synchronized (subscribers) {
+            for (int key : subscribedKeys) {
+                if (!keyMap.containsKey(key)) {
+                    addKey(key);
+                }
 
-            if (!subscribers.get(key).contains(subscriber)) {
-                subscribers.get(key).add(subscriber);
+                if (!subscribers.get(key).contains(subscriber)) {
+                    subscribers.get(key).add(subscriber);
+                }
             }
         }
     }
@@ -75,11 +83,13 @@ public class KeyHandler implements KeyListener {
      * @param subscriber Subscriber to remove from all subscribers list
      */
     public static void unsubscribe(KeySubscriber subscriber) {
-        for (int key: subscribers.keySet()) {
-            subscribers.get(key).remove(subscriber);
+        synchronized (subscribers) {
+            for (int key: new ArrayList<>(subscribers.keySet())) {
+                subscribers.get(key).remove(subscriber);
 
-            if (subscribers.get(key).isEmpty()) {
-                removeKey(key);
+                if (subscribers.get(key).isEmpty()) {
+                    removeKey(key);
+                }
             }
         }
     }
@@ -101,14 +111,16 @@ public class KeyHandler implements KeyListener {
      */
     @Override
     public void keyPressed(KeyEvent e) {
-        int code = e.getKeyCode();
-        if (keyMap.containsKey(code)) {
-            boolean justPressed = !keyMap.get(code);
-            keyMap.put(code, true);
+        synchronized (subscribers) {
+            int code = e.getKeyCode();
+            if (keyMap.containsKey(code)) {
+                boolean justPressed = !keyMap.get(code);
+                keyMap.put(code, true);
 
-            if (justPressed) {
-                for (KeySubscriber subscriber : subscribers.get(code)) {
-                    subscriber.keyPressed(code);
+                if (justPressed) {
+                    for (KeySubscriber subscriber : subscribers.get(code)) {
+                        subscriber.keyPressed(code);
+                    }
                 }
             }
         }
@@ -122,12 +134,14 @@ public class KeyHandler implements KeyListener {
      */
     @Override
     public void keyReleased(KeyEvent e) {
-        int code = e.getKeyCode();
-        if (keyMap.containsKey(code)) {
-            keyMap.put(code, false);
+        synchronized (subscribers) {
+            int code = e.getKeyCode();
+            if (keyMap.containsKey(code)) {
+                keyMap.put(code, false);
 
-            for (KeySubscriber subscriber : subscribers.get(code)) {
-                subscriber.keyReleased(code);
+                for (KeySubscriber subscriber : subscribers.get(code)) {
+                    subscriber.keyReleased(code);
+                }
             }
         }
     }

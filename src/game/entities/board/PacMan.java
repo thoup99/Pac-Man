@@ -2,6 +2,7 @@ package game.entities.board;
 
 import game.PacManController;
 import game.board.nodes.Node;
+import game.board.pellets.Pellet;
 import game.entities.board.ghost.Ghost;
 import j2d.attributes.position.Position2D;
 import j2d.components.graphics.shapes.Circle;
@@ -103,6 +104,9 @@ public class PacMan extends BoardEntity implements KeySubscriber {
             } else if (ghost.isGhostHostile()) {
                 pacManController.onPacManDeath();
             }
+        } else if (other instanceof Pellet) {
+            ((Pellet) other).eaten();
+            pacManController.checkBoardClear();
         }
     }
 

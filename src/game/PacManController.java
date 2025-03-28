@@ -68,17 +68,32 @@ public class PacManController extends GameObject {
         unpauseAll();
     }
 
+    public void checkBoardClear() {
+        if (board.getPelletManager().arePelletsEaten()) {
+            onLevelCompleted();
+        }
+    }
+
     public void onLevelCompleted() {
-        //Pause Ghost and PacMan
-        pauseAll();
+        //Unload PacMan & Ghost
+        ghostManager.unloadGhost();
+        pacMan.queueDelete();
 
         //Play animation  - Timer is stand in for animation
         levelCompletedTimer.start();
     }
 
     private void onLevelFlashCompleted() {
-        //Load next level
-        //Reset Ghost and PacMan positions
+        //Unload current map
+        board.unloadMap();
+
+        //Load next map
+        board.loadMap("/maps/map2.txt");
+
+        //Create new pacman and ghost
+        pacMan = new PacMan(board.getNodeManager().getStartNode(), this);
+        ghostManager.loadGhost(board.getNodeManager(), pacMan);
+        ghostManager.startRound();
     }
 
     @Override

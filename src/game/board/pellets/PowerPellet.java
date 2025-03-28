@@ -11,8 +11,8 @@ import java.awt.*;
 public class PowerPellet extends Pellet {
     private final PacManController pacManController;
 
-    public PowerPellet(Position2D position, PacManController pacManController) {
-        super(position, 8);
+    public PowerPellet(PelletManager pelletManager, Position2D position, PacManController pacManController) {
+        super(pelletManager, position, 8);
         this.pacManController = pacManController;
         fillCircle.setColor(Color.YELLOW);
 
@@ -25,15 +25,5 @@ public class PowerPellet extends Pellet {
             pacManController.powerPelletEaten();
             queueDelete();
         }
-    }
-
-    @Override
-    public void update(double delta) {
-
-    }
-
-    @Override
-    public void physicsUpdate(double delta) {
-
     }
 }

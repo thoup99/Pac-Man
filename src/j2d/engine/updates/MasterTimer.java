@@ -4,9 +4,10 @@ import j2d.components.Timer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class MasterTimer {
-    final static List<Timer> timers = new ArrayList<>();
+    final static List<Timer> timers = new CopyOnWriteArrayList<>();
 
     private MasterTimer() {}
 

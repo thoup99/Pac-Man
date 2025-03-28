@@ -25,10 +25,10 @@ public class PelletManager {
             for (int col = 0; col < BOARD_TOTAL_COLUMNS; col++) {
                 char value = mapData[row][col];
                 if (isPelletSymbol(value)) {
-                    Pellet newPellet = new Pellet(getPelletPosition(row, col));
+                    Pellet newPellet = new Pellet(this, getPelletPosition(row, col));
                     pellets.add(newPellet);
                 } else if (isPowerPelletSymbol(value)) {
-                    PowerPellet newPowerPellet = new PowerPellet(getPelletPosition(row, col), pacManController);
+                    PowerPellet newPowerPellet = new PowerPellet(this, getPelletPosition(row, col), pacManController);
                     powerPellets.add(newPowerPellet);
                 }
             }
@@ -60,6 +60,14 @@ public class PelletManager {
     }
 
     public boolean arePelletsEaten() {
-        return pellets.isEmpty();
+        return pellets.isEmpty() && powerPellets.isEmpty();
+    }
+
+    protected void removePellet(Pellet pellet) {
+        if (pellet instanceof PowerPellet) {
+            powerPellets.remove(pellet);
+        } else {
+            pellets.remove(pellet);
+        }
     }
 }

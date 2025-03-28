@@ -43,6 +43,11 @@ public class Board {
         pelletManager.loadPellets(mapData);
     }
 
+    public void unloadMap() {
+        nodeManager.unloadAll();
+        pelletManager.emptyPellets();
+    }
+
 
 
     public NodeManager getNodeManager() {

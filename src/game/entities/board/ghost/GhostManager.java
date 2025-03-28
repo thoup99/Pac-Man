@@ -23,16 +23,7 @@ public class GhostManager extends GameObject {
     Timer frightTimer;
 
     public GhostManager(Board board, PacMan pacMan) {
-        NodeManager nodeManager = board.getNodeManager();
-        blinky = new Blinky(nodeManager, pacMan);
-        pinky = new Pinky(nodeManager, pacMan);
-        inky = new Inky(nodeManager, pacMan, blinky);
-        clyde = new Clyde(nodeManager, pacMan);
-
-        ghosts.add(blinky);
-        ghosts.add(pinky);
-        ghosts.add(inky);
-        ghosts.add(clyde);
+        loadGhost(board.getNodeManager(), pacMan);
 
         scatterTimer = new Timer(this, 7000, this::startChaseMode);
         scatterTimer.setOneShot(true);
@@ -48,7 +39,26 @@ public class GhostManager extends GameObject {
         ready();
     }
 
-    private void startRound() {
+    public void loadGhost(NodeManager nodeManager, PacMan pacMan) {
+        blinky = new Blinky(nodeManager, pacMan);
+        pinky = new Pinky(nodeManager, pacMan);
+        inky = new Inky(nodeManager, pacMan, blinky);
+        clyde = new Clyde(nodeManager, pacMan);
+
+        ghosts.add(blinky);
+        ghosts.add(pinky);
+        ghosts.add(inky);
+        ghosts.add(clyde);
+    }
+
+    public void unloadGhost() {
+        for (Ghost ghost : ghosts) {
+            ghost.queueDelete();
+        }
+        ghosts.clear();
+    }
+
+    public void startRound() {
         for (Ghost ghost : ghosts) {
             ghost.currentMode = GhostMode.AWAITING_START;
             ghost.startRound();
@@ -115,6 +125,16 @@ public class GhostManager extends GameObject {
             ghost.resetPosition();
         }
         startRound();
+    }
+
+    public void resetAllTimers() {
+        chaseTimer.stop();
+        scatterTimer.stop();
+        frightTimer.stop();
+
+        chaseTimer.restart();
+        scatterTimer.restart();
+        frightTimer.restart();
     }
 
     @Override
