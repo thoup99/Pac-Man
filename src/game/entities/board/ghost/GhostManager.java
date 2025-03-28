@@ -93,6 +93,7 @@ public class GhostManager extends GameObject {
             }
         }
         globalMode = GhostMode.FRIGHT;
+        frightTimer.restart();
         frightTimer.start();
     }
 
