@@ -47,6 +47,7 @@ public class PacMan extends BoardEntity implements KeySubscriber {
             return;
         }
 
+        moveInCurrentDirection(delta);
         Direction newDirection = getDirection();
 
         if (didOvershootTargetNode()) {
@@ -75,8 +76,6 @@ public class PacMan extends BoardEntity implements KeySubscriber {
         if (currentDirection != Direction.STOP) {
             facingDirection = currentDirection;
         }
-
-        moveInCurrentDirection(delta);
     }
 
     private Direction getDirection() {
