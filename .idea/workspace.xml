@@ -5,6 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c430b4-c26f-491d-b2fc-f82397dbd881" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/res/images/pacman_sheet-Recovered.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/images/pacman_sheet-double.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/images/pacman_sheet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/images/spritesheet - Copy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/j2d/components/sprite/AnimationFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/j2d/components/sprite/SpriteAnimation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -32,6 +38,11 @@
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/ghost/GhostManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/GhostManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/ghost/Inky.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/Inky.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/ghost/Pinky.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/Pinky.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/ui/FruitDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/ui/FruitDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/ui/LifeDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/ui/LifeDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/ui/ScoreDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/ui/ScoreDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/ui/UIEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/ui/UIEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/ui/UIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/ui/UIManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/attributes/Rotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/Rotation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/attributes/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/Transform.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/attributes/Vector2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/Vector2D.java" afterDir="false" />
@@ -179,6 +190,9 @@
       <workItem from="1743347193710" duration="1447000" />
       <workItem from="1743351360212" duration="1553000" />
       <workItem from="1743712571082" duration="928000" />
+      <workItem from="1744254200644" duration="5097000" />
+      <workItem from="1744346204314" duration="3520000" />
+      <workItem from="1744518435074" duration="5378000" />
     </task>
     <servers />
   </component>

@@ -4,31 +4,49 @@ import game.PacManController;
 import game.board.nodes.Node;
 import game.board.pellets.Pellet;
 import game.entities.board.ghost.Ghost;
+import j2d.attributes.position.OffsetPosition2D;
 import j2d.attributes.position.Position2D;
-import j2d.components.graphics.shapes.Circle;
-import j2d.components.graphics.shapes.FillCircle;
 import j2d.components.physics.collider.CircleCollider;
+import j2d.components.sprite.AnimatedSprite;
+import j2d.components.sprite.AnimationFrame;
+import j2d.components.sprite.SpriteAnimation;
+import j2d.components.sprite.SpriteSheet;
 import j2d.engine.gameobject.GameObject;
 import j2d.engine.input.keyboard.KeyHandler;
 import j2d.engine.input.keyboard.KeySubscriber;
 
 import game.Constants.Direction;
 
-import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.util.Arrays;
 
 public class PacMan extends BoardEntity implements KeySubscriber {
-    final Circle pacCircle;
+    //final Circle pacCircle;
     CircleCollider collider;
     Direction facingDirection = Direction.LEFT;
     PacManController pacManController;
     boolean isPaused = false;
+    boolean isAlive = true;
+
+    OffsetPosition2D spriteDrawPosition;
+    enum PacManAnimations {MOVE_UP, MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT, DIE}
+    AnimatedSprite<PacManAnimations> animatedSprite;
 
     public PacMan(Node startNode, PacManController pacManController) {
         super(startNode);
         this.pacManController = pacManController;
-        pacCircle = new FillCircle(this,2, position, 12 );
-        pacCircle.setColor(Color.YELLOW);
+        //pacCircle = new FillCircle(this,2, position, 12 );
+        //pacCircle.setColor(Color.YELLOW);
+
+        spriteDrawPosition = new OffsetPosition2D(position, -7, -7);
+        BufferedImage pacManSheet = SpriteSheet.loadSheetImage("./images/pacman_sheet-Recovered.png");
+        animatedSprite = new AnimatedSprite<PacManAnimations>(this, spriteDrawPosition, pacManSheet, 5, 12);
+        animatedSprite.setLayer(2);
+        animatedSprite.setPadding(1, 1);
+        animatedSprite.setSpacing(1, 1);
+        loadAnimations();
+        animatedSprite.playAnimation(PacManAnimations.MOVE_LEFT);
 
         collider = new CircleCollider(this, position, 6);
 
@@ -49,6 +67,7 @@ public class PacMan extends BoardEntity implements KeySubscriber {
 
         moveInCurrentDirection(delta);
         Direction newDirection = getDirection();
+        Direction directionAtStart = currentDirection;
 
         if (didOvershootTargetNode()) {
             currentNode = targetNode;
@@ -76,6 +95,10 @@ public class PacMan extends BoardEntity implements KeySubscriber {
         if (currentDirection != Direction.STOP) {
             facingDirection = currentDirection;
         }
+
+        if (directionAtStart != currentDirection) {
+            determineAnimation();
+        }
     }
 
     private Direction getDirection() {
@@ -101,7 +124,10 @@ public class PacMan extends BoardEntity implements KeySubscriber {
             if (ghost.getCurrentMode() == Ghost.GhostMode.FRIGHT) {
                 pacManController.onGhostEaten();
             } else if (ghost.isGhostHostile()) {
-                pacManController.onPacManDeath();
+                if (isAlive) {
+                    isAlive = false;
+                    onPacManDeath();
+                }
             }
         } else if (other instanceof Pellet) {
             ((Pellet) other).eaten();
@@ -109,14 +135,45 @@ public class PacMan extends BoardEntity implements KeySubscriber {
         }
     }
 
+    public void determineAnimation() {
+        if (currentDirection == Direction.LEFT) {
+            animatedSprite.playAnimation(PacManAnimations.MOVE_LEFT);
+        } else if (currentDirection == Direction.RIGHT) {
+            animatedSprite.playAnimation(PacManAnimations.MOVE_RIGHT);
+        } else if (currentDirection == Direction.UP) {
+            animatedSprite.playAnimation(PacManAnimations.MOVE_UP);
+        } else if (currentDirection == Direction.DOWN) {
+            animatedSprite.playAnimation(PacManAnimations.MOVE_DOWN);
+        }
+        animatedSprite.resumeAnimation();
+
+        if (currentDirection == Direction.STOP) {
+            animatedSprite.pauseAnimation();
+        }
+    }
+
+    private void onPacManDeath() {
+        pacManController.onPacManDeath();
+        animatedSprite.playAnimation(PacManAnimations.DIE);
+    }
+
+    private void onDeathComplete() {
+        System.out.println("PacMan Death Complete");
+        pacManController.onDeathAnimationCompleted();
+    }
+
     public void pause() {
         isPaused = true;
-        //Pause Animation
+        animatedSprite.pauseAnimation();
     }
 
     public void unpause() {
         isPaused = false;
-        //Unpause Animation
+        animatedSprite.resumeAnimation();
+    }
+
+    public void allowAnimations() {
+        animatedSprite.resumeAnimation();
     }
 
     public Position2D getPosition() {
@@ -128,6 +185,58 @@ public class PacMan extends BoardEntity implements KeySubscriber {
         targetNode = startNode;
         setPosition();
         currentDirection = Direction.LEFT;
+        isAlive = true;
+    }
+
+    private void loadAnimations() {
+        //Make Animations
+        int chompTime = 60;
+        SpriteAnimation moveRight = new SpriteAnimation(true, Arrays.asList(
+                new AnimationFrame(0, chompTime),
+                new AnimationFrame(12, chompTime),
+                new AnimationFrame(13, chompTime),
+                new AnimationFrame(12, chompTime)
+            )
+        );
+
+        SpriteAnimation moveLeft = new SpriteAnimation(true, Arrays.asList(
+                new AnimationFrame(0, chompTime),
+                new AnimationFrame(24, chompTime),
+                new AnimationFrame(25, chompTime),
+                new AnimationFrame(24, chompTime)
+            )
+        );
+
+        SpriteAnimation moveUp = new SpriteAnimation(true, Arrays.asList(
+                new AnimationFrame(0, chompTime),
+                new AnimationFrame(36, chompTime),
+                new AnimationFrame(37, chompTime),
+                new AnimationFrame(36, chompTime)
+            )
+        );
+
+        SpriteAnimation MoveDown = new SpriteAnimation(true, Arrays.asList(
+                new AnimationFrame(0, chompTime),
+                new AnimationFrame(48, chompTime),
+                new AnimationFrame(49, chompTime),
+                new AnimationFrame(48, chompTime)
+            )
+        );
+
+        SpriteAnimation die = new SpriteAnimation(false, this::onDeathComplete, Arrays.asList(
+                new AnimationFrame(0, 100),
+                new AnimationFrame(12, 100),
+                new AnimationFrame(13, 100),
+                new AnimationFrame(12, 100)
+            )
+        );
+
+        //Add animations to animatedSprite
+        animatedSprite.addAnimation(PacManAnimations.MOVE_LEFT, moveLeft);
+        animatedSprite.addAnimation(PacManAnimations.MOVE_RIGHT, moveRight);
+        animatedSprite.addAnimation(PacManAnimations.MOVE_UP, moveUp);
+        animatedSprite.addAnimation(PacManAnimations.MOVE_DOWN, MoveDown);
+        animatedSprite.addAnimation(PacManAnimations.DIE, die);
     }
 
     public Direction getCurrentDirection() {

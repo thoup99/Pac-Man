@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,6 +19,7 @@ public class KeyHandler implements KeyListener {
 
     private static final Map<Integer, Boolean> keyMap = new HashMap<Integer, Boolean>();
     private static final Map<Integer, ArrayList<KeySubscriber>> subscribers = new HashMap<Integer, ArrayList<KeySubscriber>>();
+    private static final List<Integer> queuedKeys = new ArrayList<Integer>(); //TODO
     public static KeyHandler keyHandler = new KeyHandler();
 
     /**

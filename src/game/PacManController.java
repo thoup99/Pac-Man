@@ -56,12 +56,11 @@ public class PacManController extends GameObject {
     public void onPacManDeath() {
         //Pause Ghost and PacMan
         pauseAll();
-
-        //Play animation - Timer is stand in for animation
-        pacManDeathTimer.start();
+        pacMan.allowAnimations();
+        //Animation is played internally by pacman
     }
 
-    private void onDeathAnimationCompleted() {
+    public void onDeathAnimationCompleted() {
         //Reset Ghost and PacMan positions
         ghostManager.resetAllGhost();
         pacMan.resetPosition();
