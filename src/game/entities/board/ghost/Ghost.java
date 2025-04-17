@@ -103,6 +103,7 @@ public abstract class Ghost extends BoardEntity {
         if (other instanceof PacMan) {
             if (currentMode == GhostMode.FRIGHT) {
                 startSpawn();
+                determineAnimation();
             }
         }
     }
@@ -241,7 +242,21 @@ public abstract class Ghost extends BoardEntity {
     }
 
     private void determineAnimation() {
+        if (currentMode == GhostMode.RETURN_SPAWN) {
+            animatedSprite.pauseAnimation();
 
+            if (currentDirection == Direction.LEFT) {
+                animatedSprite.setSprite(animatedSprite.getSpriteNum(1, 8));
+            } else if (currentDirection == Direction.RIGHT) {
+                animatedSprite.setSprite(animatedSprite.getSpriteNum(0, 8));
+            } else if (currentDirection == Direction.UP) {
+                animatedSprite.setSprite(animatedSprite.getSpriteNum(2, 8));
+            } else if (currentDirection == Direction.DOWN) {
+                animatedSprite.setSprite(animatedSprite.getSpriteNum(3, 8));
+            }
+
+            return;
+        }
 
         if (currentDirection == Direction.LEFT) {
             animatedSprite.playAnimation(GhostAnimations.MOVE_LEFT);
