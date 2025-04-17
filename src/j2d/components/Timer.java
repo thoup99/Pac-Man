@@ -4,6 +4,7 @@ import j2d.engine.gameobject.GameObject;
 import j2d.engine.updates.MasterTimer;
 
 public class Timer extends Component{
+    boolean isTimeout = true;
     boolean isTicking = false;
     boolean oneShot = false;
     long durationNanoseconds;
@@ -26,6 +27,7 @@ public class Timer extends Component{
         if (isTicking) {
             timeRemainingNanoseconds -= deltaNanoseconds;
             if (timeRemainingNanoseconds <= 0) {
+                isTimeout = true;
                 callback.run();
                 if (oneShot) {
                     stop();
@@ -38,6 +40,7 @@ public class Timer extends Component{
 
     public void start() {
         isTicking = true;
+        isTimeout = false;
         if (timeRemainingNanoseconds <= 0) {
             timeRemainingNanoseconds = durationNanoseconds;
         }
@@ -79,6 +82,10 @@ public class Timer extends Component{
 
     public void setDurationMilliseconds(long durationMilliseconds) {
         this.durationNanoseconds = milliToNano(durationMilliseconds);
+    }
+
+    public boolean isTimedOut() {
+        return isTimeout;
     }
 
     @Override

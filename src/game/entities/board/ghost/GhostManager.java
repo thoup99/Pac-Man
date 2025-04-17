@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GhostManager extends GameObject {
+    private GhostMode preFrightMode;
     private GhostMode globalMode = GhostMode.SCATTER;
     final List<Ghost> ghosts = new ArrayList<Ghost>();
     Blinky blinky;
@@ -78,7 +79,7 @@ public class GhostManager extends GameObject {
 
     private void startChaseMode() {
         for (Ghost ghost : ghosts) {
-            if (ghost.currentMode == GhostMode.SCATTER || ghost.currentMode == GhostMode.FRIGHT) {
+            if (ghost.currentMode == GhostMode.SCATTER || (ghost.currentMode == GhostMode.FRIGHT && frightTimer.isTimedOut())) {
                 ghost.startChase();
             }
         }
@@ -92,7 +93,11 @@ public class GhostManager extends GameObject {
                 ghost.startFright();
             }
         }
+        preFrightMode = globalMode;
         globalMode = GhostMode.FRIGHT;
+
+        chaseTimer.pause();
+        scatterTimer.pause();
         frightTimer.restart();
         frightTimer.start();
     }
@@ -149,6 +154,13 @@ public class GhostManager extends GameObject {
         for (Ghost ghost : ghosts) {
             System.out.println(ghost.getClass().getName() + ": " + ghost.currentMode);
         }
+    }
+
+    private void printDebugTimers() {
+        System.out.println("--------------");
+        System.out.println("Scatter mode: " + scatterTimer.timeRemaining());
+        System.out.println("Chase mode: " + chaseTimer.timeRemaining());
+        System.out.println("Fright mode: " + frightTimer.timeRemaining());
     }
 
     @Override

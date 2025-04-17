@@ -112,6 +112,7 @@ public abstract class Ghost extends BoardEntity {
         currentMode = GhostMode.SCATTER;
         reverseDirection();
         setGoalPosition(scatterPosition);
+        determineAnimation();
     }
 
     protected void startChase() {
@@ -119,12 +120,14 @@ public abstract class Ghost extends BoardEntity {
         reverseDirection();
         setMovementSpeed(NORMAL_SPEED);
         calculateNewGoalPosition();
+        determineAnimation();
     }
 
     protected void startFright() {
         reverseDirection();
         setMovementSpeed(FRIGHT_SPEED);
         currentMode = GhostMode.FRIGHT;
+        determineAnimation();
     }
 
     protected void startSpawn() {
@@ -132,6 +135,7 @@ public abstract class Ghost extends BoardEntity {
         reverseDirection();
         setMovementSpeed(SPAWN_SPEED);
         setGoalPosition(homePosition);
+        determineAnimation();
     }
 
     protected void startLeavingSpawn() {
@@ -139,6 +143,7 @@ public abstract class Ghost extends BoardEntity {
         reverseDirection();
         setMovementSpeed(LEAVE_SPAWN_SPEED);
         setGoalPosition(nodeManager.getBlinkyStartNode().getPosition());
+        determineAnimation();
     }
 
     protected abstract void startRound();
@@ -328,7 +333,7 @@ public abstract class Ghost extends BoardEntity {
 
     protected void resume() {
         isPaused = false;
-        animatedSprite.resumeAnimation();
+        determineAnimation();
     }
 
     protected void resetPosition() {
