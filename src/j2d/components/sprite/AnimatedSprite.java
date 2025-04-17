@@ -59,6 +59,8 @@ public class AnimatedSprite<T> extends SpriteSheet {
         animationTimer.resume();
     }
 
+    public void stopAnimation() { animationTimer.stop(); }
+
     public void restartAnimation() {
         currentFrameIndex = 0;
         currentAnimationFrame = currentAnimation.getFrames().get(currentFrameIndex);

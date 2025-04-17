@@ -155,6 +155,7 @@ public class PacMan extends BoardEntity implements KeySubscriber {
     private void onPacManDeath() {
         pacManController.onPacManDeath();
         animatedSprite.playAnimation(PacManAnimations.DIE);
+        System.out.println("Death Detected");
     }
 
     private void onDeathComplete() {
@@ -178,14 +179,6 @@ public class PacMan extends BoardEntity implements KeySubscriber {
 
     public Position2D getPosition() {
         return position;
-    }
-
-    public void resetPosition() {
-        currentNode = startNode;
-        targetNode = startNode;
-        setPosition();
-        currentDirection = Direction.LEFT;
-        isAlive = true;
     }
 
     private void loadAnimations() {
@@ -237,6 +230,15 @@ public class PacMan extends BoardEntity implements KeySubscriber {
         animatedSprite.addAnimation(PacManAnimations.MOVE_UP, moveUp);
         animatedSprite.addAnimation(PacManAnimations.MOVE_DOWN, MoveDown);
         animatedSprite.addAnimation(PacManAnimations.DIE, die);
+    }
+
+    public void resetPosition() {
+        currentNode = startNode;
+        targetNode = startNode;
+        setPosition();
+        currentDirection = Direction.LEFT;
+        isAlive = true;
+        determineAnimation();
     }
 
     public Direction getCurrentDirection() {
