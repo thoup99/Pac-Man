@@ -16,7 +16,7 @@ public class Inky extends Ghost {
     Timer awaitLeaveTimer;
 
     public Inky(NodeManager nodeManager, PacMan pacman, Blinky blinky) {
-        super(nodeManager.getInkyStartNode(), nodeManager, pacman);
+        super(4, nodeManager.getInkyStartNode(), nodeManager, pacman);
         this.blinky = blinky;
         scatterPosition = new Position2D(BOARD_START_POSITION.getX() + (TILE_SIZE * BOARD_TOTAL_COLUMNS),
                 BOARD_START_POSITION.getY() + (TILE_SIZE * BOARD_TOTAL_ROWS));
@@ -24,8 +24,6 @@ public class Inky extends Ghost {
 
         awaitLeaveTimer = new Timer(this, 4000, this::timeToLeave);
         awaitLeaveTimer.setOneShot(true);
-
-        ghostCircle.setColor(Color.BLUE);
 
         ready();
     }

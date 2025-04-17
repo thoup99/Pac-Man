@@ -12,13 +12,11 @@ import static game.Constants.*;
 public class Blinky extends Ghost {
 
     public Blinky(NodeManager nodeManager, PacMan pacman) {
-        super(nodeManager.getBlinkyStartNode(), nodeManager, pacman);
+        super(0, nodeManager.getBlinkyStartNode(), nodeManager, pacman);
         homePosition = nodeManager.getPinkyStartNode().getPosition();
         scatterPosition = new Position2D(BOARD_START_POSITION.getX() + (TILE_SIZE * BOARD_TOTAL_COLUMNS),
                 BOARD_START_POSITION.getY());
         setGoalPosition(pacmanPosition);
-
-        ghostCircle.setColor(Color.RED);
 
         ready();
     }

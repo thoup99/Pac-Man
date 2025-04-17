@@ -5,15 +5,22 @@ import game.board.nodes.NodeManager;
 import game.entities.board.BoardEntity;
 import game.entities.board.PacMan;
 import j2d.attributes.Vector2D;
+import j2d.attributes.position.OffsetPosition2D;
 import j2d.attributes.position.Position2D;
 import j2d.components.graphics.shapes.Circle;
 import j2d.components.graphics.shapes.FillCircle;
 import j2d.components.physics.collider.CircleCollider;
 
 import game.Constants.Direction;
+import j2d.components.sprite.AnimatedSprite;
+import j2d.components.sprite.AnimationFrame;
+import j2d.components.sprite.SpriteAnimation;
+import j2d.components.sprite.SpriteSheet;
 import j2d.engine.gameobject.GameObject;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -36,11 +43,14 @@ public abstract class Ghost extends BoardEntity {
     GhostMode currentMode = GhostMode.AWAITING_START;
 
     CircleCollider collider;
-    Circle ghostCircle;
+
+    OffsetPosition2D spriteDrawPosition;
+    enum GhostAnimations {MOVE_UP, MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT, FLEE}
+    AnimatedSprite<GhostAnimations> animatedSprite;
 
     boolean isPaused = false;
 
-    public Ghost(Node startNode, NodeManager nodeManager, PacMan pacman) {
+    public Ghost(int ghostSpriteColumn, Node startNode, NodeManager nodeManager, PacMan pacman) {
         super(startNode);
         this.nodeManager = nodeManager;
         this.pacman = pacman;
@@ -48,7 +58,15 @@ public abstract class Ghost extends BoardEntity {
         pacmanPosition = pacman.getPosition();
         isPaused = false;
 
-        ghostCircle = new FillCircle(this,2, position, 12 );
+
+        spriteDrawPosition = new OffsetPosition2D(position, -7, -7);
+        BufferedImage ghostSheet = SpriteSheet.loadSheetImage("./images/ghost_sheet.png");
+        animatedSprite = new AnimatedSprite<GhostAnimations>(this, spriteDrawPosition, ghostSheet, 4, 10);
+        animatedSprite.setLayer(3);
+        animatedSprite.setPadding(1, 1);
+        animatedSprite.setSpacing(1, 1);
+        loadAnimations(ghostSpriteColumn);
+        animatedSprite.playAnimation(GhostAnimations.MOVE_LEFT);
 
         collider = new CircleCollider(this, position, 6);
         setMovementSpeed(NORMAL_SPEED);
@@ -215,6 +233,45 @@ public abstract class Ghost extends BoardEntity {
             directionVector = new Vector2D(1, 0);
         }
         return directionVector;
+    }
+
+    private void loadAnimations(int ghostCol) {
+        int spriteTime = 80;
+
+        SpriteAnimation move_right = new SpriteAnimation(true, Arrays.asList(
+                new AnimationFrame(animatedSprite.getSpriteNum(0, ghostCol), spriteTime),
+                new AnimationFrame(animatedSprite.getSpriteNum(0, ghostCol + 1), spriteTime)
+            )
+        );
+
+        SpriteAnimation move_left = new SpriteAnimation(true, Arrays.asList(
+                new AnimationFrame(animatedSprite.getSpriteNum(1, ghostCol), spriteTime),
+                new AnimationFrame(animatedSprite.getSpriteNum(1, ghostCol + 1), spriteTime)
+            )
+        );
+
+        SpriteAnimation move_up = new SpriteAnimation(true, Arrays.asList(
+                new AnimationFrame(animatedSprite.getSpriteNum(2, ghostCol), spriteTime),
+                new AnimationFrame(animatedSprite.getSpriteNum(2, ghostCol + 1), spriteTime)
+            )
+        );
+
+        SpriteAnimation move_down = new SpriteAnimation(true, Arrays.asList(
+                new AnimationFrame(animatedSprite.getSpriteNum(3, ghostCol), spriteTime),
+                new AnimationFrame(animatedSprite.getSpriteNum(3, ghostCol + 1), spriteTime)
+            )
+        );
+
+        SpriteAnimation flee = new SpriteAnimation(true, Arrays.asList(
+                new AnimationFrame(animatedSprite.getSpriteNum(0, ghostCol), spriteTime),
+                new AnimationFrame(animatedSprite.getSpriteNum(0, ghostCol + 1), spriteTime)
+            )
+        );
+
+        animatedSprite.addAnimation(GhostAnimations.MOVE_RIGHT, move_right);
+        animatedSprite.addAnimation(GhostAnimations.MOVE_LEFT, move_left);
+        animatedSprite.addAnimation(GhostAnimations.MOVE_UP, move_up);
+        animatedSprite.addAnimation(GhostAnimations.MOVE_DOWN, move_down);
     }
 
     public Position2D getPosition() {

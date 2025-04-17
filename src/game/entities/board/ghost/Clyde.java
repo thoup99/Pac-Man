@@ -17,15 +17,13 @@ public class Clyde extends Ghost{
     Timer awaitLeaveTimer;
 
     public Clyde(NodeManager nodeManager, PacMan pacman) {
-        super(nodeManager.getClydeStartNode(), nodeManager, pacman);
+        super(6, nodeManager.getClydeStartNode(), nodeManager, pacman);
         scatterPosition = new Position2D(BOARD_START_POSITION.getX(),
                 BOARD_START_POSITION.getY() + (TILE_SIZE * BOARD_TOTAL_ROWS));
         calculateNewGoalPosition();
 
         awaitLeaveTimer = new Timer(this, 10000, this::timeToLeave);
         awaitLeaveTimer.setOneShot(true);
-
-        ghostCircle.setColor(Color.ORANGE);
 
         ready();
     }

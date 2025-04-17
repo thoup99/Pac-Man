@@ -91,6 +91,10 @@ public class SpriteSheet extends Sprite {
         setSprite(row, col);
     }
 
+    public int getSpriteNum(int row, int col) {
+        return row * numCols + col;
+    }
+
     /**
      * Sets sprite based off row and column. Both start at zero.
      * @param row Row of desired sprite.

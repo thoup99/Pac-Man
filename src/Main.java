@@ -35,9 +35,10 @@ public class Main {
         window.setCloseOnEsc(true);
 
         Renderer.createLayer(0); // Background
-        Renderer.createLayer(1); // Pellets / Ghost
+        Renderer.createLayer(1); // Pellets
         Renderer.createLayer(2); // PacMan
-        Renderer.createLayer(3); // UI
+        Renderer.createLayer(3); // Ghost
+        Renderer.createLayer(4); // UI
 
         PacManController pacManController = new PacManController();
     }
