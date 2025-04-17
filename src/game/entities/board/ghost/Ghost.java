@@ -78,6 +78,9 @@ public abstract class Ghost extends BoardEntity {
             return;
         }
 
+        moveInCurrentDirection(delta);
+        Direction directionAtStart = currentDirection;
+
         if (didOvershootTargetNode()) {
             currentNode = targetNode;
             checkSpawnReturn();
@@ -88,9 +91,11 @@ public abstract class Ghost extends BoardEntity {
             }
 
             handleNodeTransition();
-        }
 
-        moveInCurrentDirection(delta);
+            if (directionAtStart != currentDirection) {
+                determineAnimation();
+            }
+        }
     }
 
     @Override
@@ -235,6 +240,21 @@ public abstract class Ghost extends BoardEntity {
         return directionVector;
     }
 
+    private void determineAnimation() {
+
+
+        if (currentDirection == Direction.LEFT) {
+            animatedSprite.playAnimation(GhostAnimations.MOVE_LEFT);
+        } else if (currentDirection == Direction.RIGHT) {
+            animatedSprite.playAnimation(GhostAnimations.MOVE_RIGHT);
+        } else if (currentDirection == Direction.UP) {
+            animatedSprite.playAnimation(GhostAnimations.MOVE_UP);
+        } else if (currentDirection == Direction.DOWN) {
+            animatedSprite.playAnimation(GhostAnimations.MOVE_DOWN);
+        }
+        animatedSprite.resumeAnimation();
+    }
+
     private void loadAnimations(int ghostCol) {
         int spriteTime = 80;
 
@@ -288,12 +308,12 @@ public abstract class Ghost extends BoardEntity {
 
     protected void pause() {
         isPaused = true;
-        //Pause Animations
+        animatedSprite.pauseAnimation();
     }
 
     protected void resume() {
         isPaused = false;
-        //Resume Animations
+        animatedSprite.resumeAnimation();
     }
 
     protected void resetPosition() {
