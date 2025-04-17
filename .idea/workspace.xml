@@ -5,12 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c430b4-c26f-491d-b2fc-f82397dbd881" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/res/images/pacman_sheet-Recovered.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/pacman_sheet-double.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/pacman_sheet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/spritesheet - Copy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/j2d/components/sprite/AnimationFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/j2d/components/sprite/SpriteAnimation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/J2DEngine.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -64,7 +58,9 @@
       <change beforePath="$PROJECT_DIR$/src/j2d/components/physics/collider/CircleCollider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/physics/collider/CircleCollider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/components/physics/collider/Collider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/physics/collider/Collider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/components/sprite/AnimatedSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/sprite/AnimatedSprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/sprite/AnimationFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/sprite/AnimationFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/components/sprite/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/sprite/Sprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/sprite/SpriteAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/sprite/SpriteAnimation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/components/sprite/SpriteSheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/sprite/SpriteSheet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/Engine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/audio/AudioClip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/audio/AudioClip.java" afterDir="false" />
@@ -192,7 +188,7 @@
       <workItem from="1743712571082" duration="928000" />
       <workItem from="1744254200644" duration="5097000" />
       <workItem from="1744346204314" duration="3520000" />
-      <workItem from="1744518435074" duration="5378000" />
+      <workItem from="1744518435074" duration="5471000" />
     </task>
     <servers />
   </component>
