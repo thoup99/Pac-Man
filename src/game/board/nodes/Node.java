@@ -1,5 +1,6 @@
 package game.board.nodes;
 
+import game.Constants;
 import j2d.attributes.position.Position2D;
 import j2d.components.graphics.shapes.FillCircle;
 import j2d.components.graphics.shapes.Line;
@@ -39,16 +40,18 @@ public class Node extends GameObject {
     }
 
     public void loadDrawnComponents() {
-        pointCircle = new FillCircle(this, 0, position, 10);
-        pointCircle.setColor(Color.RED);
+        if (Constants.visualizeNodes) {
+            pointCircle = new FillCircle(this, 0, position, 10);
+            pointCircle.setColor(Color.RED);
 
-        lines.clear();
-        for (Node neighborNode : neighbors.values()) {
-            if (neighborNode != null && neighbors.get(Direction.PORTAL) != neighborNode) {
-                Line newLine = new Line(this, 0, position, neighborNode.getPosition());
-                newLine.setColor(Color.WHITE);
-                newLine.setStrokeWidth(5);
-                lines.add(newLine);
+            lines.clear();
+            for (Node neighborNode : neighbors.values()) {
+                if (neighborNode != null && neighbors.get(Direction.PORTAL) != neighborNode) {
+                    Line newLine = new Line(this, 0, position, neighborNode.getPosition());
+                    newLine.setColor(Color.WHITE);
+                    newLine.setStrokeWidth(5);
+                    lines.add(newLine);
+                }
             }
         }
     }

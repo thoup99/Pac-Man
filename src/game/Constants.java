@@ -49,4 +49,7 @@ public class Constants {
             }
         }
     }
+
+    //Debug Variables
+    public static final boolean visualizeNodes = false;
 }
