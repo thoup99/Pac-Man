@@ -26,24 +26,6 @@ public class SpriteSheet extends Sprite {
 
     BufferedImage spriteImage;
 
-    public static BufferedImage loadSheetImage(String filename) {
-        if (filename.charAt(0) != '/') {
-            filename = "/" + filename;
-        }
-
-        InputStream ipStream = SpriteSheet.class.getResourceAsStream(filename);
-
-        if (ipStream != null) {
-            try {
-                return ImageIO.read(ipStream);
-            } catch (IOException e) {
-                System.out.println(e.getMessage() + "Error Loading Image at " + filename);
-            }
-        }
-        return null;
-    }
-
-
     /**
      * Constructor for SpriteSheet Class
      * @param pos Position2D SpriteSheet will be linked to

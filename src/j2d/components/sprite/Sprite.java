@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Sprite.java
@@ -50,6 +51,21 @@ public class Sprite extends Component implements Renderable {
         loadSpriteFromPath(path);
     }
 
+    public Sprite(GameObject parent, Position2D pos, BufferedImage image) {
+        super(parent);
+        position = pos;
+        this.image = image;
+        addToRenderer();
+    }
+
+    public Sprite(GameObject parent, Position2D pos, BufferedImage image, int layer) {
+        super(parent);
+        position = pos;
+        this.image = image;
+        this.layer = layer;
+        addToRenderer();
+    }
+
     public Sprite(GameObject parent, Position2D pos, String path, int layer) {
         super(parent);
         position = pos;
@@ -70,6 +86,23 @@ public class Sprite extends Component implements Renderable {
         } catch (IOException e) {
             System.out.println(e.getMessage() + "Error Loading Image");
         }
+    }
+
+    public static BufferedImage loadImage(String filename) {
+        if (filename.charAt(0) != '/') {
+            filename = "/" + filename;
+        }
+
+        InputStream ipStream = SpriteSheet.class.getResourceAsStream(filename);
+
+        if (ipStream != null) {
+            try {
+                return ImageIO.read(ipStream);
+            } catch (IOException e) {
+                System.out.println(e.getMessage() + "Error Loading Image at " + filename);
+            }
+        }
+        return null;
     }
 
     /**

@@ -13,6 +13,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pac-Man.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Pac-Man.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/images/ghost_sheet.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/images/ghost_sheet.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/images/pacman_sheet-double.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/images/pacman_sheet.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/res/maps/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/maps/map1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/maps/map2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/maps/map2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
@@ -189,7 +192,7 @@
       <workItem from="1744254200644" duration="5097000" />
       <workItem from="1744346204314" duration="3520000" />
       <workItem from="1744518435074" duration="5471000" />
-      <workItem from="1744758190852" duration="4154000" />
+      <workItem from="1744758190852" duration="10305000" />
     </task>
     <servers />
   </component>

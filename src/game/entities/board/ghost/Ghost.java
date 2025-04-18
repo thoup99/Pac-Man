@@ -7,8 +7,6 @@ import game.entities.board.PacMan;
 import j2d.attributes.Vector2D;
 import j2d.attributes.position.OffsetPosition2D;
 import j2d.attributes.position.Position2D;
-import j2d.components.graphics.shapes.Circle;
-import j2d.components.graphics.shapes.FillCircle;
 import j2d.components.physics.collider.CircleCollider;
 
 import game.Constants.Direction;
@@ -60,7 +58,7 @@ public abstract class Ghost extends BoardEntity {
 
 
         spriteDrawPosition = new OffsetPosition2D(position, -7, -7);
-        BufferedImage ghostSheet = SpriteSheet.loadSheetImage("./images/ghost_sheet.png");
+        BufferedImage ghostSheet = SpriteSheet.loadImage("./images/ghost_sheet.png");
         animatedSprite = new AnimatedSprite<GhostAnimations>(this, spriteDrawPosition, ghostSheet, 4, 10);
         animatedSprite.setLayer(3);
         animatedSprite.setPadding(1, 1);

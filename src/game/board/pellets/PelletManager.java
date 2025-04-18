@@ -2,7 +2,9 @@ package game.board.pellets;
 
 import game.PacManController;
 import j2d.attributes.position.Position2D;
+import j2d.components.sprite.Sprite;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +16,16 @@ public class PelletManager {
     private final List<PowerPellet> powerPellets;
     private final PacManController pacManController;
 
+    private final BufferedImage pelletImage;
+    private final BufferedImage powerPelletImage;
+
     public PelletManager(PacManController pacManController) {
         pellets = new ArrayList<>();
         powerPellets = new ArrayList<>();
         this.pacManController = pacManController;
+
+        pelletImage = Sprite.loadImage("./images/pellet.png");
+        powerPelletImage = Sprite.loadImage("./images/power_pellet_sheet.png");
     }
 
     public void loadPellets(char[][] mapData) {
@@ -45,6 +53,14 @@ public class PelletManager {
 
     private boolean isPowerPelletSymbol(char value) {
         return value == 'P' || value == 'p';
+    }
+
+    public BufferedImage getPelletImage() {
+        return pelletImage;
+    }
+
+    public BufferedImage getPowerPelletImage() {
+        return powerPelletImage;
     }
 
     public void emptyPellets() {

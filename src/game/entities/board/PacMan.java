@@ -22,7 +22,6 @@ import java.awt.image.BufferedImage;
 import java.util.Arrays;
 
 public class PacMan extends BoardEntity implements KeySubscriber {
-    //final Circle pacCircle;
     CircleCollider collider;
     Direction facingDirection = Direction.LEFT;
     PacManController pacManController;
@@ -36,11 +35,9 @@ public class PacMan extends BoardEntity implements KeySubscriber {
     public PacMan(Node startNode, PacManController pacManController) {
         super(startNode);
         this.pacManController = pacManController;
-        //pacCircle = new FillCircle(this,2, position, 12 );
-        //pacCircle.setColor(Color.YELLOW);
 
         spriteDrawPosition = new OffsetPosition2D(position, -7, -7);
-        BufferedImage pacManSheet = SpriteSheet.loadSheetImage("./images/pacman_sheet-Recovered.png");
+        BufferedImage pacManSheet = SpriteSheet.loadImage("./images/pacman_sheet-Recovered.png");
         animatedSprite = new AnimatedSprite<PacManAnimations>(this, spriteDrawPosition, pacManSheet, 5, 12);
         animatedSprite.setLayer(2);
         animatedSprite.setPadding(1, 1);
