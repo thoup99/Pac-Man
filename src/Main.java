@@ -41,5 +41,6 @@ public class Main {
         Renderer.createLayer(4); // UI
 
         PacManController pacManController = new PacManController();
+        Engine.ready();
     }
 }

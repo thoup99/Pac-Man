@@ -89,11 +89,14 @@ public class Sprite extends Component implements Renderable {
     }
 
     public static BufferedImage loadImage(String filename) {
-        if (filename.charAt(0) != '/') {
+        if (filename.indexOf("./") == 0) {
+            filename = filename.substring(1);
+        }
+        else if (filename.charAt(0) != '/') {
             filename = "/" + filename;
         }
 
-        InputStream ipStream = SpriteSheet.class.getResourceAsStream(filename);
+        InputStream ipStream = Sprite.class.getResourceAsStream(filename);
 
         if (ipStream != null) {
             try {

@@ -33,6 +33,7 @@ public class PacManController extends GameObject {
         ghostEatenTimer.setOneShot(true);
         levelCompletedTimer.setOneShot(true);
         pacManDeathTimer.setOneShot(true);
+        System.out.println("Controller Loaded");
     }
 
     public void powerPelletEaten() {
@@ -88,7 +89,7 @@ public class PacManController extends GameObject {
         board.unloadMap();
 
         //Load next map
-        board.loadMap("/maps/map2.txt");
+        board.loadMap("/maps/map1.txt");
 
         //Create new pacman and ghost
         pacMan = new PacMan(board.getNodeManager().getStartNode(), this);

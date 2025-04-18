@@ -37,10 +37,14 @@ public class Engine implements Runnable {
         Debug.initialize();
 
         setTargetFPS(30);
+    }
 
-        engine = new Engine();
-        engineThread = new Thread(engine);
-        engineThread.start();
+    public static void ready() {
+        if (engineThread == null) {
+            engine = new Engine();
+            engineThread = new Thread(engine);
+            engineThread.start();
+        }
     }
 
     private Engine() {}
