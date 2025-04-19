@@ -12,7 +12,7 @@ import j2d.engine.gameobject.GameObject;
 public class PacManController extends GameObject {
     Sprite background = new Sprite(this, new Position2D(0, 0), "/images/background.png");
     Sprite map = new Sprite(this, new Position2D(0, 48), "/images/maze_outline.png");
-    //Sprite map = new Sprite(this, new Position2D(0, 48), "/images/Arcade - Pac-Man - Maze Parts.png");
+
     Board board;
     PacMan pacMan;
     GhostManager ghostManager;
@@ -33,7 +33,6 @@ public class PacManController extends GameObject {
         ghostEatenTimer.setOneShot(true);
         levelCompletedTimer.setOneShot(true);
         pacManDeathTimer.setOneShot(true);
-        System.out.println("Controller Loaded");
     }
 
     public void powerPelletEaten() {
