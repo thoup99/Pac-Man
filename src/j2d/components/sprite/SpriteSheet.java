@@ -85,7 +85,6 @@ public class SpriteSheet extends Sprite {
     public void setSprite(int row, int col) {
         int x = xPadding + ( (individualSpriteWidth + xSpacing) * col );
         int y = yPadding + ( (individualSpriteHeight + ySpacing) * row );
-        //System.out.println("Sprite: ("+ row + ", " + col + ") X: " + x + " Y: " + y + " Width: " + individualSpriteWidth + " Height: " + individualSpriteHeight);
         spriteImage = image.getSubimage(x, y, individualSpriteWidth, individualSpriteHeight);
     }
 

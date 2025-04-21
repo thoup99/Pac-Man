@@ -54,7 +54,6 @@ public class ScoreEntity extends GameObject {
         emptyCharEntities();
         for (int i = 0; i < scoreLength; i++) {
             CharEntity newEntity = new CharEntity(new Position2D(position.getX() + ((CHAR_WIDTH + CHAR_SPACE) * i), position.getY()));
-            System.out.println(position.getX() + ((CHAR_WIDTH + CHAR_SPACE) * i));
             charEntities.add(newEntity);
         }
     }
