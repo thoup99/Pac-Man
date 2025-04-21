@@ -16,6 +16,10 @@ public class PelletManager {
     private final List<PowerPellet> powerPellets;
     private final PacManController pacManController;
 
+    private static final int PELLET_SCORE = 10;
+    private static final int POWER_PELLET_SCORE = 50;
+
+
     private final BufferedImage pelletImage;
     private final BufferedImage powerPelletImage;
 
@@ -81,8 +85,10 @@ public class PelletManager {
 
     protected void removePellet(Pellet pellet) {
         if (pellet instanceof PowerPellet) {
+            pacManController.addScore(POWER_PELLET_SCORE);
             powerPellets.remove(pellet);
         } else {
+            pacManController.addScore(PELLET_SCORE);
             pellets.remove(pellet);
         }
     }

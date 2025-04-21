@@ -39,6 +39,10 @@ public class Board {
             System.out.println("Error reading map. Reason: " + e.getMessage());
         }
 
+        if (mapData == null) {
+            throw new RuntimeException("Error reading map.");
+        }
+
         nodeManager.loadNodes(mapData);
         pelletManager.loadPellets(mapData);
     }

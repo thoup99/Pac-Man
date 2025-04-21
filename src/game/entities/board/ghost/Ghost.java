@@ -48,7 +48,7 @@ public abstract class Ghost extends BoardEntity {
 
     boolean isPaused = false;
 
-    public Ghost(int ghostSpriteColumn, Node startNode, NodeManager nodeManager, PacMan pacman) {
+    public Ghost(Node startNode, NodeManager nodeManager, PacMan pacman) {
         super(startNode);
         this.nodeManager = nodeManager;
         this.pacman = pacman;
@@ -63,7 +63,7 @@ public abstract class Ghost extends BoardEntity {
         animatedSprite.setLayer(3);
         animatedSprite.setPadding(1, 1);
         animatedSprite.setSpacing(1, 1);
-        loadAnimations(ghostSpriteColumn);
+        loadAnimations();
         animatedSprite.playAnimation(GhostAnimations.MOVE_LEFT);
 
         collider = new CircleCollider(this, position, 6);
@@ -273,8 +273,19 @@ public abstract class Ghost extends BoardEntity {
         animatedSprite.resumeAnimation();
     }
 
-    private void loadAnimations(int ghostCol) {
+    private void loadAnimations() {
         int spriteTime = 80;
+
+        int ghostCol;
+        if (this instanceof Blinky) {
+            ghostCol = 0;
+        } else if (this instanceof Pinky) {
+            ghostCol = 2;
+        } else if (this instanceof Inky) {
+            ghostCol = 4;
+        } else {
+            ghostCol = 6;
+        }
 
         SpriteAnimation move_right = new SpriteAnimation(true, Arrays.asList(
                 new AnimationFrame(animatedSprite.getSpriteNum(0, ghostCol), spriteTime),

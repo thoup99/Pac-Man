@@ -89,6 +89,7 @@ public class Sprite extends Component implements Renderable {
     }
 
     public static BufferedImage loadImage(String filename) {
+        //TODO - MAKE THIS ERROR OUT WITH A DEDICATED MESSAGE
         if (filename.indexOf("./") == 0) {
             filename = filename.substring(1);
         }

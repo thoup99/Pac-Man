@@ -4,12 +4,14 @@ package game;
 import game.board.Board;
 import game.entities.board.PacMan;
 import game.entities.board.ghost.GhostManager;
+import game.entities.ui.UIManager;
 import j2d.attributes.position.Position2D;
 import j2d.components.Timer;
 import j2d.components.sprite.Sprite;
 import j2d.engine.gameobject.GameObject;
 
 public class PacManController extends GameObject {
+    UIManager uiManager = new UIManager();
     Sprite background = new Sprite(this, new Position2D(0, 0), "/images/background.png");
     Sprite map = new Sprite(this, new Position2D(0, 48), "/images/maze_outline.png");
 
@@ -39,6 +41,10 @@ public class PacManController extends GameObject {
         ghostManager.forceFrightMode();
     }
 
+    public void addScore(int score) {
+        uiManager.addScore(score);
+    }
+
     public void pauseAll() {
         ghostManager.pauseAllGhost();
         pacMan.pause();
@@ -55,10 +61,8 @@ public class PacManController extends GameObject {
     }
 
     public void onPacManDeath() {
-        //Pause Ghost and PacMan
         pauseAll();
         pacMan.allowAnimations();
-        //Animation is played internally by pacman
     }
 
     public void onDeathAnimationCompleted() {

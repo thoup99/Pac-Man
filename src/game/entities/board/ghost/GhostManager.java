@@ -23,6 +23,9 @@ public class GhostManager extends GameObject {
     Timer chaseTimer;
     Timer frightTimer;
 
+    int[] EatBonus = {200, 400, 800, 1600};
+    int ghostEaten = 0;
+
     public GhostManager(Board board, PacMan pacMan) {
         loadGhost(board.getNodeManager(), pacMan);
 
@@ -93,6 +96,8 @@ public class GhostManager extends GameObject {
                 ghost.startFright();
             }
         }
+        ghostEaten = 0;
+
         preFrightMode = globalMode;
         globalMode = GhostMode.FRIGHT;
 

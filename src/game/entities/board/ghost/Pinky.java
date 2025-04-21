@@ -13,7 +13,7 @@ import static game.Constants.TILE_SIZE;
 public class Pinky extends Ghost {
 
     public Pinky(NodeManager nodeManager, PacMan pacman) {
-        super(2, nodeManager.getPinkyStartNode(), nodeManager, pacman);
+        super(nodeManager.getPinkyStartNode(), nodeManager, pacman);
         scatterPosition = new Position2D(BOARD_START_POSITION);
         calculateNewGoalPosition();
 

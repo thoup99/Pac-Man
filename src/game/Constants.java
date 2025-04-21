@@ -50,6 +50,8 @@ public class Constants {
         }
     }
 
+    public static final int LIFE_UP_INTERVAL = 10000;
+
     //Debug Variables
     public static final boolean visualizeNodes = false;
 }

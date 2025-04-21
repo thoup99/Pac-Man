@@ -30,7 +30,7 @@ public class Main {
         window.setTitle("Pac-Man");
         window.setBackgroundColor(Color.BLACK);
 
-        Debug.setDrawFPS(true);
+        //Debug.setDrawFPS(true);
 
         window.setCloseOnEsc(true);
 
