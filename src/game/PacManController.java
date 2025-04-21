@@ -25,8 +25,8 @@ public class PacManController extends GameObject {
 
     public PacManController() {
         board = new Board(this);
-        pacMan = new PacMan(board.getNodeManager().getStartNode(), this);
-        ghostManager = new GhostManager(board, pacMan);
+        pacMan = new PacMan(this, board.getNodeManager().getStartNode());
+        ghostManager = new GhostManager(this, board, pacMan);
 
         ghostEatenTimer = new Timer(this, 1000, this::unpauseAll);
         levelCompletedTimer = new Timer(this, 500, this::onLevelFlashCompleted);
@@ -95,7 +95,7 @@ public class PacManController extends GameObject {
         board.loadMap("/maps/map1.txt");
 
         //Create new pacman and ghost
-        pacMan = new PacMan(board.getNodeManager().getStartNode(), this);
+        pacMan = new PacMan(this, board.getNodeManager().getStartNode());
         ghostManager.loadGhost(board.getNodeManager(), pacMan);
         ghostManager.startRound();
     }

@@ -31,6 +31,7 @@ public abstract class Ghost extends BoardEntity {
     static final int SPAWN_SPEED = 150;
 
     NodeManager nodeManager;
+    public static GhostManager ghostManager;
 
     PacMan pacman;
     Position2D pacmanPosition;
@@ -100,6 +101,10 @@ public abstract class Ghost extends BoardEntity {
     public void onCollision(GameObject other) {
         if (other instanceof PacMan) {
             if (currentMode == GhostMode.FRIGHT) {
+                if (ghostManager != null) {
+                    ghostManager.onGhostEaten();
+                }
+
                 startSpawn();
                 determineAnimation();
             }

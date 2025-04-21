@@ -32,7 +32,7 @@ public class PacMan extends BoardEntity implements KeySubscriber {
     enum PacManAnimations {MOVE_UP, MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT, DIE}
     AnimatedSprite<PacManAnimations> animatedSprite;
 
-    public PacMan(Node startNode, PacManController pacManController) {
+    public PacMan( PacManController pacManController, Node startNode) {
         super(startNode);
         this.pacManController = pacManController;
 
@@ -152,11 +152,9 @@ public class PacMan extends BoardEntity implements KeySubscriber {
     private void onPacManDeath() {
         pacManController.onPacManDeath();
         animatedSprite.playAnimation(PacManAnimations.DIE);
-        System.out.println("Death Detected");
     }
 
     private void onDeathComplete() {
-        System.out.println("PacMan Death Complete");
         pacManController.onDeathAnimationCompleted();
     }
 

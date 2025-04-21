@@ -1,5 +1,6 @@
 package game.entities.board.ghost;
 
+import game.PacManController;
 import game.board.Board;
 import game.board.nodes.NodeManager;
 import game.entities.board.PacMan;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GhostManager extends GameObject {
+    PacManController pacManController;
     private GhostMode preFrightMode;
     private GhostMode globalMode = GhostMode.SCATTER;
     final List<Ghost> ghosts = new ArrayList<Ghost>();
@@ -23,10 +25,12 @@ public class GhostManager extends GameObject {
     Timer chaseTimer;
     Timer frightTimer;
 
-    int[] EatBonus = {200, 400, 800, 1600};
+    private final int baseEatBonus = 200;
     int ghostEaten = 0;
 
-    public GhostManager(Board board, PacMan pacMan) {
+    public GhostManager(PacManController pacManController, Board board, PacMan pacMan) {
+        this.pacManController = pacManController;
+        Ghost.ghostManager = this;
         loadGhost(board.getNodeManager(), pacMan);
 
         scatterTimer = new Timer(this, 7000, this::startChaseMode);
@@ -105,6 +109,11 @@ public class GhostManager extends GameObject {
         scatterTimer.pause();
         frightTimer.restart();
         frightTimer.start();
+    }
+
+    public void onGhostEaten() {
+        ghostEaten++;
+        pacManController.addScore(baseEatBonus * ghostEaten);
     }
 
     public void pauseAllGhost() {
