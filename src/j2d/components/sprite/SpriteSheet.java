@@ -59,7 +59,7 @@ public class SpriteSheet extends Sprite {
     }
 
     private void recalculateSpriteDimensions() {
-        this.individualSpriteWidth = (image.getWidth() - (2 * xPadding) - ((numRows - 1) * xSpacing)) / numCols;
+        this.individualSpriteWidth = (image.getWidth() - (2 * xPadding) - ((numCols - 1) * xSpacing)) / numCols;
         this.individualSpriteHeight = (image.getHeight() - (2 * yPadding) - ((numRows - 1) * ySpacing)) / numRows;
     }
 

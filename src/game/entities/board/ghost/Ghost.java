@@ -58,12 +58,12 @@ public abstract class Ghost extends BoardEntity {
         isPaused = false;
 
 
-        spriteDrawPosition = new OffsetPosition2D(position, -7, -7);
-        BufferedImage ghostSheet = SpriteSheet.loadImage("./images/ghost_sheet.png");
+        spriteDrawPosition = new OffsetPosition2D(position, -14, -14);
+        BufferedImage ghostSheet = SpriteSheet.loadImage("./images/ghost_sheet_2x.png");
         animatedSprite = new AnimatedSprite<GhostAnimations>(this, spriteDrawPosition, ghostSheet, 4, 10);
         animatedSprite.setLayer(3);
-        animatedSprite.setPadding(1, 1);
-        animatedSprite.setSpacing(1, 1);
+        animatedSprite.setPadding(2, 2);
+        animatedSprite.setSpacing(2, 2);
         loadAnimations();
         animatedSprite.playAnimation(GhostAnimations.MOVE_LEFT);
 

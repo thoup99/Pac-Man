@@ -36,12 +36,12 @@ public class PacMan extends BoardEntity implements KeySubscriber {
         super(startNode);
         this.pacManController = pacManController;
 
-        spriteDrawPosition = new OffsetPosition2D(position, -7, -7);
-        BufferedImage pacManSheet = SpriteSheet.loadImage("./images/pacman_sheet.png");
+        spriteDrawPosition = new OffsetPosition2D(position, -14, -14);
+        BufferedImage pacManSheet = SpriteSheet.loadImage("./images/pacman_sheet_2x.png");
         animatedSprite = new AnimatedSprite<PacManAnimations>(this, spriteDrawPosition, pacManSheet, 5, 12);
         animatedSprite.setLayer(2);
-        animatedSprite.setPadding(1, 1);
-        animatedSprite.setSpacing(1, 1);
+        animatedSprite.setPadding(2, 2);
+        animatedSprite.setSpacing(2, 2);
         loadAnimations();
         animatedSprite.playAnimation(PacManAnimations.MOVE_LEFT);
 
