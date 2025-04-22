@@ -23,6 +23,12 @@ public class PacManController extends GameObject {
     Timer levelCompletedTimer;
     Timer pacManDeathTimer;
 
+    final int START_LIVES = 3;
+    final int MAX_LIVES = 5;
+    final int LIFE_SCORE_THRESHOLD = 10000;
+    int nextScoreThreshold = LIFE_SCORE_THRESHOLD;
+    int lives = START_LIVES;
+
     public PacManController() {
         board = new Board(this);
         pacMan = new PacMan(this, board.getNodeManager().getStartNode());
@@ -43,6 +49,14 @@ public class PacManController extends GameObject {
 
     public void addScore(int score) {
         uiManager.addScore(score);
+
+        if (uiManager.getCurrentScore() > nextScoreThreshold) {
+            nextScoreThreshold += LIFE_SCORE_THRESHOLD;
+
+            if (lives < MAX_LIVES) {
+                lives++;
+            }
+        }
     }
 
     public void pauseAll() {
@@ -67,9 +81,20 @@ public class PacManController extends GameObject {
 
     public void onDeathAnimationCompleted() {
         //Reset Ghost and PacMan positions
-        ghostManager.resetAllGhost();
-        pacMan.resetPosition();
-        unpauseAll();
+        lives--;
+        if (lives <= 0) {
+            uiManager.resetUI();
+            uiManager.incrementPlayCounter();
+            lives = START_LIVES;
+            nextScoreThreshold = LIFE_SCORE_THRESHOLD;
+
+            reloadLevel();
+        } else {
+
+            ghostManager.resetAllGhost();
+            pacMan.resetPosition();
+            unpauseAll();
+        }
     }
 
     public void checkBoardClear() {
@@ -88,6 +113,16 @@ public class PacManController extends GameObject {
     }
 
     private void onLevelFlashCompleted() {
+        reloadLevel();
+    }
+
+    private void reloadLevel() {
+        ghostManager.unloadGhost();
+        if (pacMan != null) {
+            pacMan.queueDelete();
+            pacMan = null;
+        }
+
         //Unload current map
         board.unloadMap();
 

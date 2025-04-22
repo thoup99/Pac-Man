@@ -45,7 +45,7 @@ public class PacMan extends BoardEntity implements KeySubscriber {
         loadAnimations();
         animatedSprite.playAnimation(PacManAnimations.MOVE_LEFT);
 
-        collider = new CircleCollider(this, position, 6);
+        collider = new CircleCollider(this, position, 9);
 
         currentDirection = Direction.LEFT;
         setMovementSpeed(100);

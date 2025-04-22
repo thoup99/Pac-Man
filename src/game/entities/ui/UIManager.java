@@ -36,6 +36,10 @@ public class UIManager {
         }
     }
 
+    public int getCurrentScore() {
+        return scoreDisplay.getScore();
+    }
+
     public void incrementPlayCounter() {
         playCountDisplay.addScore(1);
     }
