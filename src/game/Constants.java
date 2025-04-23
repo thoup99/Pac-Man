@@ -51,6 +51,8 @@ public class Constants {
     }
 
     public static final int LIFE_UP_INTERVAL = 10000;
+    public static final int MAX_LIVES = 5;
+    public static final int START_LIVES = 3;
 
     //Debug Variables
     public static final boolean visualizeNodes = false;

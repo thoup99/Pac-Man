@@ -23,11 +23,8 @@ public class PacManController extends GameObject {
     Timer levelCompletedTimer;
     Timer pacManDeathTimer;
 
-    final int START_LIVES = 3;
-    final int MAX_LIVES = 5;
-    final int LIFE_SCORE_THRESHOLD = 10000;
-    int nextScoreThreshold = LIFE_SCORE_THRESHOLD;
-    int lives = START_LIVES;
+    int nextScoreThreshold = Constants.LIFE_UP_INTERVAL;
+    int lives = Constants.START_LIVES;
 
     public PacManController() {
         board = new Board(this);
@@ -41,6 +38,7 @@ public class PacManController extends GameObject {
         ghostEatenTimer.setOneShot(true);
         levelCompletedTimer.setOneShot(true);
         pacManDeathTimer.setOneShot(true);
+        uiManager.resetUI();
     }
 
     public void powerPelletEaten() {
@@ -51,10 +49,11 @@ public class PacManController extends GameObject {
         uiManager.addScore(score);
 
         if (uiManager.getCurrentScore() > nextScoreThreshold) {
-            nextScoreThreshold += LIFE_SCORE_THRESHOLD;
+            nextScoreThreshold += Constants.LIFE_UP_INTERVAL;
 
-            if (lives < MAX_LIVES) {
+            if (lives < Constants.MAX_LIVES) {
                 lives++;
+                uiManager.setLives(lives);
             }
         }
     }
@@ -85,12 +84,12 @@ public class PacManController extends GameObject {
         if (lives <= 0) {
             uiManager.resetUI();
             uiManager.incrementPlayCounter();
-            lives = START_LIVES;
-            nextScoreThreshold = LIFE_SCORE_THRESHOLD;
+            lives = Constants.START_LIVES;
+            nextScoreThreshold = Constants.LIFE_UP_INTERVAL;
 
             reloadLevel();
         } else {
-
+            uiManager.setLives(lives);
             ghostManager.resetAllGhost();
             pacMan.resetPosition();
             unpauseAll();

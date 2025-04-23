@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c430b4-c26f-491d-b2fc-f82397dbd881" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/res/images/life_icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/Pac_Man_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Pac_Man_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -198,7 +199,7 @@
       <workItem from="1744254200644" duration="5097000" />
       <workItem from="1744346204314" duration="3520000" />
       <workItem from="1744518435074" duration="5471000" />
-      <workItem from="1744758190852" duration="30654000" />
+      <workItem from="1744758190852" duration="34891000" />
     </task>
     <servers />
   </component>

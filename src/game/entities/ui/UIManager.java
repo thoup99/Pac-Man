@@ -36,6 +36,10 @@ public class UIManager {
         }
     }
 
+    public void setLives(int lives) {
+        lifeDisplay.setLives(lives);
+    }
+
     public int getCurrentScore() {
         return scoreDisplay.getScore();
     }
@@ -46,6 +50,7 @@ public class UIManager {
 
     public void resetUI() {
         scoreDisplay.setScore(0);
+        lifeDisplay.setLives(Constants.START_LIVES);
     }
 
 }
