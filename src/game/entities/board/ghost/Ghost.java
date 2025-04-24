@@ -130,7 +130,7 @@ public abstract class Ghost extends BoardEntity {
         reverseDirection();
         setMovementSpeed(FRIGHT_SPEED);
         currentMode = GhostMode.FRIGHT;
-        determineAnimation();
+        animatedSprite.playAnimation(GhostAnimations.FLEE);
     }
 
     protected void startSpawn() {
@@ -250,6 +250,11 @@ public abstract class Ghost extends BoardEntity {
     }
 
     private void determineAnimation() {
+        if (currentMode == GhostMode.FRIGHT) {
+            animatedSprite.resumeAnimation();
+            return;
+        }
+
         if (currentMode == GhostMode.RETURN_SPAWN) {
             animatedSprite.pauseAnimation();
 
@@ -316,16 +321,34 @@ public abstract class Ghost extends BoardEntity {
             )
         );
 
-        SpriteAnimation flee = new SpriteAnimation(true, Arrays.asList(
-                new AnimationFrame(animatedSprite.getSpriteNum(0, ghostCol), spriteTime),
-                new AnimationFrame(animatedSprite.getSpriteNum(0, ghostCol + 1), spriteTime)
-            )
-        );
+        int blueFrame1 = animatedSprite.getSpriteNum(0, 9);
+        int blueFrame2 = animatedSprite.getSpriteNum(1, 9);
+        int whiteFrame1 = animatedSprite.getSpriteNum(2, 9);
+        int whiteFrame2 = animatedSprite.getSpriteNum(3, 9);
+        ArrayList<AnimationFrame> fleeFrames = new ArrayList<>();
+
+        // 7000 ms of animation time
+        int fleeSpriteTime = 120;
+        for (int i = 0; i <= 5160; i += (fleeSpriteTime * 2)) {
+            fleeFrames.add(new AnimationFrame(blueFrame1, fleeSpriteTime));
+            fleeFrames.add(new AnimationFrame(blueFrame2, fleeSpriteTime));
+        }
+        for (int j = 0; j <= 1800; j += (fleeSpriteTime * 4)) {
+            fleeFrames.add(new AnimationFrame(whiteFrame1, fleeSpriteTime));
+            fleeFrames.add(new AnimationFrame(whiteFrame2, fleeSpriteTime));
+            fleeFrames.add(new AnimationFrame(blueFrame1, fleeSpriteTime));
+            fleeFrames.add(new AnimationFrame(blueFrame2, fleeSpriteTime));
+        }
+        fleeFrames.add(new AnimationFrame(whiteFrame1, 40));
+        // End animation creation
+
+        SpriteAnimation flee = new SpriteAnimation(true, fleeFrames);
 
         animatedSprite.addAnimation(GhostAnimations.MOVE_RIGHT, move_right);
         animatedSprite.addAnimation(GhostAnimations.MOVE_LEFT, move_left);
         animatedSprite.addAnimation(GhostAnimations.MOVE_UP, move_up);
         animatedSprite.addAnimation(GhostAnimations.MOVE_DOWN, move_down);
+        animatedSprite.addAnimation(GhostAnimations.FLEE, flee);
     }
 
     public Position2D getPosition() {
