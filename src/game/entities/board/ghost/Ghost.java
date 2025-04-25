@@ -373,6 +373,14 @@ public abstract class Ghost extends BoardEntity {
         determineAnimation();
     }
 
+    protected void hide() {
+        animatedSprite.setVisible(false);
+    }
+
+    protected void show() {
+        animatedSprite.setVisible(true);
+    }
+
     protected void resetPosition() {
         currentNode = startNode;
         targetNode = startNode;

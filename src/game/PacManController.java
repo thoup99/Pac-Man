@@ -75,6 +75,7 @@ public class PacManController extends GameObject {
 
     public void onPacManDeath() {
         pauseAll();
+        ghostManager.hideGhosts();
         pacMan.allowAnimations();
     }
 
@@ -91,6 +92,7 @@ public class PacManController extends GameObject {
         } else {
             uiManager.setLives(lives);
             ghostManager.resetAllGhost();
+            ghostManager.showGhosts();
             pacMan.resetPosition();
             unpauseAll();
         }

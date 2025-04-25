@@ -10,7 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c430b4-c26f-491d-b2fc-f82397dbd881" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/res/images/life_icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/Pac_Man_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Pac_Man_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -20,6 +19,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pac-Man.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Pac-Man.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/res/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/images/pacman_sheet.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/images/pacman_sheet.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/maps/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/maps/map1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/maps/map2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/maps/map2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
@@ -199,7 +199,7 @@
       <workItem from="1744254200644" duration="5097000" />
       <workItem from="1744346204314" duration="3520000" />
       <workItem from="1744518435074" duration="5471000" />
-      <workItem from="1744758190852" duration="34891000" />
+      <workItem from="1744758190852" duration="39890000" />
     </task>
     <servers />
   </component>

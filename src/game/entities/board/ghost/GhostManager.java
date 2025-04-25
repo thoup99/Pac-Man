@@ -157,6 +157,18 @@ public class GhostManager extends GameObject {
         frightTimer.restart();
     }
 
+    public void hideGhosts() {
+        for (Ghost ghost : ghosts) {
+            ghost.hide();
+        }
+    }
+
+    public void showGhosts() {
+        for (Ghost ghost : ghosts) {
+            ghost.show();
+        }
+    }
+
     @Override
     public void update(double delta) {
 

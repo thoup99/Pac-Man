@@ -36,9 +36,9 @@ public class PacMan extends BoardEntity implements KeySubscriber {
         super(startNode);
         this.pacManController = pacManController;
 
-        spriteDrawPosition = new OffsetPosition2D(position, -14, -14);
-        BufferedImage pacManSheet = SpriteSheet.loadImage("./images/pacman_sheet_2x.png");
-        animatedSprite = new AnimatedSprite<PacManAnimations>(this, spriteDrawPosition, pacManSheet, 5, 12);
+        spriteDrawPosition = new OffsetPosition2D(position, -15, -15);
+        BufferedImage pacManSheet = SpriteSheet.loadImage("./images/pacman_sheet.png");
+        animatedSprite = new AnimatedSprite<PacManAnimations>(this, spriteDrawPosition, pacManSheet, 4, 14);
         animatedSprite.setLayer(2);
         animatedSprite.setPadding(2, 2);
         animatedSprite.setSpacing(2, 2);
@@ -180,42 +180,51 @@ public class PacMan extends BoardEntity implements KeySubscriber {
         //Make Animations
         int chompTime = 60;
         SpriteAnimation moveRight = new SpriteAnimation(true, Arrays.asList(
+                new AnimationFrame(2, chompTime),
                 new AnimationFrame(0, chompTime),
-                new AnimationFrame(12, chompTime),
-                new AnimationFrame(13, chompTime),
-                new AnimationFrame(12, chompTime)
+                new AnimationFrame(1, chompTime),
+                new AnimationFrame(0, chompTime)
             )
         );
 
         SpriteAnimation moveLeft = new SpriteAnimation(true, Arrays.asList(
-                new AnimationFrame(0, chompTime),
-                new AnimationFrame(24, chompTime),
-                new AnimationFrame(25, chompTime),
-                new AnimationFrame(24, chompTime)
+                new AnimationFrame(2, chompTime),
+                new AnimationFrame(14, chompTime),
+                new AnimationFrame(15, chompTime),
+                new AnimationFrame(14, chompTime)
             )
         );
 
         SpriteAnimation moveUp = new SpriteAnimation(true, Arrays.asList(
-                new AnimationFrame(0, chompTime),
-                new AnimationFrame(36, chompTime),
-                new AnimationFrame(37, chompTime),
-                new AnimationFrame(36, chompTime)
+                new AnimationFrame(2, chompTime),
+                new AnimationFrame(28, chompTime),
+                new AnimationFrame(29, chompTime),
+                new AnimationFrame(28, chompTime)
             )
         );
 
         SpriteAnimation MoveDown = new SpriteAnimation(true, Arrays.asList(
-                new AnimationFrame(0, chompTime),
-                new AnimationFrame(48, chompTime),
-                new AnimationFrame(49, chompTime),
-                new AnimationFrame(48, chompTime)
+                new AnimationFrame(2, chompTime),
+                new AnimationFrame(42, chompTime),
+                new AnimationFrame(43, chompTime),
+                new AnimationFrame(42, chompTime)
             )
         );
 
+        int deathFrameTime = 180;
         SpriteAnimation die = new SpriteAnimation(false, this::onDeathComplete, Arrays.asList(
-                new AnimationFrame(0, 100),
-                new AnimationFrame(12, 100),
-                new AnimationFrame(13, 100),
-                new AnimationFrame(12, 100)
+                new AnimationFrame(2, deathFrameTime),
+                new AnimationFrame(3, deathFrameTime),
+                new AnimationFrame(4, deathFrameTime),
+                new AnimationFrame(5, deathFrameTime),
+                new AnimationFrame(6, deathFrameTime),
+                new AnimationFrame(7, deathFrameTime),
+                new AnimationFrame(8, deathFrameTime),
+                new AnimationFrame(9, deathFrameTime),
+                new AnimationFrame(10, deathFrameTime),
+                new AnimationFrame(11, deathFrameTime),
+                new AnimationFrame(12, deathFrameTime),
+                new AnimationFrame(13, deathFrameTime)
             )
         );
 
