@@ -1,6 +1,7 @@
 package game.entities.ui;
 
 import game.Constants;
+import game.client.PacManClient;
 import game.entities.ui.text.ScoreEntity;
 import j2d.attributes.position.Position2D;
 
@@ -25,7 +26,8 @@ public class UIManager {
     }
 
     public void loadHighScore() {
-        //Fetch from database / local file
+        int highScore = PacManClient.getHighScore();
+        highScoreDisplay.setScore(highScore);
     }
 
     public void addScore(int toAdd) {

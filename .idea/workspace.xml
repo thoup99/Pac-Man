@@ -10,6 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c430b4-c26f-491d-b2fc-f82397dbd881" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/game/client/ConnectionText.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/client/PacManClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/Connection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/PacManServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/ScoreSaver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/Pac_Man_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Pac_Man_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -19,7 +24,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pac-Man.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Pac-Man.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/res/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/images/pacman_sheet.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/images/pacman_sheet.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/maps/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/maps/map1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/maps/map2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/maps/map2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
@@ -130,9 +134,10 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "Application.PacMan.executor": "Run",
+    "Application.PacManServer.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "FinalSubmission",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/thoup/OneDrive/Desktop/Pac-Man",
     "node.js.detected.package.eslint": "true",

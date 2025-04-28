@@ -1,5 +1,7 @@
 import game.Constants;
 import game.PacManController;
+import game.client.ConnectionText;
+import game.client.PacManClient;
 import j2d.engine.Engine;
 import j2d.engine.debug.Debug;
 import j2d.engine.render.Renderer;
@@ -40,7 +42,10 @@ public class Main {
         Renderer.createLayer(3); // Ghost
         Renderer.createLayer(4); // UI
 
+        ConnectionText connectionText = new ConnectionText((float) Constants.SCREEN_WIDTH / 2, 200);
+        PacManClient.init();
         PacManController pacManController = new PacManController();
+        connectionText.queueDelete();
         Engine.ready();
     }
 }

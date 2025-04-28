@@ -2,6 +2,7 @@ package game;
 
 
 import game.board.Board;
+import game.client.PacManClient;
 import game.entities.board.PacMan;
 import game.entities.board.ghost.GhostManager;
 import game.entities.ui.UIManager;
@@ -39,6 +40,7 @@ public class PacManController extends GameObject {
         levelCompletedTimer.setOneShot(true);
         pacManDeathTimer.setOneShot(true);
         uiManager.resetUI();
+        uiManager.loadHighScore();
     }
 
     public void powerPelletEaten() {
@@ -83,6 +85,7 @@ public class PacManController extends GameObject {
         //Reset Ghost and PacMan positions
         lives--;
         if (lives <= 0) {
+            PacManClient.submitScore(uiManager.getCurrentScore());
             uiManager.resetUI();
             uiManager.incrementPlayCounter();
             lives = Constants.START_LIVES;
