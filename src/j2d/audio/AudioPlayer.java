@@ -15,9 +15,13 @@ import java.util.Map;
  * @author Tyler Houp
  */
 public class AudioPlayer {
-    public enum SFX {MOVE, ROTATE, BUMP, LINECLEAR, TETRISCLEAR, LEVELUP, GAMEOVER}
+    public enum SFX {eat_dot_0, eat_dot_1, start, credit, death_0, death_1, eat_fruit, eat_ghost, extended,
+        eyes, eyes_firstloop, fright, fright_firstloop, intermission, siren0, siren1, siren0_firstloop,
+        siren1_firstloop, siren2, siren2_firstloop, siren3, siren3_firstloop, siren4, siren4_firstloop
+    }
     private static Map<SFX, URL> audioURLs = new HashMap<SFX, URL>();
     private static URL musicURL;
+    private static Clip frightClip;
 
     /**
      * Private Constructor for AudioPlayer
@@ -25,12 +29,6 @@ public class AudioPlayer {
      */
     private AudioPlayer() {}
 
-    /**
-     * Must be called before AudioPlayer will function
-     */
-    public static void initialize() {
-        loadAudioURLS();
-    }
 
     /**
      * Loads URLs for all j2d.audio files that will be used
@@ -40,13 +38,32 @@ public class AudioPlayer {
         ClassLoader classLoader = AudioPlayer.class.getClassLoader();
         musicURL = classLoader.getResource("music/korobeiniki_gb.wav");
 
-        audioURLs.put(SFX.MOVE, classLoader.getResource("sfx/move.wav"));
-        audioURLs.put(SFX.ROTATE, classLoader.getResource("sfx/rotate.wav"));
-        audioURLs.put(SFX.BUMP, classLoader.getResource("sfx/bump.wav"));
-        audioURLs.put(SFX.LINECLEAR, classLoader.getResource("sfx/lineclear.wav"));
-        audioURLs.put(SFX.TETRISCLEAR, classLoader.getResource("sfx/tetrisclear.wav"));
-        audioURLs.put(SFX.LEVELUP, classLoader.getResource("sfx/levelup.wav"));
-        audioURLs.put(SFX.GAMEOVER, classLoader.getResource("sfx/gameover.wav"));
+        audioURLs.put(SFX.eat_dot_0, classLoader.getResource("sfx/eat_dot_0.wav"));
+        audioURLs.put(SFX.eat_dot_1, classLoader.getResource("sfx/eat_dot_1.wav"));
+        audioURLs.put(SFX.start, classLoader.getResource("sfx/start.wav"));
+        audioURLs.put(SFX.credit, classLoader.getResource("sfx/credit.wav"));
+        audioURLs.put(SFX.death_0, classLoader.getResource("sfx/death_0.wav"));
+        audioURLs.put(SFX.death_1, classLoader.getResource("sfx/death_1.wav"));
+        audioURLs.put(SFX.eat_fruit, classLoader.getResource("sfx/eat_fruit.wav"));
+        audioURLs.put(SFX.eat_ghost, classLoader.getResource("sfx/eat_ghost.wav"));
+        audioURLs.put(SFX.extended, classLoader.getResource("sfx/extended.wav"));
+        audioURLs.put(SFX.eyes, classLoader.getResource("sfx/eyes.wav"));
+        audioURLs.put(SFX.eyes_firstloop, classLoader.getResource("sfx/eyes_firstloop.wav"));
+        audioURLs.put(SFX.fright, classLoader.getResource("sfx/fright.wav"));
+        audioURLs.put(SFX.fright_firstloop, classLoader.getResource("sfx/fright_firstloop.wav"));
+        audioURLs.put(SFX.intermission, classLoader.getResource("sfx/intermission.wav"));
+        audioURLs.put(SFX.siren0, classLoader.getResource("sfx/siren0.wav"));
+        audioURLs.put(SFX.siren0_firstloop, classLoader.getResource("sfx/siren0_firstloop.wav"));
+        audioURLs.put(SFX.siren1, classLoader.getResource("sfx/siren1.wav"));
+        audioURLs.put(SFX.siren1_firstloop, classLoader.getResource("sfx/siren1_firstloop.wav"));
+        audioURLs.put(SFX.siren2, classLoader.getResource("sfx/siren2.wav"));
+        audioURLs.put(SFX.siren2_firstloop, classLoader.getResource("sfx/siren2_firstloop.wav"));
+        audioURLs.put(SFX.siren3, classLoader.getResource("sfx/siren3.wav"));
+        audioURLs.put(SFX.siren3_firstloop, classLoader.getResource("sfx/siren3_firstloop.wav"));
+        audioURLs.put(SFX.siren4, classLoader.getResource("sfx/siren4.wav"));
+        audioURLs.put(SFX.siren4_firstloop, classLoader.getResource("sfx/siren4_firstloop.wav"));
+
+        frightClip = getClipFromURL(audioURLs.get(SFX.fright));
     }
 
     /**
@@ -89,4 +106,11 @@ public class AudioPlayer {
         Clip musicClip = getClipFromURL(musicURL);
         musicClip.loop(Clip.LOOP_CONTINUOUSLY);
     }
+
+    public static void loopFrightClip() {
+        frightClip.loop(Clip.LOOP_CONTINUOUSLY);
+    }
+    public static void stopFrightClip() {frightClip.stop();
+    }
+
 }

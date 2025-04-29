@@ -5,6 +5,7 @@ import game.board.Board;
 import game.board.nodes.NodeManager;
 import game.entities.board.PacMan;
 import game.entities.board.ghost.Ghost.GhostMode;
+import j2d.audio.AudioPlayer;
 import j2d.components.Timer;
 import j2d.engine.gameobject.GameObject;
 
@@ -91,6 +92,7 @@ public class GhostManager extends GameObject {
             }
         }
         globalMode = GhostMode.CHASE;
+        AudioPlayer.stopFrightClip();
         chaseTimer.start();
     }
 
@@ -100,6 +102,7 @@ public class GhostManager extends GameObject {
                 ghost.startFright();
             }
         }
+        AudioPlayer.loopFrightClip();
         ghostEaten = 0;
 
         preFrightMode = globalMode;

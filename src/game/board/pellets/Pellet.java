@@ -3,6 +3,7 @@ package game.board.pellets;
 import game.entities.board.PacMan;
 import j2d.attributes.position.OffsetPosition2D;
 import j2d.attributes.position.Position2D;
+import j2d.audio.AudioPlayer;
 import j2d.components.graphics.shapes.FillCircle;
 import j2d.components.physics.collider.CircleCollider;
 import j2d.components.sprite.Sprite;
@@ -18,6 +19,7 @@ public class Pellet extends GameObject {
 
     Sprite sprite;
 
+    static int soundNum = 0;
     public Pellet(PelletManager pelletManager, Position2D position) {
         this(pelletManager, position, 4);
     }
@@ -46,6 +48,13 @@ public class Pellet extends GameObject {
     @Override
     public void onCollision(GameObject other) {
         if (other instanceof PacMan) {
+            if(soundNum == 0){
+                AudioPlayer.playSFX(AudioPlayer.SFX.eat_dot_0);
+                soundNum++;
+            }else{
+                AudioPlayer.playSFX(AudioPlayer.SFX.eat_dot_1);
+                soundNum--;
+            }
             queueDelete();
         }
     }

@@ -6,6 +6,7 @@ import game.board.pellets.Pellet;
 import game.entities.board.ghost.Ghost;
 import j2d.attributes.position.OffsetPosition2D;
 import j2d.attributes.position.Position2D;
+import j2d.audio.AudioPlayer;
 import j2d.components.physics.collider.CircleCollider;
 import j2d.components.sprite.AnimatedSprite;
 import j2d.components.sprite.AnimationFrame;
@@ -27,7 +28,7 @@ public class PacMan extends BoardEntity implements KeySubscriber {
     PacManController pacManController;
     boolean isPaused = false;
     boolean isAlive = true;
-
+    boolean DeathNoise = false;
     OffsetPosition2D spriteDrawPosition;
     enum PacManAnimations {MOVE_UP, MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT, DIE}
     AnimatedSprite<PacManAnimations> animatedSprite;
@@ -152,10 +153,19 @@ public class PacMan extends BoardEntity implements KeySubscriber {
     private void onPacManDeath() {
         pacManController.onPacManDeath();
         animatedSprite.playAnimation(PacManAnimations.DIE);
+        if(!DeathNoise) {
+            AudioPlayer.playSFX(AudioPlayer.SFX.death_0);
+            DeathNoise = true;
+        }else{
+            AudioPlayer.playSFX(AudioPlayer.SFX.death_1);
+            DeathNoise = false;
+        }
+
     }
 
     private void onDeathComplete() {
         pacManController.onDeathAnimationCompleted();
+        AudioPlayer.stopFrightClip();
     }
 
     public void pause() {
