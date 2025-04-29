@@ -120,6 +120,7 @@ public class PacMan extends BoardEntity implements KeySubscriber {
         if (other instanceof Ghost) {
             Ghost ghost = (Ghost) other;
             if (ghost.getCurrentMode() == Ghost.GhostMode.FRIGHT) {
+                AudioPlayer.playSFX(AudioPlayer.SFX.eat_ghost);
                 pacManController.onGhostEaten();
             } else if (ghost.isGhostHostile()) {
                 if (isAlive) {
@@ -153,6 +154,8 @@ public class PacMan extends BoardEntity implements KeySubscriber {
     private void onPacManDeath() {
         pacManController.onPacManDeath();
         animatedSprite.playAnimation(PacManAnimations.DIE);
+
+        AudioPlayer.stopFrightClip();
         if(!DeathNoise) {
             AudioPlayer.playSFX(AudioPlayer.SFX.death_0);
             DeathNoise = true;
@@ -165,7 +168,6 @@ public class PacMan extends BoardEntity implements KeySubscriber {
 
     private void onDeathComplete() {
         pacManController.onDeathAnimationCompleted();
-        AudioPlayer.stopFrightClip();
     }
 
     public void pause() {

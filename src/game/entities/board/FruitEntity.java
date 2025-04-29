@@ -3,6 +3,7 @@ package game.entities.board;
 import game.PacManController;
 import j2d.attributes.position.OffsetPosition2D;
 import j2d.attributes.position.Position2D;
+import j2d.audio.AudioPlayer;
 import j2d.components.Timer;
 import j2d.components.graphics.shapes.FillCircle;
 import j2d.components.physics.collider.CircleCollider;
@@ -79,6 +80,7 @@ public class FruitEntity extends GameObject {
         if (other instanceof PacMan) {
             if (active) {
                 eaten = true;
+                AudioPlayer.playSFX(AudioPlayer.SFX.eat_fruit);
                 pacManController.addScore(currentScore);
                 pacManController.onFruitEaten();
                 deactivate();
