@@ -15,7 +15,7 @@ X X X . X X X X X | X X X X X X X X | X X X X X . X X X
 X X X . X X n - - n X X X X X X X X n - - n X X . X X X
 X X X . X X | X X | X X X X X X X X | X X | X X . X X X
 X X X . X X | X X | X X X X X X X X | X X | X X . X X X
-2 - - + - - n X X n - - n - - n - - n X X n - - + - - 2
+2 - - + - - n X X n - - n F - n - - n X X n - - + - - 2
 X X X . X X X X X X X X | X X | X X X X X X X X . X X X
 X X X . X X X X X X X X | X X | X X X X X X X X . X X X
 X X X + . . . . . + - - n X X n - - + . . . . . + X X X
