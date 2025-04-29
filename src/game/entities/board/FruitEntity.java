@@ -80,6 +80,7 @@ public class FruitEntity extends GameObject {
             if (active) {
                 eaten = true;
                 pacManController.addScore(currentScore);
+                pacManController.onFruitEaten();
                 deactivate();
             }
         }

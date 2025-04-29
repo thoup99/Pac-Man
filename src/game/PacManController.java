@@ -65,6 +65,10 @@ public class PacManController extends GameObject {
         }
     }
 
+    public void onFruitEaten() {
+        uiManager.addFruit(level);
+    }
+
     public void pauseAll() {
         ghostManager.pauseAllGhost();
         pacMan.pause();
