@@ -2,6 +2,7 @@ package game.entities.ui;
 
 import game.Constants;
 import j2d.attributes.position.Position2D;
+import j2d.components.sprite.Sprite;
 import j2d.components.sprite.SpriteSheet;
 import j2d.engine.gameobject.GameObject;
 
@@ -53,7 +54,9 @@ public class FruitDisplay extends GameObject {
     }
 
     public void reset() {
-
+        for (SpriteSheet sprite: fruitSprites) {
+            sprite.setVisible(false);
+        }
     }
 
     @Override
