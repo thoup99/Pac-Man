@@ -8,6 +8,7 @@ import game.entities.board.PacMan;
 import game.entities.board.ghost.GhostManager;
 import game.entities.ui.UIManager;
 import j2d.attributes.position.Position2D;
+import j2d.audio.AudioPlayer;
 import j2d.components.Timer;
 import j2d.components.sprite.Sprite;
 import j2d.engine.gameobject.GameObject;
@@ -60,6 +61,7 @@ public class PacManController extends GameObject {
 
             if (lives < Constants.MAX_LIVES) {
                 lives++;
+                AudioPlayer.playSFX(AudioPlayer.SFX.extended);
                 uiManager.setLives(lives);
             }
         }
