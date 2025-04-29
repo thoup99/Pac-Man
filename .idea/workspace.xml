@@ -10,11 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c430b4-c26f-491d-b2fc-f82397dbd881" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/game/client/ConnectionText.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/client/PacManClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/Connection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/PacManServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/ScoreSaver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/images/fruit_sheet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/entities/board/FruitEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/Pac_Man_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Pac_Man_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -35,6 +32,8 @@
       <change beforePath="$PROJECT_DIR$/src/game/board/pellets/Pellet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/Pellet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/board/pellets/PelletManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/PelletManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/board/pellets/PowerPellet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/PowerPellet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/client/ConnectionText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/client/ConnectionText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/client/PacManClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/client/PacManClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/BoardEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/BoardEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/PacMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/PacMan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/ghost/Blinky.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/Blinky.java" afterDir="false" />
@@ -103,6 +102,9 @@
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/updates/physics/PhysicsServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/updates/physics/PhysicsServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/window/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/window/Window.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/engine/window/WindowPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/window/WindowPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/Connection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/PacManServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/PacManServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ScoreSaver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ScoreSaver.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,28 +132,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.PacMan.executor": "Run",
-    "Application.PacManServer.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "FinalSubmission",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/thoup/OneDrive/Desktop/Pac-Man",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PacMan.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PacManServer.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;FinalSubmission&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/thoup/OneDrive/Desktop/Pac-Man&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -205,6 +207,7 @@
       <workItem from="1744346204314" duration="3520000" />
       <workItem from="1744518435074" duration="5471000" />
       <workItem from="1744758190852" duration="39890000" />
+      <workItem from="1745900238464" duration="3464000" />
     </task>
     <servers />
   </component>
