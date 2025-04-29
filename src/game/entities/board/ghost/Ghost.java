@@ -7,6 +7,7 @@ import game.entities.board.PacMan;
 import j2d.attributes.Vector2D;
 import j2d.attributes.position.OffsetPosition2D;
 import j2d.attributes.position.Position2D;
+import j2d.audio.AudioPlayer;
 import j2d.components.physics.collider.CircleCollider;
 
 import game.Constants.Direction;
@@ -159,6 +160,10 @@ public abstract class Ghost extends BoardEntity {
     protected void checkSpawnReturn() {
         if (currentMode == GhostMode.RETURN_SPAWN && currentNode.getPosition().equals(homePosition)) {
             startLeavingSpawn();
+            ghostManager.ghostReturning--;
+            if(ghostManager.ghostReturning == 0) {
+                AudioPlayer.stopEyes();
+            }
         }
     }
 

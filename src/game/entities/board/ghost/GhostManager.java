@@ -28,6 +28,7 @@ public class GhostManager extends GameObject {
 
     private final int baseEatBonus = 200;
     int ghostEaten = 0;
+    int ghostReturning = 0;
 
     public GhostManager(PacManController pacManController, Board board, PacMan pacMan) {
         this.pacManController = pacManController;
@@ -104,7 +105,6 @@ public class GhostManager extends GameObject {
         }
         AudioPlayer.loopFrightClip();
         ghostEaten = 0;
-
         preFrightMode = globalMode;
         globalMode = GhostMode.FRIGHT;
 
@@ -116,7 +116,9 @@ public class GhostManager extends GameObject {
 
     public void onGhostEaten() {
         ghostEaten++;
+        ghostReturning++;
         pacManController.addScore(baseEatBonus * ghostEaten);
+        AudioPlayer.loopEyes();
     }
 
     public void pauseAllGhost() {
@@ -147,6 +149,7 @@ public class GhostManager extends GameObject {
         for (Ghost ghost: ghosts) {
             ghost.resetPosition();
         }
+        ghostReturning = 0;
         startRound();
     }
 

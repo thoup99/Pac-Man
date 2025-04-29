@@ -22,7 +22,7 @@ public class AudioPlayer {
     private static Map<SFX, URL> audioURLs = new HashMap<SFX, URL>();
     private static URL musicURL;
     private static Clip frightClip;
-
+    private static Clip eyesClip;
     /**
      * Private Constructor for AudioPlayer
      * This is to prevent creating objects of this class
@@ -64,6 +64,8 @@ public class AudioPlayer {
         audioURLs.put(SFX.siren4_firstloop, classLoader.getResource("sfx/siren4_firstloop.wav"));
 
         frightClip = getClipFromURL(audioURLs.get(SFX.fright));
+        eyesClip = getClipFromURL(audioURLs.get(SFX.eyes));
+
     }
 
     /**
@@ -111,6 +113,12 @@ public class AudioPlayer {
         frightClip.loop(Clip.LOOP_CONTINUOUSLY);
     }
     public static void stopFrightClip() {frightClip.stop();
+    }
+
+    public static void loopEyes() {
+        eyesClip.loop(Clip.LOOP_CONTINUOUSLY);
+    }
+    public static void stopEyes() {eyesClip.stop();
     }
 
 }
