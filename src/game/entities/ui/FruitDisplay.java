@@ -2,7 +2,6 @@ package game.entities.ui;
 
 import game.Constants;
 import j2d.attributes.position.Position2D;
-import j2d.components.sprite.Sprite;
 import j2d.components.sprite.SpriteSheet;
 import j2d.engine.gameobject.GameObject;
 
@@ -16,6 +15,7 @@ public class FruitDisplay extends GameObject {
 
     int startX = Constants.TILE_SIZE * 26;
     int startY = Constants.TILE_SIZE * 34;
+    int shownFruits = 0;
 
     public FruitDisplay() {
         BufferedImage fruitImage = SpriteSheet.loadImage("./images/fruit_sheet.png");
@@ -36,20 +36,22 @@ public class FruitDisplay extends GameObject {
             fruitLevel = FRUIT_NUMBER;
         }
 
+        shownFruits++;
+        if (shownFruits == FRUIT_TO_DISPLAY) {
+            shownFruits = FRUIT_TO_DISPLAY;
+        }
+
         int lastSpriteNumber = fruitSprites.get(0).getSpriteNumber();
         fruitSprites.get(0).setSprite(fruitLevel - 1);
         fruitSprites.get(0).setVisible(true);
 
-        for (int i = 1; i < fruitSprites.size(); i++) {
-            if (i < fruitLevel) {
-                SpriteSheet fruitSprite = fruitSprites.get(i);
-                int tempLastSpriteNumber = fruitSprite.getSpriteNumber();
-                fruitSprite.setSprite(lastSpriteNumber);
-                lastSpriteNumber = tempLastSpriteNumber;
-                fruitSprite.setVisible(true);
-            } else {
-                break;
-            }
+        for (int i = 1; i < shownFruits; i++) {
+            SpriteSheet fruitSprite = fruitSprites.get(i);
+            int tempLastSpriteNumber = fruitSprite.getSpriteNumber();
+            fruitSprite.setSprite(lastSpriteNumber);
+            lastSpriteNumber = tempLastSpriteNumber;
+            System.out.println("Setting " + i + " to visible");
+            fruitSprite.setVisible(true);
         }
     }
 
