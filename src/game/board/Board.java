@@ -3,6 +3,7 @@ package game.board;
 import game.PacManController;
 import game.board.nodes.NodeManager;
 import game.board.pellets.PelletManager;
+import j2d.attributes.position.Position2D;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -14,6 +15,7 @@ public class Board {
 
     NodeManager nodeManager;
     PelletManager pelletManager;
+    Position2D fruitPosition;
 
     public Board(PacManController pacManController) {
         mapData = new char[BOARD_TOTAL_ROWS][BOARD_TOTAL_COLUMNS];
@@ -45,14 +47,27 @@ public class Board {
 
         nodeManager.loadNodes(mapData);
         pelletManager.loadPellets(mapData);
+        locateFruitPosition();
+    }
+
+    private void locateFruitPosition() {
+        for (int row = 0; row < BOARD_TOTAL_ROWS; row++) {
+            for (int col = 0; col < BOARD_TOTAL_COLUMNS; col++) {
+                char value = mapData[row][col];
+                if (value == 'F') {
+                    fruitPosition = new Position2D(BOARD_START_POSITION.getIntX() + HALF_TILE_SIZE + col * TILE_SIZE, BOARD_START_POSITION.getIntY() + row * TILE_SIZE);
+                    return;
+                }
+            }
+        }
+        //Fallback
+        fruitPosition = nodeManager.getStartNode().getPosition();
     }
 
     public void unloadMap() {
         nodeManager.unloadAll();
         pelletManager.emptyPellets();
     }
-
-
 
     public NodeManager getNodeManager() {
         return nodeManager;
@@ -61,5 +76,7 @@ public class Board {
     public PelletManager getPelletManager() {
         return pelletManager;
     }
+
+    public Position2D getFruitPosition() {return fruitPosition;}
 
 }

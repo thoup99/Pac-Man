@@ -19,6 +19,9 @@ public class PelletManager {
     private static final int PELLET_SCORE = 10;
     private static final int POWER_PELLET_SCORE = 50;
 
+    private static final int FRUIT_SPAWN_ONE = 70;
+    private static final int FRUIT_SPAWN_TWO = 170;
+    private int pelletsEaten = 0;
 
     private final BufferedImage pelletImage;
     private final BufferedImage powerPelletImage;
@@ -33,6 +36,7 @@ public class PelletManager {
     }
 
     public void loadPellets(char[][] mapData) {
+        pelletsEaten = 0;
         for (int row = 0; row < BOARD_TOTAL_ROWS; row++) {
             for (int col = 0; col < BOARD_TOTAL_COLUMNS; col++) {
                 char value = mapData[row][col];
@@ -90,6 +94,11 @@ public class PelletManager {
         } else {
             pacManController.addScore(PELLET_SCORE);
             pellets.remove(pellet);
+        }
+
+        pelletsEaten++;
+        if (pelletsEaten == FRUIT_SPAWN_ONE || pelletsEaten == FRUIT_SPAWN_TWO) {
+            pacManController.spawnFruit();
         }
     }
 }

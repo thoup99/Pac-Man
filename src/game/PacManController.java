@@ -2,6 +2,7 @@ package game;
 
 
 import game.board.Board;
+import game.entities.board.FruitEntity;
 import game.entities.board.PacMan;
 import game.entities.board.ghost.GhostManager;
 import game.entities.ui.UIManager;
@@ -18,6 +19,7 @@ public class PacManController extends GameObject {
     Board board;
     PacMan pacMan;
     GhostManager ghostManager;
+    FruitEntity fruit;
 
     Timer ghostEatenTimer;
     Timer levelCompletedTimer;
@@ -26,10 +28,13 @@ public class PacManController extends GameObject {
     int nextScoreThreshold = Constants.LIFE_UP_INTERVAL;
     int lives = Constants.START_LIVES;
 
+    int level = 1;
+
     public PacManController() {
         board = new Board(this);
         pacMan = new PacMan(this, board.getNodeManager().getStartNode());
         ghostManager = new GhostManager(this, board, pacMan);
+        fruit = new FruitEntity(this, board.getFruitPosition());
 
         ghostEatenTimer = new Timer(this, 1000, this::unpauseAll);
         levelCompletedTimer = new Timer(this, 500, this::onLevelFlashCompleted);
@@ -58,14 +63,20 @@ public class PacManController extends GameObject {
         }
     }
 
+    public void onFruitEaten() {
+        uiManager.addFruit(level);
+    }
+
     public void pauseAll() {
         ghostManager.pauseAllGhost();
         pacMan.pause();
+        fruit.pauseTimer();
     }
 
     public void unpauseAll() {
         ghostManager.unpauseAllGhost();
         pacMan.unpause();
+        fruit.resumeTimer();
     }
 
     public void onGhostEaten() {
@@ -73,10 +84,15 @@ public class PacManController extends GameObject {
         ghostEatenTimer.start();
     }
 
+    public void spawnFruit() {
+        fruit.activate();
+    }
+
     public void onPacManDeath() {
         pauseAll();
         ghostManager.hideGhosts();
         pacMan.allowAnimations();
+        fruit.deactivate();
     }
 
     public void onDeathAnimationCompleted() {
@@ -87,6 +103,7 @@ public class PacManController extends GameObject {
             uiManager.incrementPlayCounter();
             lives = Constants.START_LIVES;
             nextScoreThreshold = Constants.LIFE_UP_INTERVAL;
+            level = 1;
 
             reloadLevel();
         } else {
@@ -114,6 +131,7 @@ public class PacManController extends GameObject {
     }
 
     private void onLevelFlashCompleted() {
+        level++;
         reloadLevel();
     }
 
@@ -124,16 +142,23 @@ public class PacManController extends GameObject {
             pacMan = null;
         }
 
+        if (fruit != null) {
+            fruit.queueDelete();
+            fruit = null;
+        }
+
         //Unload current map
         board.unloadMap();
 
         //Load next map
         board.loadMap("/maps/map1.txt");
 
-        //Create new pacman and ghost
+        //Create new pacman, ghost, and fruit;
         pacMan = new PacMan(this, board.getNodeManager().getStartNode());
         ghostManager.loadGhost(board.getNodeManager(), pacMan);
         ghostManager.startRound();
+        fruit = new FruitEntity(this, board.getFruitPosition());
+        fruit.setLevel(level);
     }
 
     @Override

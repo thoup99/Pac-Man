@@ -24,6 +24,8 @@ public class SpriteSheet extends Sprite {
     private final int numRows;
     private final int numCols;
 
+    private int spriteNumber = 0;
+
     BufferedImage spriteImage;
 
     /**
@@ -85,7 +87,12 @@ public class SpriteSheet extends Sprite {
     public void setSprite(int row, int col) {
         int x = xPadding + ( (individualSpriteWidth + xSpacing) * col );
         int y = yPadding + ( (individualSpriteHeight + ySpacing) * row );
+        spriteNumber = getSpriteNum(row, col);
         spriteImage = image.getSubimage(x, y, individualSpriteWidth, individualSpriteHeight);
+    }
+
+    public int getSpriteNumber() {
+        return spriteNumber;
     }
 
     /**

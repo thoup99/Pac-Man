@@ -25,7 +25,7 @@ public class UIManager {
     }
 
     public void loadHighScore() {
-        //Fetch from database / local file
+        highScoreDisplay.setScore(0); //Used in the Client Server Version
     }
 
     public void addScore(int toAdd) {
@@ -40,6 +40,10 @@ public class UIManager {
         lifeDisplay.setLives(lives);
     }
 
+    public void addFruit(int level) {
+        fruitDisplay.addFruit(level);
+    }
+
     public int getCurrentScore() {
         return scoreDisplay.getScore();
     }
@@ -51,6 +55,7 @@ public class UIManager {
     public void resetUI() {
         scoreDisplay.setScore(0);
         lifeDisplay.setLives(Constants.START_LIVES);
+        fruitDisplay.reset();
     }
 
 }
