@@ -156,6 +156,7 @@ public class PacMan extends BoardEntity implements KeySubscriber {
         animatedSprite.playAnimation(PacManAnimations.DIE);
 
         AudioPlayer.stopFrightClip();
+        AudioPlayer.stopEyes();
         if(!DeathNoise) {
             AudioPlayer.playSFX(AudioPlayer.SFX.death_0);
             DeathNoise = true;

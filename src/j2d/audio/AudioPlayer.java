@@ -46,7 +46,7 @@ public class AudioPlayer {
         audioURLs.put(SFX.death_1, classLoader.getResource("sfx/death_1.wav"));
         audioURLs.put(SFX.eat_fruit, classLoader.getResource("sfx/eat_fruit.wav"));
         audioURLs.put(SFX.eat_ghost, classLoader.getResource("sfx/eat_ghost.wav"));
-        audioURLs.put(SFX.extended, classLoader.getResource("sfx/extended.wav"));
+        audioURLs.put(SFX.extended, classLoader.getResource("sfx/extend.wav"));
         audioURLs.put(SFX.eyes, classLoader.getResource("sfx/eyes.wav"));
         audioURLs.put(SFX.eyes_firstloop, classLoader.getResource("sfx/eyes_firstloop.wav"));
         audioURLs.put(SFX.fright, classLoader.getResource("sfx/fright.wav"));

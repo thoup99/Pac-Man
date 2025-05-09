@@ -10,10 +10,102 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c430b4-c26f-491d-b2fc-f82397dbd881" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Pac_Man_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Pac_Man_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pac-Man.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Pac-Man.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/highScore.txt" beforeDir="false" afterPath="$PROJECT_DIR$/highScore.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/res/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/maps/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/maps/map1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/maps/map2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/maps/map2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sfx/extend.wav" beforeDir="false" afterPath="$PROJECT_DIR$/res/sfx/extend.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/PacManController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/PacManController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/board/nodes/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/nodes/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/board/nodes/NodeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/nodes/NodeManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/board/pellets/Pellet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/Pellet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/board/pellets/PelletManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/PelletManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/board/pellets/PowerPellet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/PowerPellet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/client/ConnectionText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/client/ConnectionText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/client/PacManClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/client/PacManClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/board/BoardEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/BoardEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/board/FruitEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/FruitEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/board/PacMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/PacMan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/board/ghost/Blinky.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/Blinky.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/board/ghost/Clyde.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/Clyde.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/ghost/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/Ghost.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/ghost/GhostManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/GhostManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/board/ghost/Inky.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/Inky.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/board/ghost/Pinky.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/Pinky.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/ui/FruitDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/ui/FruitDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/ui/LifeDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/ui/LifeDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/ui/UIEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/ui/UIEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/ui/UIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/ui/UIManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/ui/text/CharEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/ui/text/CharEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/ui/text/ScoreEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/ui/text/ScoreEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/ui/text/TextEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/ui/text/TextEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/attributes/Rotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/Rotation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/attributes/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/Transform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/attributes/Vector2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/Vector2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/attributes/position/OffsetPosition2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/position/OffsetPosition2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/attributes/position/Position2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/attributes/position/Position2D.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/j2d/audio/AudioPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/audio/AudioPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/Timer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/Circle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/FillCircle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/FillCircle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/FillSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/FillSquare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/Line.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/Shape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/shapes/Square.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/text/CenteredText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/text/CenteredText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/graphics/text/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/graphics/text/Text.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/physics/RigidBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/physics/RigidBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/physics/collider/BoxCollider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/physics/collider/BoxCollider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/physics/collider/CircleCollider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/physics/collider/CircleCollider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/physics/collider/Collider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/physics/collider/Collider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/sprite/AnimatedSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/sprite/AnimatedSprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/sprite/AnimationFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/sprite/AnimationFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/sprite/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/sprite/Sprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/sprite/SpriteAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/sprite/SpriteAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/components/sprite/SpriteSheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/components/sprite/SpriteSheet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/Engine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/audio/AudioClip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/audio/AudioClip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/audio/Mp3Clip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/audio/Mp3Clip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/audio/OggClip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/audio/OggClip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/audio/WavClip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/audio/WavClip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/debug/Debug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/debug/Debug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/debug/FPSDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/debug/FPSDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/debug/MousePrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/debug/MousePrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/debug/PhysicsTickDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/debug/PhysicsTickDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/debug/PositionDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/debug/PositionDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/gameobject/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/gameobject/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/gameobject/GameObjectDeletion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/gameobject/GameObjectDeletion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/keyboard/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/keyboard/KeyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/keyboard/KeySubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/keyboard/KeySubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/mouse/button/MouseButtonHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/mouse/button/MouseButtonHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/mouse/button/MouseButtonSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/mouse/button/MouseButtonSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/mouse/motion/MouseMotionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/mouse/motion/MouseMotionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/mouse/motion/MouseMotionSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/mouse/motion/MouseMotionSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/mouse/wheel/MouseWheelHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/mouse/wheel/MouseWheelHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/input/mouse/wheel/MouseWheelSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/input/mouse/wheel/MouseWheelSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/render/Renderable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/render/Renderable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/render/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/render/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/updates/MasterTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/updates/MasterTimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/updates/gametick/GameTick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/updates/gametick/GameTick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/updates/physics/CollisionServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/updates/physics/CollisionServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/updates/physics/PhysicsServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/updates/physics/PhysicsServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/window/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/window/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/j2d/engine/window/WindowPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/j2d/engine/window/WindowPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/Connection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/PacManServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/PacManServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ScoreSaver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ScoreSaver.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,8 +159,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
       </set>
     </attachedChunks>
   </component>
@@ -121,6 +213,7 @@
       <workItem from="1745938065976" duration="775000" />
       <workItem from="1745939171389" duration="1080000" />
       <workItem from="1745953447278" duration="815000" />
+      <workItem from="1746409992894" duration="1267000" />
     </task>
     <servers />
   </component>
