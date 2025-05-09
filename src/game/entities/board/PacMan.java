@@ -50,7 +50,8 @@ public class PacMan extends BoardEntity implements KeySubscriber {
         currentDirection = Direction.LEFT;
         setMovementSpeed(100);
 
-        int[] keys = {KeyEvent.VK_W, KeyEvent.VK_A, KeyEvent.VK_S, KeyEvent.VK_D};
+        int[] keys = {KeyEvent.VK_W, KeyEvent.VK_A, KeyEvent.VK_S, KeyEvent.VK_D
+                    ,KeyEvent.VK_UP, KeyEvent.VK_LEFT, KeyEvent.VK_DOWN, KeyEvent.VK_RIGHT};
         KeyHandler.subscribe(this, keys);
 
         ready();
@@ -99,16 +100,16 @@ public class PacMan extends BoardEntity implements KeySubscriber {
     }
 
     private Direction getDirection() {
-        if (KeyHandler.isKeyPressed(KeyEvent.VK_W)) {
+        if (KeyHandler.isKeyPressed(KeyEvent.VK_W) || KeyHandler.isKeyPressed(KeyEvent.VK_UP)) {
             return Direction.UP;
         }
-        else if (KeyHandler.isKeyPressed(KeyEvent.VK_S)) {
+        else if (KeyHandler.isKeyPressed(KeyEvent.VK_S) || KeyHandler.isKeyPressed(KeyEvent.VK_DOWN)) {
             return Direction.DOWN;
         }
-        else if (KeyHandler.isKeyPressed(KeyEvent.VK_A)) {
+        else if (KeyHandler.isKeyPressed(KeyEvent.VK_A) || KeyHandler.isKeyPressed(KeyEvent.VK_LEFT)) {
             return Direction.LEFT;
         }
-        else if (KeyHandler.isKeyPressed(KeyEvent.VK_D)) {
+        else if (KeyHandler.isKeyPressed(KeyEvent.VK_D) || KeyHandler.isKeyPressed(KeyEvent.VK_RIGHT)) {
             return Direction.RIGHT;
         }
         return Direction.STOP;

@@ -19,9 +19,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pac-Man.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Pac-Man.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/res/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/images/spritesheet - Copy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/images/spritesheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/images/text_sheet.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/res/maps/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/maps/map1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/maps/map2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/maps/map2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
@@ -34,6 +31,7 @@
       <change beforePath="$PROJECT_DIR$/src/game/board/pellets/PelletManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/PelletManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/board/pellets/PowerPellet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/board/pellets/PowerPellet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/BoardEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/BoardEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/entities/board/FruitEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/FruitEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/PacMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/PacMan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/ghost/Blinky.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/Blinky.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/entities/board/ghost/Clyde.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/entities/board/ghost/Clyde.java" afterDir="false" />
@@ -202,7 +200,7 @@
       <workItem from="1744346204314" duration="3520000" />
       <workItem from="1744518435074" duration="5471000" />
       <workItem from="1744758190852" duration="39890000" />
-      <workItem from="1746756746369" duration="1088000" />
+      <workItem from="1746756746369" duration="1398000" />
     </task>
     <servers />
   </component>
